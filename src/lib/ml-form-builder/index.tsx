@@ -1,33 +1,21 @@
-import Button, { ButtonProps } from "@material-ui/core/Button";
-import CircularProgress, {
-  CircularProgressProps,
-} from "@material-ui/core/CircularProgress";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import clsx from "clsx";
 import { FormikProps } from "formik";
 import { get, isArray, isFunction, map, uniqueId } from "lodash";
 import * as React from "react";
 import {
-  MUICheckBox,
-  MUIFieldArray,
-  MUIFileInput,
-  MUIPhoneField,
-  MUIRadio,
-  MUISelectField,
-  MUISwitch,
-  MUITextField,
+  Select,
+  TextField
 } from "./lib";
 import {
   getConditionalProps,
   TFieldConditions,
 } from "./lib/ConditionalOperation";
-import PlainText from "./lib/PlainText";
 
 const { useEffect, useState } = React;
 
 export interface ReadOnlyProps {
   renderer: (props: IFieldProps) => React.ReactNode;
 }
+
 export interface FormConfig {
   type: string;
   name?: string;
@@ -46,6 +34,7 @@ interface RowSettingsProps {
   verticalSpacing?: number;
   columnHorizontalPadding?: number;
 }
+
 export interface BuilderSettingsProps extends RowSettingsProps {
   isReadOnly?: boolean;
 }
@@ -54,6 +43,7 @@ export type RowSchema =
   | Array<FormConfig>
   | FormConfig
   | { columns: Array<FormConfig>; settings?: RowSettingsProps };
+
 export interface FormRowProps<T = any> {
   schema: RowSchema;
   rowId: string;
@@ -61,21 +51,10 @@ export interface FormRowProps<T = any> {
   settings?: BuilderSettingsProps;
 }
 
-type submitButtonLayout = "right" | "center" | "fullWidth";
-export interface IFormActionProps {
-  submitButtonText?: string;
-  submitButtonProps?: ButtonProps;
-  submitButtonLayout?: submitButtonLayout;
-  actionContent?: JSX.Element;
-  containerClassNames?: string | string[];
-  displayActions?: boolean;
-  loaderProps?: CircularProgressProps;
-}
 export interface BuilderProps<T = any> {
   schema: Array<RowSchema>;
   formId: string;
   formikProps?: FormikProps<T>;
-  actionConfig?: IFormActionProps;
   settings?: BuilderSettingsProps;
   isInProgress?: boolean;
 }
@@ -90,6 +69,7 @@ let ComponentMapConfig: {
   [key: string]: { component: JSX.Element; props?: object };
 } = {};
 
+
 export const getComponentConfig = (type: string) => {
   return ComponentMapConfig[type];
 };
@@ -103,6 +83,7 @@ export const attachField = (
     map(type, (item) => (ComponentMapConfig[item] = { component, props }));
   } else ComponentMapConfig[type] = { component, props };
 };
+
 export const setDefaultProps = (
   type: Array<string> | string,
   props: object
@@ -111,10 +92,10 @@ export const setDefaultProps = (
     map(
       type,
       (item) =>
-        (ComponentMapConfig[item].props = {
-          ...ComponentMapConfig[item].props,
-          ...props,
-        })
+      (ComponentMapConfig[item].props = {
+        ...ComponentMapConfig[item].props,
+        ...props,
+      })
     );
   } else if (ComponentMapConfig[type])
     ComponentMapConfig[type].props = {
@@ -123,16 +104,9 @@ export const setDefaultProps = (
     };
 };
 
-attachField("text", <MUITextField />, { type: "text" });
-attachField("password", <MUITextField />, { type: "password" });
-attachField("select", <MUISelectField />);
-attachField("checkbox", <MUICheckBox />);
-attachField("switch", <MUISwitch />);
-attachField("radio", <MUIRadio />);
-attachField("array", <MUIFieldArray />);
-attachField("file", <MUIFileInput />);
-attachField("phone", <MUIPhoneField />);
-attachField("mui-plain-text", <PlainText />);
+attachField("text", <TextField />, { type: "text" });
+attachField("password", <TextField />, { type: "password" });
+attachField("select", <Select />);
 
 export const BuildFormRow: React.FC<FormRowProps> = (props) => {
   const {
@@ -147,28 +121,31 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
     },
   } = props;
   let columnItems = get(schema, "columns") as Array<FormConfig>;
+
   let rowSettings = {
     ...settings,
     ...get(schema, "settings"),
   } as RowSettingsProps;
+
   const colItems = isArray(schema)
     ? schema
     : isArray(columnItems)
-    ? columnItems
-    : [schema];
-  const classes = useFormStyles();
-  const rowStyle = { marginBottom: rowSettings.verticalSpacing || 10 };
+      ? columnItems
+      : [schema];
+
+  const rowStyle = { marginBottom: rowSettings.verticalSpacing || 10, display: "flex" };
   return (
-    <div className={classes.row} style={rowStyle}>
+    <div style={rowStyle}>
       {map(colItems, (item: FormConfig, index) => {
         const componentConfig = ComponentMapConfig[item.type];
+
         const horizontalSpacing =
           index === colItems.length - 1
             ? 0
             : rowSettings.horizontalSpacing || 10;
         if (!componentConfig) return <div key={`${rowId}_field_${index}`} />;
-
         const conditionalProps = getConditionalProps(item, formikProps);
+
         const fieldProps = {
           id: item.id,
           name: item.name || item.valueKey,
@@ -176,6 +153,7 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
           ...item.fieldProps,
           ...conditionalProps.finalProps,
         };
+
         const Component = componentConfig.component;
 
         if (conditionalProps.hidden === true)
@@ -183,7 +161,7 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
         return (
           <div
             key={`${rowId}_field_${index}`}
-            className={clsx(item.classNames, classes.column)}
+            className={item.valueKey}
             style={{
               flex: item.flex || 1,
               marginRight: horizontalSpacing,
@@ -194,19 +172,19 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
             }}
           >
             {settings.isReadOnly &&
-            item.readOnlyProps &&
-            isFunction(item.readOnlyProps.renderer)
+              item.readOnlyProps &&
+              isFunction(item.readOnlyProps.renderer)
               ? item.readOnlyProps.renderer({
-                  formikProps,
-                  fieldConfig: item,
-                  isReadOnly: settings.isReadOnly,
-                })
+                formikProps,
+                fieldConfig: item,
+                isReadOnly: settings.isReadOnly,
+              })
               : React.cloneElement(Component, {
-                  fieldProps,
-                  formikProps,
-                  fieldConfig: item,
-                  isReadOnly: settings.isReadOnly,
-                })}
+                fieldProps,
+                formikProps,
+                fieldConfig: item,
+                isReadOnly: settings.isReadOnly,
+              })}
           </div>
         );
       })}
@@ -229,6 +207,7 @@ const getUpdateSchema = (schema: Array<RowSchema>, formId: string) => {
 export const MLFormContent: React.FC<BuilderProps> = (props) => {
   const { schema, formId, formikProps, settings } = props;
   const [formSchema, setFormSchema] = useState<Array<RowSchema>>(schema);
+
   useEffect(() => {
     setFormSchema(getUpdateSchema(schema, formId));
   }, [schema]);
@@ -236,6 +215,7 @@ export const MLFormContent: React.FC<BuilderProps> = (props) => {
     <>
       {map(formSchema, (configRow, index) => {
         const rowId = `${formId}_row_${index}`;
+
         return (
           <BuildFormRow
             key={rowId}
@@ -250,112 +230,16 @@ export const MLFormContent: React.FC<BuilderProps> = (props) => {
   );
 };
 
-export const MLFormAction: React.FC<
-  IFormActionProps & Pick<BuilderProps, "formId" | "formikProps">
-> = (props) => {
-  const {
-    formId,
-    formikProps = {} as FormikProps<any>,
-    containerClassNames,
-    submitButtonLayout = "center",
-    submitButtonText = "Submit",
-    submitButtonProps,
-    loaderProps,
-  } = props;
-  const classes = useFormStyles();
-  if (props.actionContent)
-    return React.cloneElement(props.actionContent || <div />, { formikProps });
-  const layoutClassName = `action-${submitButtonLayout}`;
-  return (
-    <div
-      className={clsx(
-        classes.actionContainer,
-        layoutClassName,
-        containerClassNames
-      )}
-    >
-      {props.actionContent ? (
-        React.cloneElement(props.actionContent || <div />, {
-          formikProps,
-          formId,
-        })
-      ) : (
-        <>
-          <Button
-            type="submit"
-            disabled={formikProps.isSubmitting}
-            variant="contained"
-            color="primary"
-            {...submitButtonProps}
-          >
-            {submitButtonText}
-          </Button>
-          {formikProps.isSubmitting && (
-            <CircularProgress
-              size={24}
-              color="secondary"
-              className={classes.submitLoader}
-              {...loaderProps}
-            />
-          )}
-        </>
-      )}
-    </div>
-  );
-};
-
 export const MLFormBuilder: React.FC<BuilderProps> = (props) => {
   const {
     formikProps = {} as FormikProps<any>,
-    isInProgress = false,
-    actionConfig = {} as IFormActionProps,
   } = props;
-  useEffect(() => {
-    if (isInProgress === false) formikProps.setSubmitting(false);
-  }, [isInProgress]);
-
+  console.log(props);
   return (
     <form onSubmit={formikProps.handleSubmit}>
       <MLFormContent {...props} />
-      {actionConfig.displayActions !== false && (
-        <MLFormAction
-          formId={props.formId}
-          formikProps={formikProps}
-          {...actionConfig}
-        />
-      )}
     </form>
   );
 };
-
-const useFormStyles = makeStyles<Theme>(() => {
-  return createStyles({
-    row: {
-      display: "flex",
-    },
-    column: {},
-    actionContainer: {
-      position: "relative",
-      display: "flex",
-      justifyContent: "center",
-      "&.action-center": {
-        justifyContent: "center",
-      },
-      "&.action-right": {
-        justifyContent: "flex-end",
-      },
-      "&.action-fullWidth > button": {
-        flex: 1,
-      },
-    },
-    submitLoader: {
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%,-50%)",
-      marginTop: -5,
-    },
-  });
-});
 
 export default MLFormBuilder;

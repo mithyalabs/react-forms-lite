@@ -1,5 +1,3 @@
-import { ButtonProps } from "@material-ui/core/Button";
-import { CircularProgressProps } from "@material-ui/core/CircularProgress";
 import { FormikProps } from "formik";
 import * as React from "react";
 import { TFieldConditions } from "./lib/ConditionalOperation";
@@ -36,21 +34,10 @@ export interface FormRowProps<T = any> {
     formikProps?: FormikProps<T>;
     settings?: BuilderSettingsProps;
 }
-declare type submitButtonLayout = "right" | "center" | "fullWidth";
-export interface IFormActionProps {
-    submitButtonText?: string;
-    submitButtonProps?: ButtonProps;
-    submitButtonLayout?: submitButtonLayout;
-    actionContent?: JSX.Element;
-    containerClassNames?: string | string[];
-    displayActions?: boolean;
-    loaderProps?: CircularProgressProps;
-}
 export interface BuilderProps<T = any> {
     schema: Array<RowSchema>;
     formId: string;
     formikProps?: FormikProps<T>;
-    actionConfig?: IFormActionProps;
     settings?: BuilderSettingsProps;
     isInProgress?: boolean;
 }
@@ -67,6 +54,5 @@ export declare const attachField: (type: string | string[], component: JSX.Eleme
 export declare const setDefaultProps: (type: string | string[], props: object) => void;
 export declare const BuildFormRow: React.FC<FormRowProps>;
 export declare const MLFormContent: React.FC<BuilderProps>;
-export declare const MLFormAction: React.FC<IFormActionProps & Pick<BuilderProps, "formId" | "formikProps">>;
 export declare const MLFormBuilder: React.FC<BuilderProps>;
 export default MLFormBuilder;
