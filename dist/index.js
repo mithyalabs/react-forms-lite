@@ -48,24 +48,60 @@ function __rest(s, e) {
 }
 
 var Select = function (props) {
-    // console.log(props);
     var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.fieldProps, fieldProps = _b === void 0 ? {} : _b;
     var value = lodash.get(formikProps, "values." + fieldProps.name);
     var updatedProps = {
-        options: fieldProps.options,
         id: fieldProps.id,
-        name: fieldProps.name
+        label: fieldProps.label,
+        name: fieldProps.name,
+        options: fieldProps.options,
+        placeholder: fieldProps.placeholder,
     };
-    // console.log(updatedProps);
-    return (React__default.createElement("select", { className: updatedProps.name, id: updatedProps.id, value: value, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur }, updatedProps.options.map(function (option) {
-        return (React__default.createElement("option", { value: option.value, key: option.value }, option.name));
-    })));
+    return (React__default.createElement("div", { style: { display: "flex" } },
+        updatedProps.label && React__default.createElement("label", { style: labelStyle, htmlFor: updatedProps.id }, updatedProps.label),
+        React__default.createElement("select", { className: updatedProps.name, id: updatedProps.id, defaultValue: "", value: value, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, style: selectStyle },
+            React__default.createElement("option", { disabled: true, value: "" }, updatedProps.placeholder || updatedProps.label || ''),
+            updatedProps.options && updatedProps.options.map(function (option) {
+                console.log(option);
+                return (typeof (option) === 'string' ?
+                    React__default.createElement("option", { value: option, key: option }, option) :
+                    React__default.createElement("option", { value: option.value, key: option.value }, option.name));
+                // return (
+                // typeof (option) ==
+                // < option value={option.value} key={option.value}>
+                //     {option.name}
+                // </option>
+                // );
+            }))));
+};
+var labelStyle = {
+    marginRight: "10px"
+};
+var selectStyle = {
+    flexGrow: "1",
+    height: "100%",
+    cursor: "pointer"
 };
 
 var TextField = function (props) {
     var _a = props.fieldProps, fieldProps = _a === void 0 ? {} : _a, _b = props.formikProps, formikProps = _b === void 0 ? {} : _b;
     var updatedProps = __assign(__assign({}, fieldProps), { onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, value: getFieldValue(formikProps, fieldProps.name || '') });
-    return React__default.createElement("input", { className: updatedProps.name, id: updatedProps.id, type: updatedProps.type, placeholder: updatedProps.label, value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur });
+    return (React__default.createElement("div", { style: { display: "flex" } },
+        updatedProps.label && React__default.createElement("label", { style: labelStyle$1, htmlFor: updatedProps.id }, updatedProps.label),
+        !updatedProps.multiline ?
+            React__default.createElement("input", { className: updatedProps.name, id: updatedProps.id, type: updatedProps.type, placeholder: updatedProps.placeholder || updatedProps.label || '', value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur, style: inputStyle }) :
+            React__default.createElement("div", { contentEditable: "true", style: textareaStyle, placeholder: updatedProps.placeholder, id: updatedProps.id })
+    // <textarea class='autoExpand' rows='3' data-min-rows='3' placeholder='Auto-Expanding Textarea' autofocus></textarea>  
+    // <textarea
+    //     className={updatedProps.name}
+    //     id={updatedProps.id}
+    //     placeholder={updatedProps.placeholder || updatedProps.label}
+    //     value={updatedProps.value}
+    //     onChange={updatedProps.onChange}
+    //     onBlur={updatedProps.onBlur}
+    //     style={textareaStyle}>
+    // </textarea>
+    ));
 };
 var getFieldValue = function (formikProps, name) {
     var value = lodash.get(formikProps, "values." + name);
@@ -73,6 +109,36 @@ var getFieldValue = function (formikProps, name) {
         return '';
     return value;
 };
+var labelStyle$1 = {
+    marginRight: "10px",
+};
+var inputStyle = {
+    flexGrow: "1",
+    height: "100%",
+    padding: "2px"
+};
+var textareaStyle = {
+    flexGrow: "1",
+    overflow: "hidden",
+    border: "1px solid rgb(119,119,119)",
+    minHeight: "40px",
+    padding: "2px"
+};
+// function getScrollHeight(elm: HTMLSelectElement) {
+//     var savedValue = elm.value
+//     elm.value = ''
+//     elm._baseScrollHeight = elm.scrollHeight
+//     elm.value = savedValue
+// }
+// function onExpandableTextareaInput({ target: elm }) {
+//     if (!elm.classList.contains('autoExpand') || !elm.nodeName == 'TEXTAREA') return
+//     var minRows = elm.getAttribute('data-min-rows') | 0, rows;
+//     !elm._baseScrollHeight && getScrollHeight(elm)
+//     elm.rows = minRows
+//     rows = Math.ceil((elm.scrollHeight - elm._baseScrollHeight) / 16)
+//     elm.rows = minRows + rows
+// }
+// document.addEventListener('input', onExpandableTextareaInput)
 
 var compare = function (value1, operator, value2) {
     switch (operator) {
@@ -221,7 +287,6 @@ var MLFormContent = function (props) {
 };
 var MLFormBuilder = function (props) {
     var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a;
-    console.log(props);
     return (React.createElement("form", { onSubmit: formikProps.handleSubmit },
         React.createElement(MLFormContent, __assign({}, props))));
 };

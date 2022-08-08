@@ -1,13 +1,15 @@
 import React from 'react';
 import { IFieldProps } from "..";
 interface IOptionProps {
-    name: string;
-    value: string;
+    name?: string;
+    value?: string;
 }
 interface IFProps {
-    options: IOptionProps[];
-    name: string;
     id: string;
+    name: string;
+    label?: string;
+    options?: IOptionProps[];
+    placeholder?: string;
 }
 interface IProps extends IFieldProps {
     fieldProps?: IFProps;

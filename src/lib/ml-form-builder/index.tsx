@@ -134,6 +134,7 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
       : [schema];
 
   const rowStyle = { marginBottom: rowSettings.verticalSpacing || 10, display: "flex" };
+
   return (
     <div style={rowStyle}>
       {map(colItems, (item: FormConfig, index) => {
@@ -234,7 +235,6 @@ export const MLFormBuilder: React.FC<BuilderProps> = (props) => {
   const {
     formikProps = {} as FormikProps<any>,
   } = props;
-  console.log(props);
   return (
     <form onSubmit={formikProps.handleSubmit}>
       <MLFormContent {...props} />
