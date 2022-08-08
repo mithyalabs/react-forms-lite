@@ -1,10 +1,10 @@
 import React from 'react';
 import { IFieldProps } from "..";
 interface IFProps {
-    id: string | undefined;
+    id: string;
     name: string;
     type: string;
-    label: string;
+    label?: string;
     multiline?: boolean;
     placeholder?: string;
 }

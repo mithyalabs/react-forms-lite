@@ -5,10 +5,10 @@ import { IFieldProps } from "..";
 // import { getFieldError } from "../Utils";
 
 interface IFProps {
-    id: string | undefined;
+    id: string;
     name: string;
     type: string;
-    label: string;
+    label?: string;
     multiline?: boolean;
     placeholder?: string
 }
@@ -33,19 +33,28 @@ export const TextField: React.FC<IProps> = (props) => {
 
     return (
         <div style={{ display: "flex" }}>
-            <label htmlFor={updatedProps.id}>{updatedProps.label}</label>
+            {updatedProps.label && <label
+                style={labelStyle}
+                htmlFor={updatedProps.id}>
+                {updatedProps.label}
+            </label>}
+
             {!updatedProps.multiline ?
                 <input
                     className={updatedProps.name}
                     id={updatedProps.id}
                     type={updatedProps.type}
-                    placeholder={updatedProps.placeholder || updatedProps.label}
+                    placeholder={updatedProps.placeholder || updatedProps.label || ''}
                     value={updatedProps.value}
                     onChange={updatedProps.onChange}
                     onBlur={updatedProps.onBlur}
                     style={inputStyle}
                 /> :
-                <div contentEditable="true" style={textareaStyle}></div>
+                <div
+                    contentEditable="true"
+                    style={textareaStyle}
+                    placeholder={updatedProps.placeholder}
+                    id={updatedProps.id}></div>
                 // <textarea class='autoExpand' rows='3' data-min-rows='3' placeholder='Auto-Expanding Textarea' autofocus></textarea>  
                 // <textarea
                 //     className={updatedProps.name}
@@ -70,19 +79,25 @@ const getFieldValue = (formikProps: FormikProps<any>, name: string) => {
     return value;
 };
 
+const labelStyle = {
+    marginRight: "10px",
+}
+
 const inputStyle = {
-    marginLeft: "10px",
     flexGrow: "1",
-    height: "100%"
+    height: "100%",
+    padding: "2px"
 }
 
 const textareaStyle = {
-    marginLeft: "10px",
     flexGrow: "1",
-    overflow: "hidden"
+    overflow: "hidden",
+    border: "1px solid rgb(119,119,119)",
+    minHeight: "40px",
+    padding: "2px"
 }
 
-// function getScrollHeight(elm:any) {
+// function getScrollHeight(elm: HTMLSelectElement) {
 //     var savedValue = elm.value
 //     elm.value = ''
 //     elm._baseScrollHeight = elm.scrollHeight
