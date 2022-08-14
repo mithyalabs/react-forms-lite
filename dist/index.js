@@ -62,16 +62,9 @@ var Select = function (props) {
         React__default.createElement("select", { className: updatedProps.name, id: updatedProps.id, defaultValue: "", value: value, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, style: selectStyle },
             React__default.createElement("option", { disabled: true, value: "" }, updatedProps.placeholder || updatedProps.label || ''),
             updatedProps.options && updatedProps.options.map(function (option) {
-                console.log(option);
                 return (typeof (option) === 'string' ?
                     React__default.createElement("option", { value: option, key: option }, option) :
                     React__default.createElement("option", { value: option.value, key: option.value }, option.name));
-                // return (
-                // typeof (option) ==
-                // < option value={option.value} key={option.value}>
-                //     {option.name}
-                // </option>
-                // );
             }))));
 };
 var labelStyle = {
@@ -90,18 +83,14 @@ var TextField = function (props) {
         updatedProps.label && React__default.createElement("label", { style: labelStyle$1, htmlFor: updatedProps.id }, updatedProps.label),
         !updatedProps.multiline ?
             React__default.createElement("input", { className: updatedProps.name, id: updatedProps.id, type: updatedProps.type, placeholder: updatedProps.placeholder || updatedProps.label || '', value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur, style: inputStyle }) :
-            React__default.createElement("div", { contentEditable: "true", style: textareaStyle, placeholder: updatedProps.placeholder, id: updatedProps.id })
-    // <textarea class='autoExpand' rows='3' data-min-rows='3' placeholder='Auto-Expanding Textarea' autofocus></textarea>  
-    // <textarea
-    //     className={updatedProps.name}
-    //     id={updatedProps.id}
-    //     placeholder={updatedProps.placeholder || updatedProps.label}
-    //     value={updatedProps.value}
-    //     onChange={updatedProps.onChange}
-    //     onBlur={updatedProps.onBlur}
-    //     style={textareaStyle}>
-    // </textarea>
-    ));
+            // <textarea></textarea>
+            // <div
+            //     contentEditable="true"
+            //     style={textareaStyle}
+            //     placeholder={updatedProps.placeholder}
+            //     id={updatedProps.id}></div>
+            // <textarea class='autoExpand' rows='3' data-min-rows='3' placeholder='Auto-Expanding Textarea' autofocus></textarea>  
+            React__default.createElement("textarea", { className: updatedProps.name, id: updatedProps.id, placeholder: updatedProps.placeholder || updatedProps.label, value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur, style: textareaStyle })));
 };
 var getFieldValue = function (formikProps, name) {
     var value = lodash.get(formikProps, "values." + name);
@@ -119,26 +108,14 @@ var inputStyle = {
 };
 var textareaStyle = {
     flexGrow: "1",
-    overflow: "hidden",
-    border: "1px solid rgb(119,119,119)",
-    minHeight: "40px",
+    height: "100%",
     padding: "2px"
 };
-// function getScrollHeight(elm: HTMLSelectElement) {
-//     var savedValue = elm.value
-//     elm.value = ''
-//     elm._baseScrollHeight = elm.scrollHeight
-//     elm.value = savedValue
-// }
-// function onExpandableTextareaInput({ target: elm }) {
-//     if (!elm.classList.contains('autoExpand') || !elm.nodeName == 'TEXTAREA') return
-//     var minRows = elm.getAttribute('data-min-rows') | 0, rows;
-//     !elm._baseScrollHeight && getScrollHeight(elm)
-//     elm.rows = minRows
-//     rows = Math.ceil((elm.scrollHeight - elm._baseScrollHeight) / 16)
-//     elm.rows = minRows + rows
-// }
-// document.addEventListener('input', onExpandableTextareaInput)
+// var textarea = document.querySelector("textarea") as HTMLTextAreaElement;
+// textarea.oninput = function () {
+//     textarea.style.height = "";
+//     textarea.style.height = Math.min(textarea.scrollHeight, heightLimit) + "px";
+// };
 
 var compare = function (value1, operator, value2) {
     switch (operator) {
@@ -198,6 +175,61 @@ var getConditionalProps = function (itemConfig, formikProps) {
     }
 };
 
+// import { get } from 'lodash';
+var Radio = function (props) {
+    var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.fieldProps, fieldProps = _b === void 0 ? {} : _b;
+    var updatedProps = {
+        id: fieldProps.id,
+        label: fieldProps.label,
+        name: fieldProps.name,
+        options: fieldProps.options,
+        placeholder: fieldProps.placeholder,
+    };
+    // const { fieldProps = {} as IMUIRadioProps, formikProps = {} as FormikValues, isReadOnly = false } = props;
+    // const fieldValue = get(formikProps, `values.${fieldProps.name}`) || '';
+    return (React.createElement("div", { style: { display: "flex" } },
+        updatedProps.label && React.createElement("label", { style: labelStyle$2, htmlFor: updatedProps.id }, updatedProps.label),
+        updatedProps.options && React.createElement("div", { id: updatedProps.id }, updatedProps.options.map(function (option) {
+            return (typeof (option) === 'string' ?
+                React.createElement("div", { key: option, style: { display: "flex", alignItems: 'center' } },
+                    React.createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option, value: option, style: radioStyle }),
+                    React.createElement("label", { htmlFor: option }, option)) :
+                React.createElement("div", { key: option.name, style: { display: "flex", alignItems: 'center' } },
+                    React.createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option.name, value: option.value, style: radioStyle }),
+                    React.createElement("label", { htmlFor: option.name }, option.value)));
+        }))));
+};
+var labelStyle$2 = {
+    marginRight: "10px"
+};
+var radioStyle = {
+    marginRight: "10px"
+};
+// typeof (radio) === 'string?
+//     < div key = { radio } style = {{ display: "flex", alignItems: 'center' }}>
+//                 <input
+//                     type="radio"
+//                     name={updatedProps.name}
+//                     id={radio}
+//                     value={radio}
+//                     style={radioStyle} />
+//                 <label htmlFor={radio}>
+//                     {radio}
+//                 </label>
+//                 <br />:
+// <div key={radio.name} style={{ display: "flex", alignItems: 'center' }}>
+//     <input
+//         type="radio"
+//         name={updatedProps.name}
+//         id={radio.name}
+//         value={radio.value}
+//         style={radioStyle} />
+//     <label htmlFor={radio.name}>
+//         {radio.value}
+//     </label>
+//     <br />
+// </div>
+
 var useEffect = React.useEffect, useState = React.useState;
 var ComponentMapConfig = {};
 var getComponentConfig = function (type) {
@@ -223,6 +255,7 @@ var setDefaultProps = function (type, props) {
 attachField("text", React.createElement(TextField, null), { type: "text" });
 attachField("password", React.createElement(TextField, null), { type: "password" });
 attachField("select", React.createElement(Select, null));
+attachField("radio", React.createElement(Radio, null));
 var BuildFormRow = function (props) {
     var schema = props.schema, rowId = props.rowId, _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.settings, settings = _b === void 0 ? {
         horizontalSpacing: 10,

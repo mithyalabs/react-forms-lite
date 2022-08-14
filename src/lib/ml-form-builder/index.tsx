@@ -9,6 +9,7 @@ import {
   getConditionalProps,
   TFieldConditions,
 } from "./lib/ConditionalOperation";
+import Radio from "./lib/Radio";
 
 const { useEffect, useState } = React;
 
@@ -107,6 +108,7 @@ export const setDefaultProps = (
 attachField("text", <TextField />, { type: "text" });
 attachField("password", <TextField />, { type: "password" });
 attachField("select", <Select />);
+attachField("radio", <Radio />)
 
 export const BuildFormRow: React.FC<FormRowProps> = (props) => {
   const {
