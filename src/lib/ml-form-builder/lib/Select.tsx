@@ -5,7 +5,7 @@ import { get } from 'lodash';
 
 interface IOptionProps {
     name?: string,
-    value?: string
+    value?: string,
 }
 
 interface IFProps {
@@ -52,9 +52,10 @@ export const Select: React.FC<IProps> = (props) => {
                 onBlur={formikProps.handleBlur}
                 style={selectStyle}>
 
-                <option disabled value="">{updatedProps.placeholder || updatedProps.label || ''}</option>
+                <option disabled value="">
+                    {updatedProps.placeholder || updatedProps.label || ''}
+                </option>
                 {updatedProps.options && updatedProps.options.map(option => {
-                    console.log(option);
                     return (
                         typeof (option) === 'string' ?
                             <option value={option} key={option}>
@@ -64,12 +65,6 @@ export const Select: React.FC<IProps> = (props) => {
                                 {option.name}
                             </option>
                     )
-                    // return (
-                    // typeof (option) ==
-                    // < option value={option.value} key={option.value}>
-                    //     {option.name}
-                    // </option>
-                    // );
                 })}
 
             </select >
