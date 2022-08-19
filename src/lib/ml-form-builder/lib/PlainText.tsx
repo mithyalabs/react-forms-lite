@@ -1,35 +1,19 @@
-import React, { FC } from "react";
-import { Typography, TypographyProps } from "@material-ui/core";
-import { IFieldProps } from "..";
+import React, { FC } from 'react';
+import { IFieldProps } from '..';
 
 export interface PlainTextFieldProps {
-  isTextHtmlString?: boolean;
-  text: string | JSX.Element;
-  typographyProps?: TypographyProps;
-  className?: string;
+    text?: string | JSX.Element;
+    class?: string;
 }
 
 export interface PlainTextProps extends IFieldProps {
-  fieldProps?: PlainTextFieldProps;
+    fieldProps?: PlainTextFieldProps;
 }
 
-const PlainText: FC<PlainTextProps> = (props) => {
-  const { fieldProps = {} as PlainTextFieldProps } = props;
-  const {
-    isTextHtmlString = false,
-    text = "",
-    typographyProps = {},
-    className = "",
-  } = fieldProps;
-  return (
-    <>
-      {isTextHtmlString && typeof text === "string" ? (
-        <div className={className} dangerouslySetInnerHTML={{ __html: text }} />
-      ) : (
-        <Typography {...typographyProps}>{text}</Typography>
-      )}
-    </>
-  );
+export const PlainText: FC<PlainTextProps> = (props) => {
+    const { fieldProps = {} as PlainTextFieldProps } = props;
+    const { text = '' } = fieldProps;
+    return <div>{text}</div>;
 };
 
 export default PlainText;
