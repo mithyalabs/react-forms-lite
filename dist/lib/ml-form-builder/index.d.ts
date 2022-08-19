@@ -1,6 +1,6 @@
-import { FormikProps } from "formik";
-import * as React from "react";
-import { TFieldConditions } from "./lib/ConditionalOperation";
+import { FormikProps } from 'formik';
+import * as React from 'react';
+import { TFieldConditions } from './lib/ConditionalOperation';
 export interface ReadOnlyProps {
     renderer: (props: IFieldProps) => React.ReactNode;
 }
@@ -12,7 +12,8 @@ export interface FormConfig {
     flex?: number | string;
     fieldProps?: object;
     styles?: object;
-    classNames?: Array<string>;
+    class?: Array<string>;
+    helperText?: string;
     condition?: TFieldConditions;
     readOnlyProps?: ReadOnlyProps;
 }
