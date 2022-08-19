@@ -1,5 +1,5 @@
 import React from 'react';
-import { IFieldProps } from "..";
+import { IFieldProps } from '..';
 interface IOptionProps {
     name?: string;
     value?: string;
@@ -10,6 +10,8 @@ interface IFProps {
     label?: string;
     options?: IOptionProps[];
     placeholder?: string;
+    class?: string;
+    helperText?: string;
 }
 interface IProps extends IFieldProps {
     fieldProps?: IFProps;

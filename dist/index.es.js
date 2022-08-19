@@ -40,50 +40,147 @@ function __rest(s, e) {
     return t;
 }
 
+var Checkbox = function (props) {
+    var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.fieldProps, fieldProps = _b === void 0 ? {} : _b;
+    var updatedProps = __assign(__assign({}, fieldProps), { id: fieldProps.id, label: fieldProps.label, name: fieldProps.name, options: fieldProps.options, className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
+    return (createElement("div", { style: { display: 'flex' } },
+        updatedProps.label && createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
+        updatedProps.options && (createElement("div", { className: updatedProps.className, id: updatedProps.id },
+            updatedProps.options.map(function (option) {
+                return typeof option === 'string' ? (createElement("div", { key: option, style: { display: 'flex', alignItems: 'center' } },
+                    createElement("input", { type: "checkbox", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option, value: option }),
+                    createElement("label", { htmlFor: option }, option))) : (createElement("div", { key: option.name, style: { display: 'flex', alignItems: 'center' } },
+                    createElement("input", { type: "checkbox", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option.name, value: option.value }),
+                    createElement("label", { htmlFor: option.name }, option.value)));
+            }),
+            updatedProps.helperText && createElement("div", { className: "helperText" }, updatedProps.helperText)))));
+    // const { fieldConfig = {} as FormConfig, formikProps = {} as FormikValues, fieldProps = {} as IMUICheckboxProps } = props;
+    // const { label = '', helperText, options = [], header, headerProps, checkGroupProps, formControlProps, formHelperTextProps, formControlLabelProps, isLabelHtmlString = false, ...checkboxProps } = fieldProps;
+    // const fieldError = getFieldError((fieldProps.name || ''), formikProps);
+    // const value = get(formikProps, `values.${fieldProps.name}`);
+    // const menuOptions = getMenuOptions(options);
+    // return (
+    //     <FormControl error={!!fieldError} {...formControlProps}>
+    //         {
+    //             (header) &&
+    //             (
+    //                 <FormLabel {...headerProps}>{header}</FormLabel>
+    //             )
+    //         }
+    //         <FormGroup {...checkGroupProps}>
+    //             {
+    //                 (!isEmpty(menuOptions)) ?
+    //                     (
+    //                         map(menuOptions, (item: MenuOptionObject<FormControlLabelProps>, index) => {
+    //                             const { value: option, name, control, ...rest } = item;
+    //                             return (
+    //                                 <FormControlLabel
+    //                                     key={`${fieldConfig.id}_check_${index}`}
+    //                                     label={name || ''}
+    //                                     {...formControlLabelProps}
+    //                                     control={control ?? <Checkbox checked={(indexOf(value, option) > -1)} onBlur={formikProps.handleBlur} onChange={formikProps.handleChange} value={item.value}  {...{ ...checkboxProps, id: `${fieldConfig.id}_check_${index}` }} />}
+    //                                     {...rest}
+    //                                 />
+    //                             )
+    //                         })
+    //                     ) : (
+    //                         <FormControlLabel
+    //                             control={<Checkbox checked={(value || false)} onBlur={formikProps.handleBlur} onChange={formikProps.handleChange}  {...checkboxProps} />}
+    //                             label={isLabelHtmlString ? <div dangerouslySetInnerHTML={{ __html: label }} /> : label}
+    //                             {...formControlLabelProps}
+    //                         />
+    //                     )
+    //             }
+    //         </FormGroup>
+    //         {
+    //             (fieldError || helperText) &&
+    //             (<FormHelperText {...formHelperTextProps}>{fieldError || helperText}</FormHelperText>)
+    //         }
+    //     </FormControl>
+    // )
+};
+
+var PlainText = function (props) {
+    var _a = props.fieldProps, fieldProps = _a === void 0 ? {} : _a;
+    var _b = fieldProps.text, text = _b === void 0 ? '' : _b;
+    return React__default.createElement("div", null, text);
+};
+
+var Radio = function (props) {
+    var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.fieldProps, fieldProps = _b === void 0 ? {} : _b;
+    var updatedProps = __assign(__assign({}, fieldProps), { id: fieldProps.id, label: fieldProps.label, name: fieldProps.name, options: fieldProps.options, className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
+    // const { fieldProps = {} as IMUIRadioProps, formikProps = {} as FormikValues, isReadOnly = false } = props;
+    // const fieldValue = get(formikProps, `values.${fieldProps.name}`) || '';
+    return (createElement("div", { style: { display: 'flex' } },
+        updatedProps.label && createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
+        updatedProps.options && (createElement("div", { className: updatedProps.className, id: updatedProps.id },
+            updatedProps.options.map(function (option) {
+                return typeof option === 'string' ? (createElement("div", { key: option, style: { display: 'flex', alignItems: 'center' } },
+                    createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option, value: option }),
+                    createElement("label", { htmlFor: option }, option))) : (createElement("div", { key: option.name, style: { display: 'flex', alignItems: 'center' } },
+                    createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option.name, value: option.value }),
+                    createElement("label", { htmlFor: option.name }, option.value)));
+            }),
+            updatedProps.helperText && createElement("div", { className: "helperText" }, updatedProps.helperText)))));
+};
+// typeof (radio) === 'string?
+//     < div key = { radio } style = {{ display: "flex", alignItems: 'center' }}>
+//                 <input
+//                     type="radio"
+//                     name={updatedProps.name}
+//                     id={radio}
+//                     value={radio}
+//                     style={radioStyle} />
+//                 <label htmlFor={radio}>
+//                     {radio}
+//                 </label>
+//                 <br />:
+// <div key={radio.name} style={{ display: "flex", alignItems: 'center' }}>
+//     <input
+//         type="radio"
+//         name={updatedProps.name}
+//         id={radio.name}
+//         value={radio.value}
+//         style={radioStyle} />
+//     <label htmlFor={radio.name}>
+//         {radio.value}
+//     </label>
+//     <br />
+// </div>
+
+var css = "\n        label{\n             margin-right:10px;\n        }\n        input[type=text],input[type=password]{\n            flex-grow: 1;\n            height: 100%;\n            padding: 2px;\n        }\n        textarea{\n            border:2px solid orange;\n            flex-grow: 1;\n            height: 40px;\n            padding: 2px;\n        }\n        select{\n          flex-grow: 1;\n          height: 100%;\n          cursor: pointer\n        }\n        input[type=radio],input[type=checkbox]{\n          margin-right:10px\n        }\n        .email-input{\n            border-radius:4px\n        }\n        .helperText{\n          color:grey;\n          font-size:12px;\n          margin-top:3px\n        }\n    ";
+var valueStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+};
+
 var Select = function (props) {
     var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.fieldProps, fieldProps = _b === void 0 ? {} : _b;
     var value = get(formikProps, "values." + fieldProps.name);
-    var updatedProps = {
-        id: fieldProps.id,
-        label: fieldProps.label,
-        name: fieldProps.name,
-        options: fieldProps.options,
-        placeholder: fieldProps.placeholder,
-    };
-    return (React__default.createElement("div", { style: { display: "flex" } },
-        updatedProps.label && React__default.createElement("label", { style: labelStyle, htmlFor: updatedProps.id }, updatedProps.label),
-        React__default.createElement("select", { className: updatedProps.name, id: updatedProps.id, defaultValue: "", value: value, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, style: selectStyle },
-            React__default.createElement("option", { disabled: true, value: "" }, updatedProps.placeholder || updatedProps.label || ''),
-            updatedProps.options && updatedProps.options.map(function (option) {
-                return (typeof (option) === 'string' ?
-                    React__default.createElement("option", { value: option, key: option }, option) :
-                    React__default.createElement("option", { value: option.value, key: option.value }, option.name));
-            }))));
-};
-var labelStyle = {
-    marginRight: "10px"
-};
-var selectStyle = {
-    flexGrow: "1",
-    height: "100%",
-    cursor: "pointer"
+    var updatedProps = __assign(__assign({}, fieldProps), { id: fieldProps.id, label: fieldProps.label, name: fieldProps.name, options: fieldProps.options, placeholder: fieldProps.placeholder, className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
+    return (React__default.createElement("div", { style: { display: 'flex' } },
+        updatedProps.label && React__default.createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
+        React__default.createElement("div", { style: valueStyle },
+            React__default.createElement("select", { className: updatedProps.className, id: updatedProps.id, defaultValue: "", value: value, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur },
+                React__default.createElement("option", { disabled: true, value: "" }, updatedProps.placeholder || updatedProps.label || ''),
+                updatedProps.options &&
+                    updatedProps.options.map(function (option) {
+                        return typeof option === 'string' ? (React__default.createElement("option", { value: option, key: option }, option)) : (React__default.createElement("option", { value: option.value, key: option.value }, option.name));
+                    })),
+            updatedProps.helperText && React__default.createElement("div", { className: "helperText" }, updatedProps.helperText))));
 };
 
 var TextField = function (props) {
     var _a = props.fieldProps, fieldProps = _a === void 0 ? {} : _a, _b = props.formikProps, formikProps = _b === void 0 ? {} : _b;
-    var updatedProps = __assign(__assign({}, fieldProps), { onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, value: getFieldValue(formikProps, fieldProps.name || '') });
-    return (React__default.createElement("div", { style: { display: "flex" } },
-        updatedProps.label && React__default.createElement("label", { style: labelStyle$1, htmlFor: updatedProps.id }, updatedProps.label),
-        !updatedProps.multiline ?
-            React__default.createElement("input", { className: updatedProps.name, id: updatedProps.id, type: updatedProps.type, placeholder: updatedProps.placeholder || updatedProps.label || '', value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur, style: inputStyle }) :
-            // <textarea></textarea>
-            // <div
-            //     contentEditable="true"
-            //     style={textareaStyle}
-            //     placeholder={updatedProps.placeholder}
-            //     id={updatedProps.id}></div>
-            // <textarea class='autoExpand' rows='3' data-min-rows='3' placeholder='Auto-Expanding Textarea' autofocus></textarea>  
-            React__default.createElement("textarea", { className: updatedProps.name, id: updatedProps.id, placeholder: updatedProps.placeholder || updatedProps.label, value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur, style: textareaStyle })));
+    var updatedProps = __assign(__assign({}, fieldProps), { onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, value: getFieldValue(formikProps, fieldProps.name || ''), className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
+    return (React__default.createElement("div", { style: { display: 'flex' } },
+        updatedProps.label && React__default.createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
+        !updatedProps.multiline ? (React__default.createElement("div", { style: valueStyle },
+            React__default.createElement("input", { className: updatedProps.className, id: updatedProps.id, type: updatedProps.type, placeholder: updatedProps.placeholder || updatedProps.label || '', value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur }),
+            updatedProps.helperText && React__default.createElement("div", { className: "helperText" }, updatedProps.helperText))) : (React__default.createElement("div", { style: valueStyle },
+            React__default.createElement("textarea", { className: updatedProps.className, id: updatedProps.id, placeholder: updatedProps.placeholder || updatedProps.label, value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur }),
+            updatedProps.helperText && React__default.createElement("div", { className: "helperText" }, updatedProps.helperText)))));
 };
 var getFieldValue = function (formikProps, name) {
     var value = get(formikProps, "values." + name);
@@ -91,24 +188,6 @@ var getFieldValue = function (formikProps, name) {
         return '';
     return value;
 };
-var labelStyle$1 = {
-    marginRight: "10px",
-};
-var inputStyle = {
-    flexGrow: "1",
-    height: "100%",
-    padding: "2px"
-};
-var textareaStyle = {
-    flexGrow: "1",
-    height: "100%",
-    padding: "2px"
-};
-// var textarea = document.querySelector("textarea") as HTMLTextAreaElement;
-// textarea.oninput = function () {
-//     textarea.style.height = "";
-//     textarea.style.height = Math.min(textarea.scrollHeight, heightLimit) + "px";
-// };
 
 var compare = function (value1, operator, value2) {
     switch (operator) {
@@ -168,61 +247,6 @@ var getConditionalProps = function (itemConfig, formikProps) {
     }
 };
 
-// import { get } from 'lodash';
-var Radio = function (props) {
-    var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.fieldProps, fieldProps = _b === void 0 ? {} : _b;
-    var updatedProps = {
-        id: fieldProps.id,
-        label: fieldProps.label,
-        name: fieldProps.name,
-        options: fieldProps.options,
-        placeholder: fieldProps.placeholder,
-    };
-    // const { fieldProps = {} as IMUIRadioProps, formikProps = {} as FormikValues, isReadOnly = false } = props;
-    // const fieldValue = get(formikProps, `values.${fieldProps.name}`) || '';
-    return (createElement("div", { style: { display: "flex" } },
-        updatedProps.label && createElement("label", { style: labelStyle$2, htmlFor: updatedProps.id }, updatedProps.label),
-        updatedProps.options && createElement("div", { id: updatedProps.id }, updatedProps.options.map(function (option) {
-            return (typeof (option) === 'string' ?
-                createElement("div", { key: option, style: { display: "flex", alignItems: 'center' } },
-                    createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option, value: option, style: radioStyle }),
-                    createElement("label", { htmlFor: option }, option)) :
-                createElement("div", { key: option.name, style: { display: "flex", alignItems: 'center' } },
-                    createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option.name, value: option.value, style: radioStyle }),
-                    createElement("label", { htmlFor: option.name }, option.value)));
-        }))));
-};
-var labelStyle$2 = {
-    marginRight: "10px"
-};
-var radioStyle = {
-    marginRight: "10px"
-};
-// typeof (radio) === 'string?
-//     < div key = { radio } style = {{ display: "flex", alignItems: 'center' }}>
-//                 <input
-//                     type="radio"
-//                     name={updatedProps.name}
-//                     id={radio}
-//                     value={radio}
-//                     style={radioStyle} />
-//                 <label htmlFor={radio}>
-//                     {radio}
-//                 </label>
-//                 <br />:
-// <div key={radio.name} style={{ display: "flex", alignItems: 'center' }}>
-//     <input
-//         type="radio"
-//         name={updatedProps.name}
-//         id={radio.name}
-//         value={radio.value}
-//         style={radioStyle} />
-//     <label htmlFor={radio.name}>
-//         {radio.value}
-//     </label>
-//     <br />
-// </div>
-
 var useEffect = useEffect$1, useState = useState$1;
 var ComponentMapConfig = {};
 var getComponentConfig = function (type) {
@@ -245,10 +269,12 @@ var setDefaultProps = function (type, props) {
     else if (ComponentMapConfig[type])
         ComponentMapConfig[type].props = __assign(__assign({}, (_a = ComponentMapConfig[type]) === null || _a === void 0 ? void 0 : _a.props), props);
 };
-attachField("text", createElement(TextField, null), { type: "text" });
-attachField("password", createElement(TextField, null), { type: "password" });
-attachField("select", createElement(Select, null));
-attachField("radio", createElement(Radio, null));
+attachField('text', createElement(TextField, null), { type: 'text' });
+attachField('password', createElement(TextField, null), { type: 'password' });
+attachField('select', createElement(Select, null));
+attachField('radio', createElement(Radio, null));
+attachField('checkbox', createElement(Checkbox, null));
+attachField('plaintext', createElement(PlainText, null));
 var BuildFormRow = function (props) {
     var schema = props.schema, rowId = props.rowId, _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.settings, settings = _b === void 0 ? {
         horizontalSpacing: 10,
@@ -256,19 +282,13 @@ var BuildFormRow = function (props) {
         columnHorizontalPadding: 0,
         isReadOnly: false,
     } : _b;
-    var columnItems = get(schema, "columns");
-    var rowSettings = __assign(__assign({}, settings), get(schema, "settings"));
-    var colItems = isArray(schema)
-        ? schema
-        : isArray(columnItems)
-            ? columnItems
-            : [schema];
-    var rowStyle = { marginBottom: rowSettings.verticalSpacing || 10, display: "flex" };
+    var columnItems = get(schema, 'columns');
+    var rowSettings = __assign(__assign({}, settings), get(schema, 'settings'));
+    var colItems = isArray(schema) ? schema : isArray(columnItems) ? columnItems : [schema];
+    var rowStyle = { marginBottom: rowSettings.verticalSpacing || 10, display: 'flex' };
     return (createElement("div", { style: rowStyle }, map(colItems, function (item, index) {
         var componentConfig = ComponentMapConfig[item.type];
-        var horizontalSpacing = index === colItems.length - 1
-            ? 0
-            : rowSettings.horizontalSpacing || 10;
+        var horizontalSpacing = index === colItems.length - 1 ? 0 : rowSettings.horizontalSpacing || 10;
         if (!componentConfig)
             return createElement("div", { key: rowId + "_field_" + index });
         var conditionalProps = getConditionalProps(item, formikProps);
@@ -276,9 +296,7 @@ var BuildFormRow = function (props) {
         var Component = componentConfig.component;
         if (conditionalProps.hidden === true)
             return createElement("div", { key: rowId + "_field_" + index });
-        return (createElement("div", { key: rowId + "_field_" + index, className: item.valueKey, style: __assign({ flex: item.flex || 1, marginRight: horizontalSpacing, paddingLeft: rowSettings.columnHorizontalPadding, paddingRight: rowSettings.columnHorizontalPadding, maxWidth: "100%" }, item.styles) }, settings.isReadOnly &&
-            item.readOnlyProps &&
-            isFunction(item.readOnlyProps.renderer)
+        return (createElement("div", { key: rowId + "_field_" + index, className: item.valueKey, style: __assign({ flex: item.flex || 1, marginRight: horizontalSpacing, paddingLeft: rowSettings.columnHorizontalPadding, paddingRight: rowSettings.columnHorizontalPadding, maxWidth: '100%' }, item.styles) }, settings.isReadOnly && item.readOnlyProps && isFunction(item.readOnlyProps.renderer)
             ? item.readOnlyProps.renderer({
                 formikProps: formikProps,
                 fieldConfig: item,
@@ -308,12 +326,13 @@ var MLFormContent = function (props) {
     }, [schema]);
     return (createElement(Fragment, null, map(formSchema, function (configRow, index) {
         var rowId = formId + "_row_" + index;
-        return (createElement(BuildFormRow, { key: rowId, rowId: rowId, schema: configRow, formikProps: formikProps, settings: settings }));
+        return createElement(BuildFormRow, { key: rowId, rowId: rowId, schema: configRow, formikProps: formikProps, settings: settings });
     })));
 };
 var MLFormBuilder = function (props) {
     var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a;
     return (createElement("form", { onSubmit: formikProps.handleSubmit },
+        createElement("style", null, css),
         createElement(MLFormContent, __assign({}, props))));
 };
 
@@ -370,5 +389,5 @@ var ReactForm = function (props) {
 var index = './lib/ReactForm';
 
 export default index;
-export { BuildFormRow, MLFormBuilder, MLFormContent, ReactForm, Select, TextField, attachField, getComponentConfig, getFieldError, getMenuOptions, processFilesWithCallback, setDefaultProps, setValue };
+export { BuildFormRow, Checkbox, MLFormBuilder, MLFormContent, PlainText, Radio, ReactForm, Select, TextField, attachField, getComponentConfig, getFieldError, getMenuOptions, processFilesWithCallback, setDefaultProps, setValue };
 //# sourceMappingURL=index.es.js.map

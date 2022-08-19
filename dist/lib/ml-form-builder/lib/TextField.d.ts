@@ -1,5 +1,5 @@
 import React from 'react';
-import { IFieldProps } from "..";
+import { IFieldProps } from '..';
 interface IFProps {
     id: string;
     name: string;
@@ -7,6 +7,8 @@ interface IFProps {
     label?: string;
     multiline?: boolean;
     placeholder?: string;
+    class?: string;
+    helperText?: string;
 }
 interface IProps extends IFieldProps {
     fieldProps?: IFProps;

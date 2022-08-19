@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IFieldProps } from '../index';
-interface IRadioProps {
+interface IOptionProps {
     name?: string;
     value?: string;
 }
@@ -8,8 +8,9 @@ interface IFProps {
     id: string;
     name: string;
     label?: string;
-    options?: IRadioProps[];
-    placeholder?: string;
+    options?: IOptionProps[];
+    class?: string;
+    helperText?: string;
 }
 interface IProps extends IFieldProps {
     fieldProps?: IFProps;
