@@ -11,6 +11,7 @@ interface IFProps {
     options?: IOptionProps[];
     class?: string;
     helperText?: string;
+    labelOrientation?: string;
 }
 interface IProps extends IFieldProps {
     fieldProps?: IFProps;

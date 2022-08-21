@@ -14,6 +14,8 @@ export interface IReactFormProps extends FormikValues {
 }
 export const ReactForm: React.FC<IReactFormProps> = (props) => {
     const { config, formId, initialValues = {}, onSubmit, formSettings, isInProgress = false, isReadOnly = false, ...formikProps } = props;
+    console.log(formSettings);
+
     return (
         <Formik initialValues={initialValues} onSubmit={onSubmit} {...formikProps}>
             {(formProps) => (

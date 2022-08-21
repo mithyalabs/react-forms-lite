@@ -24,6 +24,7 @@ interface RowSettingsProps {
 }
 export interface BuilderSettingsProps extends RowSettingsProps {
     isReadOnly?: boolean;
+    labelOrientation?: string;
 }
 export declare type RowSchema = Array<FormConfig> | FormConfig | {
     columns: Array<FormConfig>;

@@ -16,6 +16,7 @@ interface IFProps {
     options?: IOptionProps[];
     class?: string;
     helperText?: string;
+    labelOrientation?: string;
 }
 
 interface IProps extends IFieldProps {
@@ -39,8 +40,12 @@ export const Radio: React.FC<IProps> = (props) => {
     // const fieldValue = get(formikProps, `values.${fieldProps.name}`) || '';
 
     return (
-        <div style={{ display: 'flex' }}>
-            {updatedProps.label && <label htmlFor={updatedProps.id}>{updatedProps.label}</label>}
+        <div style={{ display: 'flex', flexDirection: fieldProps.labelOrientation == 'landscape' ? 'row' : 'column' }}>
+            {updatedProps.label && (
+                <label className="mainLabel" htmlFor={updatedProps.id}>
+                    {updatedProps.label}
+                </label>
+            )}
 
             {updatedProps.options && (
                 <div className={updatedProps.className} id={updatedProps.id}>

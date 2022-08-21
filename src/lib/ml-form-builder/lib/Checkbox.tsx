@@ -16,6 +16,7 @@ interface IFProps {
     options?: IOptionProps[];
     class?: string;
     helperText?: string;
+    labelOrientation?: string;
 }
 
 interface IProps extends IFieldProps {
@@ -35,8 +36,12 @@ export const Checkbox: React.FC<IProps> = (props) => {
     };
 
     return (
-        <div style={{ display: 'flex' }}>
-            {updatedProps.label && <label htmlFor={updatedProps.id}>{updatedProps.label}</label>}
+        <div style={{ display: 'flex', flexDirection: fieldProps.labelOrientation == 'landscape' ? 'row' : 'column' }}>
+            {updatedProps.label && (
+                <label htmlFor={updatedProps.id} className="mainLabel">
+                    {updatedProps.label}
+                </label>
+            )}
 
             {updatedProps.options && (
                 <div className={updatedProps.className} id={updatedProps.id}>

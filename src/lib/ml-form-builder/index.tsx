@@ -32,6 +32,7 @@ interface RowSettingsProps {
 
 export interface BuilderSettingsProps extends RowSettingsProps {
     isReadOnly?: boolean;
+    labelOrientation?: string;
 }
 
 export type RowSchema = Array<FormConfig> | FormConfig | { columns: Array<FormConfig>; settings?: RowSettingsProps };
@@ -105,8 +106,11 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
             verticalSpacing: 10,
             columnHorizontalPadding: 0,
             isReadOnly: false,
+            labelOrientation: 'portrait',
         },
     } = props;
+    // console.log(settings);
+
     let columnItems = get(schema, 'columns') as Array<FormConfig>;
 
     let rowSettings = {
@@ -129,6 +133,7 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
                 const fieldProps = {
                     id: item.id,
                     name: item.name || item.valueKey,
+                    labelOrientation: settings.labelOrientation || 'portrait',
                     ...componentConfig.props,
                     ...item.fieldProps,
                     ...conditionalProps.finalProps,
@@ -200,6 +205,8 @@ export const MLFormContent: React.FC<BuilderProps> = (props) => {
 };
 
 export const MLFormBuilder: React.FC<BuilderProps> = (props) => {
+    console.log(props);
+
     const { formikProps = {} as FormikProps<any> } = props;
     return (
         <form onSubmit={formikProps.handleSubmit}>

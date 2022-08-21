@@ -14,6 +14,7 @@ interface IFProps {
     placeholder?: string;
     class?: string;
     helperText?: string;
+    labelOrientation?: string;
 }
 
 interface IProps extends IFieldProps {
@@ -22,6 +23,7 @@ interface IProps extends IFieldProps {
 
 export const TextField: React.FC<IProps> = (props) => {
     const { fieldProps = {} as IFProps, formikProps = {} as FormikProps<any> } = props;
+    console.log(props);
 
     const updatedProps = {
         ...fieldProps,
@@ -32,8 +34,12 @@ export const TextField: React.FC<IProps> = (props) => {
     };
 
     return (
-        <div style={{ display: 'flex' }}>
-            {updatedProps.label && <label htmlFor={updatedProps.id}>{updatedProps.label}</label>}
+        <div style={{ display: 'flex', flexDirection: fieldProps.labelOrientation == 'landscape' ? 'row' : 'column' }}>
+            {updatedProps.label && (
+                <label htmlFor={updatedProps.id} className="mainLabel">
+                    {updatedProps.label}
+                </label>
+            )}
 
             {!updatedProps.multiline ? (
                 <div style={valueStyle as React.CSSProperties}>

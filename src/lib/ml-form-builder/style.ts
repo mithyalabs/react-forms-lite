@@ -1,6 +1,7 @@
 export const css = `
-        label{
+        .mainLabel{
              margin-right:10px;
+             margin-bottom:5px
         }
         input[type=text],input[type=password]{
             flex-grow: 1;
