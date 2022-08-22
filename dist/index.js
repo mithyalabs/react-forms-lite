@@ -2,12 +2,32 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
 var React = require('react');
-var React__default = _interopDefault(React);
 var lodash = require('lodash');
 var formik = require('formik');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+function _interopNamespace(e) {
+    if (e && e.__esModule) return e;
+    var n = Object.create(null);
+    if (e) {
+        Object.keys(e).forEach(function (k) {
+            if (k !== 'default') {
+                var d = Object.getOwnPropertyDescriptor(e, k);
+                Object.defineProperty(n, k, d.get ? d : {
+                    enumerable: true,
+                    get: function () { return e[k]; }
+                });
+            }
+        });
+    }
+    n["default"] = e;
+    return Object.freeze(n);
+}
+
+var React__namespace = /*#__PURE__*/_interopNamespace(React);
+var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -50,17 +70,17 @@ function __rest(s, e) {
 var Checkbox = function (props) {
     var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.fieldProps, fieldProps = _b === void 0 ? {} : _b;
     var updatedProps = __assign(__assign({}, fieldProps), { id: fieldProps.id, label: fieldProps.label, name: fieldProps.name, options: fieldProps.options, className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
-    return (React.createElement("div", { style: { display: 'flex' } },
-        updatedProps.label && React.createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
-        updatedProps.options && (React.createElement("div", { className: updatedProps.className, id: updatedProps.id },
+    return (React__namespace.createElement("div", { style: { display: 'flex' } },
+        updatedProps.label && React__namespace.createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
+        updatedProps.options && (React__namespace.createElement("div", { className: updatedProps.className, id: updatedProps.id },
             updatedProps.options.map(function (option) {
-                return typeof option === 'string' ? (React.createElement("div", { key: option, style: { display: 'flex', alignItems: 'center' } },
-                    React.createElement("input", { type: "checkbox", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option, value: option }),
-                    React.createElement("label", { htmlFor: option }, option))) : (React.createElement("div", { key: option.name, style: { display: 'flex', alignItems: 'center' } },
-                    React.createElement("input", { type: "checkbox", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option.name, value: option.value }),
-                    React.createElement("label", { htmlFor: option.name }, option.value)));
+                return typeof option === 'string' ? (React__namespace.createElement("div", { key: option, style: { display: 'flex', alignItems: 'center' } },
+                    React__namespace.createElement("input", { type: "checkbox", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option, value: option }),
+                    React__namespace.createElement("label", { htmlFor: option }, option))) : (React__namespace.createElement("div", { key: option.name, style: { display: 'flex', alignItems: 'center' } },
+                    React__namespace.createElement("input", { type: "checkbox", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option.name, value: option.value }),
+                    React__namespace.createElement("label", { htmlFor: option.name }, option.value)));
             }),
-            updatedProps.helperText && React.createElement("div", { className: "helperText" }, updatedProps.helperText)))));
+            updatedProps.helperText && React__namespace.createElement("div", { className: "helperText" }, updatedProps.helperText)))));
     // const { fieldConfig = {} as FormConfig, formikProps = {} as FormikValues, fieldProps = {} as IMUICheckboxProps } = props;
     // const { label = '', helperText, options = [], header, headerProps, checkGroupProps, formControlProps, formHelperTextProps, formControlLabelProps, isLabelHtmlString = false, ...checkboxProps } = fieldProps;
     // const fieldError = getFieldError((fieldProps.name || ''), formikProps);
@@ -110,7 +130,7 @@ var Checkbox = function (props) {
 var PlainText = function (props) {
     var _a = props.fieldProps, fieldProps = _a === void 0 ? {} : _a;
     var _b = fieldProps.text, text = _b === void 0 ? '' : _b;
-    return React__default.createElement("div", null, text);
+    return React__default["default"].createElement("div", null, text);
 };
 
 var Radio = function (props) {
@@ -118,17 +138,17 @@ var Radio = function (props) {
     var updatedProps = __assign(__assign({}, fieldProps), { id: fieldProps.id, label: fieldProps.label, name: fieldProps.name, options: fieldProps.options, className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
     // const { fieldProps = {} as IMUIRadioProps, formikProps = {} as FormikValues, isReadOnly = false } = props;
     // const fieldValue = get(formikProps, `values.${fieldProps.name}`) || '';
-    return (React.createElement("div", { style: { display: 'flex' } },
-        updatedProps.label && React.createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
-        updatedProps.options && (React.createElement("div", { className: updatedProps.className, id: updatedProps.id },
+    return (React__namespace.createElement("div", { style: { display: 'flex' } },
+        updatedProps.label && React__namespace.createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
+        updatedProps.options && (React__namespace.createElement("div", { className: updatedProps.className, id: updatedProps.id },
             updatedProps.options.map(function (option) {
-                return typeof option === 'string' ? (React.createElement("div", { key: option, style: { display: 'flex', alignItems: 'center' } },
-                    React.createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option, value: option }),
-                    React.createElement("label", { htmlFor: option }, option))) : (React.createElement("div", { key: option.name, style: { display: 'flex', alignItems: 'center' } },
-                    React.createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option.name, value: option.value }),
-                    React.createElement("label", { htmlFor: option.name }, option.value)));
+                return typeof option === 'string' ? (React__namespace.createElement("div", { key: option, style: { display: 'flex', alignItems: 'center' } },
+                    React__namespace.createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option, value: option }),
+                    React__namespace.createElement("label", { htmlFor: option }, option))) : (React__namespace.createElement("div", { key: option.name, style: { display: 'flex', alignItems: 'center' } },
+                    React__namespace.createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option.name, value: option.value }),
+                    React__namespace.createElement("label", { htmlFor: option.name }, option.value)));
             }),
-            updatedProps.helperText && React.createElement("div", { className: "helperText" }, updatedProps.helperText)))));
+            updatedProps.helperText && React__namespace.createElement("div", { className: "helperText" }, updatedProps.helperText)))));
 };
 // typeof (radio) === 'string?
 //     < div key = { radio } style = {{ display: "flex", alignItems: 'center' }}>
@@ -166,28 +186,28 @@ var Select = function (props) {
     var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.fieldProps, fieldProps = _b === void 0 ? {} : _b;
     var value = lodash.get(formikProps, "values." + fieldProps.name);
     var updatedProps = __assign(__assign({}, fieldProps), { id: fieldProps.id, label: fieldProps.label, name: fieldProps.name, options: fieldProps.options, placeholder: fieldProps.placeholder, className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
-    return (React__default.createElement("div", { style: { display: 'flex' } },
-        updatedProps.label && React__default.createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
-        React__default.createElement("div", { style: valueStyle },
-            React__default.createElement("select", { className: updatedProps.className, id: updatedProps.id, defaultValue: "", value: value, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur },
-                React__default.createElement("option", { disabled: true, value: "" }, updatedProps.placeholder || updatedProps.label || ''),
+    return (React__default["default"].createElement("div", { style: { display: 'flex' } },
+        updatedProps.label && React__default["default"].createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
+        React__default["default"].createElement("div", { style: valueStyle },
+            React__default["default"].createElement("select", { className: updatedProps.className, id: updatedProps.id, defaultValue: "", value: value, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur },
+                React__default["default"].createElement("option", { disabled: true, value: "" }, updatedProps.placeholder || updatedProps.label || ''),
                 updatedProps.options &&
                     updatedProps.options.map(function (option) {
-                        return typeof option === 'string' ? (React__default.createElement("option", { value: option, key: option }, option)) : (React__default.createElement("option", { value: option.value, key: option.value }, option.name));
+                        return typeof option === 'string' ? (React__default["default"].createElement("option", { value: option, key: option }, option)) : (React__default["default"].createElement("option", { value: option.value, key: option.value }, option.name));
                     })),
-            updatedProps.helperText && React__default.createElement("div", { className: "helperText" }, updatedProps.helperText))));
+            updatedProps.helperText && React__default["default"].createElement("div", { className: "helperText" }, updatedProps.helperText))));
 };
 
 var TextField = function (props) {
     var _a = props.fieldProps, fieldProps = _a === void 0 ? {} : _a, _b = props.formikProps, formikProps = _b === void 0 ? {} : _b;
     var updatedProps = __assign(__assign({}, fieldProps), { onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, value: getFieldValue(formikProps, fieldProps.name || ''), className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
-    return (React__default.createElement("div", { style: { display: 'flex' } },
-        updatedProps.label && React__default.createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
-        !updatedProps.multiline ? (React__default.createElement("div", { style: valueStyle },
-            React__default.createElement("input", { className: updatedProps.className, id: updatedProps.id, type: updatedProps.type, placeholder: updatedProps.placeholder || updatedProps.label || '', value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur }),
-            updatedProps.helperText && React__default.createElement("div", { className: "helperText" }, updatedProps.helperText))) : (React__default.createElement("div", { style: valueStyle },
-            React__default.createElement("textarea", { className: updatedProps.className, id: updatedProps.id, placeholder: updatedProps.placeholder || updatedProps.label, value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur }),
-            updatedProps.helperText && React__default.createElement("div", { className: "helperText" }, updatedProps.helperText)))));
+    return (React__default["default"].createElement("div", { style: { display: 'flex' } },
+        updatedProps.label && React__default["default"].createElement("label", { htmlFor: updatedProps.id }, updatedProps.label),
+        !updatedProps.multiline ? (React__default["default"].createElement("div", { style: valueStyle },
+            React__default["default"].createElement("input", { className: updatedProps.className, id: updatedProps.id, type: updatedProps.type, placeholder: updatedProps.placeholder || updatedProps.label || '', value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur }),
+            updatedProps.helperText && React__default["default"].createElement("div", { className: "helperText" }, updatedProps.helperText))) : (React__default["default"].createElement("div", { style: valueStyle },
+            React__default["default"].createElement("textarea", { className: updatedProps.className, id: updatedProps.id, placeholder: updatedProps.placeholder || updatedProps.label, value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur }),
+            updatedProps.helperText && React__default["default"].createElement("div", { className: "helperText" }, updatedProps.helperText)))));
 };
 var getFieldValue = function (formikProps, name) {
     var value = lodash.get(formikProps, "values." + name);
@@ -254,7 +274,7 @@ var getConditionalProps = function (itemConfig, formikProps) {
     }
 };
 
-var useEffect = React.useEffect, useState = React.useState;
+var useEffect = React__namespace.useEffect, useState = React__namespace.useState;
 var ComponentMapConfig = {};
 var getComponentConfig = function (type) {
     return ComponentMapConfig[type];
@@ -276,12 +296,12 @@ var setDefaultProps = function (type, props) {
     else if (ComponentMapConfig[type])
         ComponentMapConfig[type].props = __assign(__assign({}, (_a = ComponentMapConfig[type]) === null || _a === void 0 ? void 0 : _a.props), props);
 };
-attachField('text', React.createElement(TextField, null), { type: 'text' });
-attachField('password', React.createElement(TextField, null), { type: 'password' });
-attachField('select', React.createElement(Select, null));
-attachField('radio', React.createElement(Radio, null));
-attachField('checkbox', React.createElement(Checkbox, null));
-attachField('plaintext', React.createElement(PlainText, null));
+attachField('text', React__namespace.createElement(TextField, null), { type: 'text' });
+attachField('password', React__namespace.createElement(TextField, null), { type: 'password' });
+attachField('select', React__namespace.createElement(Select, null));
+attachField('radio', React__namespace.createElement(Radio, null));
+attachField('checkbox', React__namespace.createElement(Checkbox, null));
+attachField('plaintext', React__namespace.createElement(PlainText, null));
 var BuildFormRow = function (props) {
     var schema = props.schema, rowId = props.rowId, _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.settings, settings = _b === void 0 ? {
         horizontalSpacing: 10,
@@ -293,23 +313,23 @@ var BuildFormRow = function (props) {
     var rowSettings = __assign(__assign({}, settings), lodash.get(schema, 'settings'));
     var colItems = lodash.isArray(schema) ? schema : lodash.isArray(columnItems) ? columnItems : [schema];
     var rowStyle = { marginBottom: rowSettings.verticalSpacing || 10, display: 'flex' };
-    return (React.createElement("div", { style: rowStyle }, lodash.map(colItems, function (item, index) {
+    return (React__namespace.createElement("div", { style: rowStyle }, lodash.map(colItems, function (item, index) {
         var componentConfig = ComponentMapConfig[item.type];
         var horizontalSpacing = index === colItems.length - 1 ? 0 : rowSettings.horizontalSpacing || 10;
         if (!componentConfig)
-            return React.createElement("div", { key: rowId + "_field_" + index });
+            return React__namespace.createElement("div", { key: rowId + "_field_" + index });
         var conditionalProps = getConditionalProps(item, formikProps);
         var fieldProps = __assign(__assign(__assign({ id: item.id, name: item.name || item.valueKey }, componentConfig.props), item.fieldProps), conditionalProps.finalProps);
         var Component = componentConfig.component;
         if (conditionalProps.hidden === true)
-            return React.createElement("div", { key: rowId + "_field_" + index });
-        return (React.createElement("div", { key: rowId + "_field_" + index, className: item.valueKey, style: __assign({ flex: item.flex || 1, marginRight: horizontalSpacing, paddingLeft: rowSettings.columnHorizontalPadding, paddingRight: rowSettings.columnHorizontalPadding, maxWidth: '100%' }, item.styles) }, settings.isReadOnly && item.readOnlyProps && lodash.isFunction(item.readOnlyProps.renderer)
+            return React__namespace.createElement("div", { key: rowId + "_field_" + index });
+        return (React__namespace.createElement("div", { key: rowId + "_field_" + index, className: item.valueKey, style: __assign({ flex: item.flex || 1, marginRight: horizontalSpacing, paddingLeft: rowSettings.columnHorizontalPadding, paddingRight: rowSettings.columnHorizontalPadding, maxWidth: '100%' }, item.styles) }, settings.isReadOnly && item.readOnlyProps && lodash.isFunction(item.readOnlyProps.renderer)
             ? item.readOnlyProps.renderer({
                 formikProps: formikProps,
                 fieldConfig: item,
                 isReadOnly: settings.isReadOnly,
             })
-            : React.cloneElement(Component, {
+            : React__namespace.cloneElement(Component, {
                 fieldProps: fieldProps,
                 formikProps: formikProps,
                 fieldConfig: item,
@@ -331,16 +351,16 @@ var MLFormContent = function (props) {
     useEffect(function () {
         setFormSchema(getUpdateSchema(schema, formId));
     }, [schema]);
-    return (React.createElement(React.Fragment, null, lodash.map(formSchema, function (configRow, index) {
+    return (React__namespace.createElement(React__namespace.Fragment, null, lodash.map(formSchema, function (configRow, index) {
         var rowId = formId + "_row_" + index;
-        return React.createElement(BuildFormRow, { key: rowId, rowId: rowId, schema: configRow, formikProps: formikProps, settings: settings });
+        return React__namespace.createElement(BuildFormRow, { key: rowId, rowId: rowId, schema: configRow, formikProps: formikProps, settings: settings });
     })));
 };
 var MLFormBuilder = function (props) {
     var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a;
-    return (React.createElement("form", { onSubmit: formikProps.handleSubmit },
-        React.createElement("style", null, css),
-        React.createElement(MLFormContent, __assign({}, props))));
+    return (React__namespace.createElement("form", { onSubmit: formikProps.handleSubmit },
+        React__namespace.createElement("style", null, css),
+        React__namespace.createElement(MLFormContent, __assign({}, props))));
 };
 
 var getMenuOptions = function (options) {
@@ -390,7 +410,7 @@ var setValue = function (value, formikProps, fieldProps) {
 
 var ReactForm = function (props) {
     var config = props.config, formId = props.formId, _a = props.initialValues, initialValues = _a === void 0 ? {} : _a, onSubmit = props.onSubmit, formSettings = props.formSettings, _b = props.isInProgress, isInProgress = _b === void 0 ? false : _b, _c = props.isReadOnly, isReadOnly = _c === void 0 ? false : _c, formikProps = __rest(props, ["config", "formId", "initialValues", "onSubmit", "formSettings", "isInProgress", "isReadOnly"]);
-    return (React.createElement(formik.Formik, __assign({ initialValues: initialValues, onSubmit: onSubmit }, formikProps), function (formProps) { return (React.createElement(MLFormBuilder, { schema: config, formId: formId, settings: __assign(__assign({}, formSettings), { isReadOnly: isReadOnly }), formikProps: formProps, isInProgress: isInProgress })); }));
+    return (React__namespace.createElement(formik.Formik, __assign({ initialValues: initialValues, onSubmit: onSubmit }, formikProps), function (formProps) { return (React__namespace.createElement(MLFormBuilder, { schema: config, formId: formId, settings: __assign(__assign({}, formSettings), { isReadOnly: isReadOnly }), formikProps: formProps, isInProgress: isInProgress })); }));
 };
 
 var index = './lib/ReactForm';
@@ -405,7 +425,7 @@ exports.ReactForm = ReactForm;
 exports.Select = Select;
 exports.TextField = TextField;
 exports.attachField = attachField;
-exports.default = index;
+exports["default"] = index;
 exports.getComponentConfig = getComponentConfig;
 exports.getFieldError = getFieldError;
 exports.getMenuOptions = getMenuOptions;

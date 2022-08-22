@@ -1,3 +1,4 @@
+import './styles.scss';
 export * from './Checkbox';
 export * from './PlainText';
 export * from './Radio';

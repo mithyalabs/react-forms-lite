@@ -2,6 +2,8 @@ import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
 import resolve from "rollup-plugin-node-resolve";
+import scss from 'rollup-plugin-scss'
+
 
 import pkg from "./package.json";
 
@@ -22,13 +24,15 @@ export default {
         }
     ],
     plugins: [
-        external(),
+        external({
+            include:['**/*.css']
+        }),
         resolve(),
         typescript({
-            rollupCommonJSResolveHack: true,
             exclude: "**/__tests__/**",
             clean: true
         }),
+        scss(),
         commonjs({
             include: ["node_modules/**"],
             namedExports: {

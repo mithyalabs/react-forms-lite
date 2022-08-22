@@ -21,6 +21,16 @@ export declare const getMenuOptions: <T extends any>(options: MenuOptions<T>) =>
     (callbackfn: (previousValue: MenuOptionObject<T>, currentValue: MenuOptionObject<T>, currentIndex: number, array: MenuOptionObject<T>[]) => MenuOptionObject<T>, initialValue: MenuOptionObject<T>): MenuOptionObject<T>;
     <U_1>(callbackfn: (previousValue: U_1, currentValue: MenuOptionObject<T>, currentIndex: number, array: MenuOptionObject<T>[]) => U_1, initialValue: U_1): U_1;
 } | ((value: string, start?: number | undefined, end?: number | undefined) => string[]) | ((value: MenuOptionObject<T>, start?: number | undefined, end?: number | undefined) => MenuOptionObject<T>[]) | ((target: number, start: number, end?: number | undefined) => string[]) | ((target: number, start: number, end?: number | undefined) => MenuOptionObject<T>[]) | ((searchElement: string, fromIndex?: number | undefined) => boolean) | ((searchElement: MenuOptionObject<T>, fromIndex?: number | undefined) => boolean) | {
+    <U_2>(this: U_2[][][][][][][][], depth: 7): U_2[];
+    <U_3>(this: U_3[][][][][][][], depth: 6): U_3[];
+    <U_4>(this: U_4[][][][][][], depth: 5): U_4[];
+    <U_5>(this: U_5[][][][][], depth: 4): U_5[];
+    <U_6>(this: U_6[][][][], depth: 3): U_6[];
+    <U_7>(this: U_7[][][], depth: 2): U_7[];
+    <U_8>(this: U_8[][], depth?: 1 | undefined): U_8[];
+    <U_9>(this: U_9[], depth: 0): U_9[];
+    <U_10>(depth?: number | undefined): any[];
+} | ((index: number) => string | undefined) | ((index: number) => MenuOptionObject<T> | undefined) | {
     name: string;
     value: string;
 })[];
