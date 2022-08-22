@@ -1,30 +1,14 @@
 import { FormikProps } from 'formik';
-// import { get, indexOf, isEmpty, map } from 'lodash';
 import * as React from 'react';
-import { IFieldProps } from '../index';
-// import { getFieldError, getMenuOptions, MenuOptionObject, MenuOptions } from '../Utils';
-
-interface IOptionProps {
-    name?: string;
-    value?: string;
-}
-
-interface IFProps {
-    id: string;
-    name: string;
-    label?: string;
-    options?: IOptionProps[];
-    class?: string;
-    helperText?: string;
-    labelOrientation?: string;
-}
+import { IFieldProps, IRadioCheckboxProps } from '../types';
+import Label, { HelperText } from '../Utils';
 
 interface IProps extends IFieldProps {
-    fieldProps?: IFProps;
+    fieldProps?: IRadioCheckboxProps;
 }
 
 export const Checkbox: React.FC<IProps> = (props) => {
-    const { formikProps = {} as FormikProps<unknown>, fieldProps = {} as IFProps } = props;
+    const { formikProps = {} as FormikProps<unknown>, fieldProps = {} as IRadioCheckboxProps } = props;
 
     const updatedProps = {
         ...fieldProps,
@@ -37,11 +21,7 @@ export const Checkbox: React.FC<IProps> = (props) => {
 
     return (
         <div style={{ display: 'flex', flexDirection: fieldProps.labelOrientation == 'landscape' ? 'row' : 'column' }}>
-            {updatedProps.label && (
-                <label htmlFor={updatedProps.id} className="mainLabel">
-                    {updatedProps.label}
-                </label>
-            )}
+            {updatedProps.label && <Label id={updatedProps.id} label={updatedProps.label} />}
 
             {updatedProps.options && (
                 <div className={updatedProps.className} id={updatedProps.id}>
@@ -74,7 +54,7 @@ export const Checkbox: React.FC<IProps> = (props) => {
                             </div>
                         );
                     })}
-                    {updatedProps.helperText && <div className="helperText">{updatedProps.helperText}</div>}
+                    {updatedProps.helperText && <HelperText text={updatedProps.helperText} />}
                 </div>
             )}
         </div>

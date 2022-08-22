@@ -1,5 +1,5 @@
 import React__default, { createElement, cloneElement, Fragment, useEffect as useEffect$1, useState as useState$1 } from 'react';
-import { get, isEmpty, forEach, isArray, map, isFunction, uniqueId, isString } from 'lodash';
+import { map, isString, get, isEmpty, forEach, isArray, isFunction, uniqueId } from 'lodash';
 import { Formik } from 'formik';
 
 /*! *****************************************************************************
@@ -40,11 +40,65 @@ function __rest(s, e) {
     return t;
 }
 
+var getMenuOptions = function (options) {
+    return map(options, function (item) {
+        if (isString(item))
+            return { name: item, value: item };
+        return item;
+    });
+};
+var getFieldError = function (fieldName, formikProps) {
+    var fieldError = get(formikProps, "errors." + fieldName);
+    var isTouched = get(formikProps, "touched." + fieldName);
+    if (!isTouched && formikProps.submitCount < 1)
+        return '';
+    return fieldError;
+};
+var processFilesWithCallback = function (files, callback, readAs, encoding) {
+    var imgFiles = [];
+    var remFiles = [];
+    Array.from(files).forEach(function (file) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var fileInfo = {
+                name: file.name,
+                type: file.type,
+                size: Math.round(file.size / 1024) + ' kB',
+                base64: file.type.includes('image') ? reader.result : null,
+                file: file,
+            };
+            if (file.type.includes('image')) {
+                imgFiles.push(fileInfo);
+            }
+            else {
+                remFiles.push(file);
+            }
+            if (imgFiles.length + remFiles.length === files.length) {
+                callback({ imgs: imgFiles, rem: remFiles });
+            }
+        };
+        reader[readAs || 'readAsDataURL'](file, encoding);
+        // This works but remember only readAsText can take encoding as a parameter. Might want to mention this in the documentation.
+    });
+};
+var setValue = function (value, formikProps, fieldProps) {
+    formikProps.setFieldValue(get(fieldProps, 'name'), value);
+};
+// --------------------------------------------
+var Label = function (_a) {
+    var id = _a.id, label = _a.label;
+    return (createElement("label", { htmlFor: id, className: "mainLabel" }, label));
+};
+var HelperText = function (_a) {
+    var text = _a.text;
+    return createElement("div", { className: "helperText" }, text);
+};
+
 var Checkbox = function (props) {
     var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a, _b = props.fieldProps, fieldProps = _b === void 0 ? {} : _b;
     var updatedProps = __assign(__assign({}, fieldProps), { id: fieldProps.id, label: fieldProps.label, name: fieldProps.name, options: fieldProps.options, className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
     return (createElement("div", { style: { display: 'flex', flexDirection: fieldProps.labelOrientation == 'landscape' ? 'row' : 'column' } },
-        updatedProps.label && (createElement("label", { htmlFor: updatedProps.id, className: "mainLabel" }, updatedProps.label)),
+        updatedProps.label && createElement(Label, { id: updatedProps.id, label: updatedProps.label }),
         updatedProps.options && (createElement("div", { className: updatedProps.className, id: updatedProps.id },
             updatedProps.options.map(function (option) {
                 return typeof option === 'string' ? (createElement("div", { key: option, style: { display: 'flex', alignItems: 'center' } },
@@ -53,7 +107,7 @@ var Checkbox = function (props) {
                     createElement("input", { type: "checkbox", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option.name, value: option.value }),
                     createElement("label", { htmlFor: option.name }, option.value)));
             }),
-            updatedProps.helperText && createElement("div", { className: "helperText" }, updatedProps.helperText)))));
+            updatedProps.helperText && createElement(HelperText, { text: updatedProps.helperText })))));
     // const { fieldConfig = {} as FormConfig, formikProps = {} as FormikValues, fieldProps = {} as IMUICheckboxProps } = props;
     // const { label = '', helperText, options = [], header, headerProps, checkGroupProps, formControlProps, formHelperTextProps, formControlLabelProps, isLabelHtmlString = false, ...checkboxProps } = fieldProps;
     // const fieldError = getFieldError((fieldProps.name || ''), formikProps);
@@ -112,7 +166,7 @@ var Radio = function (props) {
     // const { fieldProps = {} as IMUIRadioProps, formikProps = {} as FormikValues, isReadOnly = false } = props;
     // const fieldValue = get(formikProps, `values.${fieldProps.name}`) || '';
     return (createElement("div", { style: { display: 'flex', flexDirection: fieldProps.labelOrientation == 'landscape' ? 'row' : 'column' } },
-        updatedProps.label && (createElement("label", { className: "mainLabel", htmlFor: updatedProps.id }, updatedProps.label)),
+        updatedProps.label && createElement(Label, { id: updatedProps.id, label: updatedProps.label }),
         updatedProps.options && (createElement("div", { className: updatedProps.className, id: updatedProps.id },
             updatedProps.options.map(function (option) {
                 return typeof option === 'string' ? (createElement("div", { key: option, style: { display: 'flex', alignItems: 'center' } },
@@ -121,7 +175,7 @@ var Radio = function (props) {
                     createElement("input", { type: "radio", name: updatedProps.name, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, id: option.name, value: option.value }),
                     createElement("label", { htmlFor: option.name }, option.value)));
             }),
-            updatedProps.helperText && createElement("div", { className: "helperText" }, updatedProps.helperText)))));
+            updatedProps.helperText && createElement(HelperText, { text: updatedProps.helperText })))));
 };
 // typeof (radio) === 'string?
 //     < div key = { radio } style = {{ display: "flex", alignItems: 'center' }}>
@@ -160,7 +214,7 @@ var Select = function (props) {
     var value = get(formikProps, "values." + fieldProps.name);
     var updatedProps = __assign(__assign({}, fieldProps), { id: fieldProps.id, label: fieldProps.label, name: fieldProps.name, options: fieldProps.options, placeholder: fieldProps.placeholder, className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
     return (React__default.createElement("div", { style: { display: 'flex', flexDirection: fieldProps.labelOrientation == 'landscape' ? 'row' : 'column' } },
-        updatedProps.label && (React__default.createElement("label", { htmlFor: updatedProps.id, className: "mainLabel" }, updatedProps.label)),
+        updatedProps.label && React__default.createElement(Label, { id: updatedProps.id, label: updatedProps.label }),
         React__default.createElement("div", { style: valueStyle },
             React__default.createElement("select", { className: updatedProps.className, id: updatedProps.id, defaultValue: "", value: value, onChange: formikProps.handleChange, onBlur: formikProps.handleBlur },
                 React__default.createElement("option", { disabled: true, value: "" }, updatedProps.placeholder || updatedProps.label || ''),
@@ -168,20 +222,19 @@ var Select = function (props) {
                     updatedProps.options.map(function (option) {
                         return typeof option === 'string' ? (React__default.createElement("option", { value: option, key: option }, option)) : (React__default.createElement("option", { value: option.value, key: option.value }, option.name));
                     })),
-            updatedProps.helperText && React__default.createElement("div", { className: "helperText" }, updatedProps.helperText))));
+            updatedProps.helperText && React__default.createElement(HelperText, { text: updatedProps.helperText }))));
 };
 
 var TextField = function (props) {
     var _a = props.fieldProps, fieldProps = _a === void 0 ? {} : _a, _b = props.formikProps, formikProps = _b === void 0 ? {} : _b;
-    console.log(props);
     var updatedProps = __assign(__assign({}, fieldProps), { onChange: formikProps.handleChange, onBlur: formikProps.handleBlur, value: getFieldValue(formikProps, fieldProps.name || ''), className: fieldProps.name + ' ' + (fieldProps.class ? fieldProps.class : '') });
     return (React__default.createElement("div", { style: { display: 'flex', flexDirection: fieldProps.labelOrientation == 'landscape' ? 'row' : 'column' } },
-        updatedProps.label && (React__default.createElement("label", { htmlFor: updatedProps.id, className: "mainLabel" }, updatedProps.label)),
+        updatedProps.label && React__default.createElement(Label, { id: updatedProps.id, label: updatedProps.label }),
         !updatedProps.multiline ? (React__default.createElement("div", { style: valueStyle },
             React__default.createElement("input", { className: updatedProps.className, id: updatedProps.id, type: updatedProps.type, placeholder: updatedProps.placeholder || updatedProps.label || '', value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur }),
-            updatedProps.helperText && React__default.createElement("div", { className: "helperText" }, updatedProps.helperText))) : (React__default.createElement("div", { style: valueStyle },
+            updatedProps.helperText && React__default.createElement(HelperText, { text: updatedProps.helperText }))) : (React__default.createElement("div", { style: valueStyle },
             React__default.createElement("textarea", { className: updatedProps.className, id: updatedProps.id, placeholder: updatedProps.placeholder || updatedProps.label, value: updatedProps.value, onChange: updatedProps.onChange, onBlur: updatedProps.onBlur }),
-            updatedProps.helperText && React__default.createElement("div", { className: "helperText" }, updatedProps.helperText)))));
+            updatedProps.helperText && React__default.createElement(HelperText, { text: updatedProps.helperText })))));
 };
 var getFieldValue = function (formikProps, name) {
     var value = get(formikProps, "values." + name);
@@ -192,15 +245,24 @@ var getFieldValue = function (formikProps, name) {
 
 var compare = function (value1, operator, value2) {
     switch (operator) {
-        case '>': return value1 > value2;
-        case '<': return value1 < value2;
-        case '>=': return value1 >= value2;
-        case '<=': return value1 <= value2;
-        case '==': return value1 == value2;
-        case '!=': return value1 != value2;
-        case '===': return value1 === value2;
-        case '!==': return value1 !== value2;
-        default: return false;
+        case '>':
+            return value1 > value2;
+        case '<':
+            return value1 < value2;
+        case '>=':
+            return value1 >= value2;
+        case '<=':
+            return value1 <= value2;
+        case '==':
+            return value1 == value2;
+        case '!=':
+            return value1 != value2;
+        case '===':
+            return value1 === value2;
+        case '!==':
+            return value1 !== value2;
+        default:
+            return false;
     }
 };
 var getConditionalOutput = function (itemCondition, formikProps) {
@@ -221,7 +283,7 @@ var hasTruthyValue = function (logicalOperation, values, formikProps) {
             return false;
         }
         if (index === values.length - 1) {
-            outputResult = (logicalOperation === 'AND') ? true : false;
+            outputResult = logicalOperation === 'AND' ? true : false;
         }
         return;
     });
@@ -244,7 +306,7 @@ var getConditionalProps = function (itemConfig, formikProps) {
         if (conditionInstructions.hidden === true)
             return { finalProps: conditionInstructions.defaultProps, hidden: true };
         else
-            return { finalProps: conditionInstructions.defaultProps, };
+            return { finalProps: conditionInstructions.defaultProps };
     }
 };
 
@@ -284,7 +346,6 @@ var BuildFormRow = function (props) {
         isReadOnly: false,
         labelOrientation: 'portrait',
     } : _b;
-    // console.log(settings);
     var columnItems = get(schema, 'columns');
     var rowSettings = __assign(__assign({}, settings), get(schema, 'settings'));
     var colItems = isArray(schema) ? schema : isArray(columnItems) ? columnItems : [schema];
@@ -333,56 +394,10 @@ var MLFormContent = function (props) {
     })));
 };
 var MLFormBuilder = function (props) {
-    console.log(props);
     var _a = props.formikProps, formikProps = _a === void 0 ? {} : _a;
     return (createElement("form", { onSubmit: formikProps.handleSubmit },
         createElement("style", null, css),
         createElement(MLFormContent, __assign({}, props))));
-};
-
-var getMenuOptions = function (options) {
-    return map(options, function (item) {
-        if (isString(item))
-            return { name: item, value: item };
-        return item;
-    });
-};
-var getFieldError = function (fieldName, formikProps) {
-    var fieldError = get(formikProps, "errors." + fieldName);
-    var isTouched = get(formikProps, "touched." + fieldName);
-    if (!isTouched && formikProps.submitCount < 1)
-        return '';
-    return fieldError;
-};
-var processFilesWithCallback = function (files, callback, readAs, encoding) {
-    var imgFiles = [];
-    var remFiles = [];
-    Array.from(files).forEach(function (file) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var fileInfo = {
-                name: file.name,
-                type: file.type,
-                size: Math.round(file.size / 1024) + ' kB',
-                base64: file.type.includes('image') ? reader.result : null,
-                file: file,
-            };
-            if (file.type.includes('image')) {
-                imgFiles.push(fileInfo);
-            }
-            else {
-                remFiles.push(file);
-            }
-            if (imgFiles.length + remFiles.length === files.length) {
-                callback({ imgs: imgFiles, rem: remFiles });
-            }
-        };
-        reader[readAs || 'readAsDataURL'](file, encoding);
-        // This works but remember only readAsText can take encoding as a parameter. Might want to mention this in the documentation.
-    });
-};
-var setValue = function (value, formikProps, fieldProps) {
-    formikProps.setFieldValue(get(fieldProps, 'name'), value);
 };
 
 var ReactForm = function (props) {
@@ -394,5 +409,5 @@ var ReactForm = function (props) {
 var index = './lib/ReactForm';
 
 export default index;
-export { BuildFormRow, Checkbox, MLFormBuilder, MLFormContent, PlainText, Radio, ReactForm, Select, TextField, attachField, getComponentConfig, getFieldError, getMenuOptions, processFilesWithCallback, setDefaultProps, setValue };
+export { BuildFormRow, Checkbox, HelperText, Label, MLFormBuilder, MLFormContent, PlainText, Radio, ReactForm, Select, TextField, attachField, getComponentConfig, getFieldError, getMenuOptions, processFilesWithCallback, setDefaultProps, setValue };
 //# sourceMappingURL=index.es.js.map

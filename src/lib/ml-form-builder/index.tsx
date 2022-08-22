@@ -2,61 +2,10 @@ import { FormikProps } from 'formik';
 import { get, isArray, isFunction, map, uniqueId } from 'lodash';
 import * as React from 'react';
 import { Select, TextField, Checkbox, Radio, PlainText } from './lib';
-import { getConditionalProps, TFieldConditions } from './lib/ConditionalOperation';
+import { getConditionalProps } from './lib/ConditionalOperation';
 import { css } from './style';
+import { BuilderProps, FormConfig, FormRowProps, RowSchema, RowSettingsProps } from './types';
 const { useEffect, useState } = React;
-
-export interface ReadOnlyProps {
-    renderer: (props: IFieldProps) => React.ReactNode;
-}
-
-export interface FormConfig {
-    type: string;
-    name?: string;
-    id?: string;
-    valueKey: string;
-    flex?: number | string;
-    fieldProps?: object;
-    styles?: object;
-    class?: Array<string>;
-    helperText?: string;
-    condition?: TFieldConditions;
-    readOnlyProps?: ReadOnlyProps;
-}
-
-interface RowSettingsProps {
-    horizontalSpacing?: number;
-    verticalSpacing?: number;
-    columnHorizontalPadding?: number;
-}
-
-export interface BuilderSettingsProps extends RowSettingsProps {
-    isReadOnly?: boolean;
-    labelOrientation?: string;
-}
-
-export type RowSchema = Array<FormConfig> | FormConfig | { columns: Array<FormConfig>; settings?: RowSettingsProps };
-
-export interface FormRowProps<T = any> {
-    schema: RowSchema;
-    rowId: string;
-    formikProps?: FormikProps<T>;
-    settings?: BuilderSettingsProps;
-}
-
-export interface BuilderProps<T = any> {
-    schema: Array<RowSchema>;
-    formId: string;
-    formikProps?: FormikProps<T>;
-    settings?: BuilderSettingsProps;
-    isInProgress?: boolean;
-}
-
-export interface IFieldProps<T = any> {
-    formikProps?: FormikProps<T>;
-    fieldConfig?: FormConfig;
-    isReadOnly?: boolean;
-}
 
 let ComponentMapConfig: {
     [key: string]: { component: JSX.Element; props?: object };
@@ -109,7 +58,6 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
             labelOrientation: 'portrait',
         },
     } = props;
-    // console.log(settings);
 
     let columnItems = get(schema, 'columns') as Array<FormConfig>;
 
@@ -205,8 +153,6 @@ export const MLFormContent: React.FC<BuilderProps> = (props) => {
 };
 
 export const MLFormBuilder: React.FC<BuilderProps> = (props) => {
-    console.log(props);
-
     const { formikProps = {} as FormikProps<any> } = props;
     return (
         <form onSubmit={formikProps.handleSubmit}>

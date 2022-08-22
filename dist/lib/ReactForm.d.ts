@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RowSchema, BuilderSettingsProps } from './ml-form-builder';
+import { RowSchema, BuilderSettingsProps } from './ml-form-builder/types';
 import { FormikValues } from 'formik';
 export * from './ml-form-builder';
 export * from './ml-form-builder/lib';

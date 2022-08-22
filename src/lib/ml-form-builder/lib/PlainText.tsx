@@ -1,12 +1,7 @@
 import React, { FC } from 'react';
-import { IFieldProps } from '..';
+import { IFieldProps, PlainTextFieldProps } from '../types';
 
-export interface PlainTextFieldProps {
-    text?: string | JSX.Element;
-    class?: string;
-}
-
-export interface PlainTextProps extends IFieldProps {
+interface PlainTextProps extends IFieldProps {
     fieldProps?: PlainTextFieldProps;
 }
 

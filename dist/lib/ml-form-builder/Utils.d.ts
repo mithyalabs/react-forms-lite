@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { FormikValues } from 'formik';
+import { IHelperTextProps, ILabelProps } from './types';
 export declare type MenuOptionObject<T = unknown> = {
     name: string | React.ReactNode;
     value: string;
@@ -27,3 +28,6 @@ export declare const getMenuOptions: <T extends any>(options: MenuOptions<T>) =>
 export declare const getFieldError: (fieldName: string, formikProps: FormikValues) => any;
 export declare const processFilesWithCallback: (files: FileList | File[], callback: Function, readAs?: "readAsBinaryString" | "readAsDataURL" | "readAsArrayBuffer" | "readAsText" | undefined, encoding?: string | undefined) => void;
 export declare const setValue: (value: any, formikProps: FormikValues, fieldProps: any) => void;
+export declare const Label: ({ id, label }: ILabelProps) => JSX.Element;
+export declare const HelperText: React.FC<IHelperTextProps>;
+export default Label;

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { map, isString, get } from 'lodash';
 import { FormikValues } from 'formik';
 import { TFile } from './lib/MUIFileInput';
+import { IHelperTextProps, ILabelProps } from './types';
 
 export type MenuOptionObject<T = unknown> = { name: string | React.ReactNode; value: string } & T;
 export type MenuOptions<T> = Array<string> | Array<MenuOptionObject<T>>;
@@ -50,3 +51,19 @@ export const processFilesWithCallback = (files: FileList | File[], callback: Fun
 export const setValue = (value: any, formikProps: FormikValues, fieldProps: any) => {
     formikProps.setFieldValue(get(fieldProps, 'name'), value);
 };
+
+// --------------------------------------------
+
+export const Label = ({ id, label }: ILabelProps) => {
+    return (
+        <label htmlFor={id} className="mainLabel">
+            {label}
+        </label>
+    );
+};
+
+export const HelperText: React.FC<IHelperTextProps> = ({ text }) => {
+    return <div className="helperText">{text}</div>;
+};
+
+export default Label;

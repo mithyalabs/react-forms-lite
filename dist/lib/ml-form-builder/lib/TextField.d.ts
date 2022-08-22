@@ -1,18 +1,7 @@
 import React from 'react';
-import { IFieldProps } from '..';
-interface IFProps {
-    id: string;
-    name: string;
-    type: string;
-    label?: string;
-    multiline?: boolean;
-    placeholder?: string;
-    class?: string;
-    helperText?: string;
-    labelOrientation?: string;
-}
+import { IFieldProps, ITextfieldProps } from '../types';
 interface IProps extends IFieldProps {
-    fieldProps?: IFProps;
+    fieldProps?: ITextfieldProps;
 }
 export declare const TextField: React.FC<IProps>;
 export default TextField;

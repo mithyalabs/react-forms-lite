@@ -1,5 +1,5 @@
-import { FormikValues } from "formik";
-import { FormConfig } from "../..";
+import { FormikValues } from 'formik';
+import { FormConfig } from '../../types';
 export declare type TFieldConditions = {
     hidden?: boolean;
     logicOpn?: string;

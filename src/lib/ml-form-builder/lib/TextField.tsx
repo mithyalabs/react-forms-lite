@@ -1,29 +1,17 @@
 import React from 'react';
 import { FormikProps } from 'formik';
 import { get } from 'lodash';
-import { IFieldProps } from '..';
+import { IFieldProps, ITextfieldProps } from '../types';
 import { valueStyle } from '../style';
+import Label, { HelperText } from '../Utils';
 // import { getFieldError } from "../Utils";
 
-interface IFProps {
-    id: string;
-    name: string;
-    type: string;
-    label?: string;
-    multiline?: boolean;
-    placeholder?: string;
-    class?: string;
-    helperText?: string;
-    labelOrientation?: string;
-}
-
 interface IProps extends IFieldProps {
-    fieldProps?: IFProps;
+    fieldProps?: ITextfieldProps;
 }
 
 export const TextField: React.FC<IProps> = (props) => {
-    const { fieldProps = {} as IFProps, formikProps = {} as FormikProps<any> } = props;
-    console.log(props);
+    const { fieldProps = {} as ITextfieldProps, formikProps = {} as FormikProps<any> } = props;
 
     const updatedProps = {
         ...fieldProps,
@@ -35,11 +23,7 @@ export const TextField: React.FC<IProps> = (props) => {
 
     return (
         <div style={{ display: 'flex', flexDirection: fieldProps.labelOrientation == 'landscape' ? 'row' : 'column' }}>
-            {updatedProps.label && (
-                <label htmlFor={updatedProps.id} className="mainLabel">
-                    {updatedProps.label}
-                </label>
-            )}
+            {updatedProps.label && <Label id={updatedProps.id} label={updatedProps.label} />}
 
             {!updatedProps.multiline ? (
                 <div style={valueStyle as React.CSSProperties}>
@@ -52,7 +36,7 @@ export const TextField: React.FC<IProps> = (props) => {
                         onChange={updatedProps.onChange}
                         onBlur={updatedProps.onBlur}
                     />
-                    {updatedProps.helperText && <div className="helperText">{updatedProps.helperText}</div>}
+                    {updatedProps.helperText && <HelperText text={updatedProps.helperText} />}
                 </div>
             ) : (
                 <div style={valueStyle as React.CSSProperties}>
@@ -64,7 +48,7 @@ export const TextField: React.FC<IProps> = (props) => {
                         onChange={updatedProps.onChange}
                         onBlur={updatedProps.onBlur}
                     ></textarea>
-                    {updatedProps.helperText && <div className="helperText">{updatedProps.helperText}</div>}
+                    {updatedProps.helperText && <HelperText text={updatedProps.helperText} />}
                 </div>
             )}
         </div>

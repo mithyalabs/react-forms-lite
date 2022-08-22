@@ -1,30 +1,15 @@
 import { FormikProps } from 'formik';
 import React from 'react';
-import { IFieldProps } from '..';
+import { IFieldProps, ISelectProps } from '../types';
 import { get } from 'lodash';
 import { valueStyle } from '../style';
-
-interface IOptionProps {
-    name?: string;
-    value?: string;
-}
-
-interface IFProps {
-    id: string;
-    name: string;
-    label?: string;
-    options?: IOptionProps[];
-    placeholder?: string;
-    class?: string;
-    helperText?: string;
-    labelOrientation?: string;
-}
+import Label, { HelperText } from '../Utils';
 
 interface IProps extends IFieldProps {
-    fieldProps?: IFProps;
+    fieldProps?: ISelectProps;
 }
 export const Select: React.FC<IProps> = (props) => {
-    const { formikProps = {} as FormikProps<unknown>, fieldProps = {} as IFProps } = props;
+    const { formikProps = {} as FormikProps<unknown>, fieldProps = {} as ISelectProps } = props;
     const value = get(formikProps, `values.${fieldProps.name}`);
     const updatedProps = {
         ...fieldProps,
@@ -38,11 +23,7 @@ export const Select: React.FC<IProps> = (props) => {
 
     return (
         <div style={{ display: 'flex', flexDirection: fieldProps.labelOrientation == 'landscape' ? 'row' : 'column' }}>
-            {updatedProps.label && (
-                <label htmlFor={updatedProps.id} className="mainLabel">
-                    {updatedProps.label}
-                </label>
-            )}
+            {updatedProps.label && <Label id={updatedProps.id} label={updatedProps.label} />}
 
             <div style={valueStyle as React.CSSProperties}>
                 <select
@@ -69,7 +50,7 @@ export const Select: React.FC<IProps> = (props) => {
                             );
                         })}
                 </select>
-                {updatedProps.helperText && <div className="helperText">{updatedProps.helperText}</div>}
+                {updatedProps.helperText && <HelperText text={updatedProps.helperText} />}
             </div>
         </div>
     );
