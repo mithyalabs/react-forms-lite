@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { map, isString, get } from 'lodash';
 import { FormikValues } from 'formik';
-import { TFile } from './lib/MUIFileInput';
-import { IHelperTextProps, ILabelProps } from './types';
+import { TFile } from './lib/@types';
 
 export type MenuOptionObject<T = unknown> = { name: string | React.ReactNode; value: string } & T;
 export type MenuOptions<T> = Array<string> | Array<MenuOptionObject<T>>;

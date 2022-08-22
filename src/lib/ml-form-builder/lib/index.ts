@@ -8,6 +8,7 @@
 // export * from './MUIFileInput';
 // export * from './MUIPhoneField';
 // export * from './Constants';
+import './styles.scss';
 
 export * from './Checkbox';
 export * from './PlainText';
