@@ -1,0 +1,11 @@
+@import "../Styles/variables";
+@import "../Styles/mixins";
+@import "../Styles/extends";
+
+.file-input-field {
+    @include componentField;
+}
+
+.file-input-label {
+    @include componentLabel;
+}

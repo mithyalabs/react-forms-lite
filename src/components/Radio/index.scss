@@ -1,0 +1,19 @@
+@import "../Styles/variables";
+@import "../Styles/mixins";
+@import "../Styles/extends";
+
+.radio-field {
+    @include componentField;
+}
+
+.radio-label {
+    @include componentLabel;
+}
+
+.column{
+    @include column;
+}
+
+.radio-name{
+    margin: 3px 3px 0px 0px;
+}

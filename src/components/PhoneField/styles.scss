@@ -1,0 +1,28 @@
+@import "../Styles/variables";
+@import "../Styles/mixins";
+@import "../Styles/extends";
+
+.phone-field{
+    @include componentField;
+}
+.phonefield-label{
+    @include componentLabel;   
+}
+
+.phonefield-container{
+    display: flex;
+    width: 100%;
+}
+.phone-field-box{
+    width: 100%;
+}
+.phonefield-select{
+    @extend %input-select-box;
+    width: 100px;
+}
+.phonefield-input{
+    @extend %input-select-box;
+    margin-left: 5px;
+    width: 145px;
+}
+

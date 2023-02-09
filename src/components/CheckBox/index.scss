@@ -1,0 +1,19 @@
+@import "../Styles/variables";
+@import "../Styles/mixins";
+@import "../Styles/extends";
+
+.checkbox-field {
+    @include componentField;
+}
+
+.checkbox-label {
+    @include componentLabel;
+}
+
+.column{
+    @include column;
+}
+
+.checkbox-name{
+    margin: 3px 3px 0px 0px;
+}

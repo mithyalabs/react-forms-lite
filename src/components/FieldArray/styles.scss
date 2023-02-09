@@ -1,0 +1,32 @@
+@import "../Styles/variables";
+@import "../Styles/mixins";
+@import "../Styles/extends";
+
+.array-field{
+    @include componentField;
+}
+.fieldarray-label {
+    @include componentLabel;
+}
+
+.fieldarray-box{
+    display: flex;
+}
+
+.array-remove-icon{
+    @extend %btn;
+    background-color:rgb(222, 218, 218);
+    height: 30px;
+    margin: 24px 0px 0px 10px;
+    padding: 0px 15px 0px 15px;
+
+}
+
+.array-add-icon{
+    @extend %btn;
+    background-color: #66bf69;
+    display: flex;
+
+}
+
+
