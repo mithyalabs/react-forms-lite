@@ -10,7 +10,7 @@ import { Option } from "../../Types";
 
 export interface CheckboxFieldProps extends FieldItemProps {
   options?: Option[];
-  column?: boolean; // TODO rename it to isColumnar
+  isColumner?: boolean; // TODO rename it to isColumnar
 }
 interface CheckBoxProps extends FieldProps {
   fieldProps?: CheckboxFieldProps;
@@ -27,7 +27,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
     name = "",
     label,
     helperText,
-    column = false,
+    isColumner = false,
     classNames,
     nativeProps,
   } = fieldProps;
@@ -40,7 +40,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
     <div className={clsx("checkbox-field ", classNames)}>
       {label && <span className="checkbox-label checkboxlabel">{label}</span>}
       <div
-        className={clsx("checkbox-container", column ? "column" : undefined)}
+        className={clsx("checkbox-container", isColumner ? "isColumner" : undefined)}
       >
         {options.map((it) => (
           <span key={it.value} className="checkbox-name checkboxname">

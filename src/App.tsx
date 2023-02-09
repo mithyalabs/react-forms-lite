@@ -41,7 +41,7 @@ const RadioFP: RadioFieldProps = {
   options: genderoptions,
   label: "Select gender",
   helperText: "Select any one option",
-  column: true,
+  isColumner: true,
 };
 const SelectFP: SelectFProps = {
   name: "language",
@@ -63,7 +63,7 @@ const relationRadio: RadioFieldProps = {
   options: relationOptions,
   label: "Relation with Micro Focus",
   helperText: "Select any one option",
-  column: true,
+  isColumner: true,
 };
 const SwitchFP: SwitchFieldProps = {
   name: "switch",
@@ -207,7 +207,7 @@ const placetypeoptions: Option[] = [
 const TestCheckBoxFP: CheckboxFieldProps = {
   options: placetypeoptions,
   label: "Place Type",
-  column: true,
+  isColumner: true,
   name: "placetype",
   id: "",
 };
@@ -215,7 +215,7 @@ const TestRadioFP: RadioFieldProps = {
   name: "range",
   options: rangeoptions,
   label: "$ Range",
-  column: true,
+  isColumner: true,
   id: "",
 };
 
