@@ -3,8 +3,7 @@ import { FieldItemProps, FieldProps } from "../../Types";
 import "./styles.scss";
 import { CountryCodeFormat, COUNTRY_LIST } from "../Constants/CountryList";
 import { get } from "lodash";
-import { getFieldError } from "../../Utils";
-import { FormikValues } from "formik";
+import { FormikProps } from "formik";
 import clsx from "clsx";
 import TextHelperError from "../TextHelperError";
 
@@ -24,7 +23,7 @@ export interface PhoneFieldsProps extends FieldProps {
 const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
   const {
     fieldProps = {} as PhoneFieldProps,
-    formikProps = {} as FormikValues,
+    formikProps = {} as FormikProps<unknown>,
   } = props;
   const [code, setCode] = useState<string>("");
 
@@ -40,7 +39,6 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
   const {
     label,
     name = "",
-    helperText,
     emptyItem,
     emptyItemText,
     countryCodeLabel,
@@ -57,8 +55,6 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
       setCode(value.split("-")[0] || "");
     }
   }, [name]);
-
-  const fieldError = getFieldError(name, formikProps);
 
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -108,7 +104,7 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
         />
       </div>
 
-      {/* <TextHelperError fieldError={fieldError} helperText={helperText} /> */}
+      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
     </div>
   );
 };

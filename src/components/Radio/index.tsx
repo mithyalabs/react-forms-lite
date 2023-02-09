@@ -4,7 +4,7 @@ import "./index.scss";
 import clsx from "clsx";
 import { FieldItemProps, FieldProps } from "../../Types";
 import { getFieldError } from "../../Utils";
-import { FormikValues } from "formik";
+import { FormikProps } from "formik";
 import TextHelperError from "../TextHelperError";
 import { Option } from "../../Types";
 export interface RadioFieldProps extends FieldItemProps {
@@ -17,21 +17,19 @@ interface RadioProps extends FieldProps {
 
 const Radio: React.FC<RadioProps> = (props) => {
   const {
-    formikProps = {} as FormikValues,
+    formikProps = {} as FormikProps<unknown>,
     fieldProps = {} as RadioFieldProps,
   } = props;
   const {
     options = [],
     name = "",
-    helperText,
     label,
     isColumner,
     classNames,
     nativeProps,
   } = fieldProps;
+  
   const fieldValue: string = get(formikProps, `values.${name}`) || "";
-
-  const fieldError = getFieldError(name, formikProps) as string;
 
   return (
     <div className={clsx("radio-field", classNames)}>
@@ -52,8 +50,7 @@ const Radio: React.FC<RadioProps> = (props) => {
           </span>
         ))}
       </div>
-
-      {/* <TextHelperError fieldError={fieldError} helperText={helperText} /> */}
+      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
     </div>
   );
 };

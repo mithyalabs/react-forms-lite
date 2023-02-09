@@ -7,7 +7,7 @@ import {
 } from "../../Utils";
 import { FieldItemProps, FieldProps } from "../../Types";
 import "./index.scss";
-import { FormikValues } from "formik";
+import { FormikProps } from "formik";
 import clsx from "clsx";
 import TextHelperError from "../TextHelperError";
 
@@ -39,7 +39,7 @@ interface FileInputProps extends FieldProps {
 
 const FileInput: React.FC<FileInputProps> = (props) => {
   const {
-    formikProps = {} as FormikValues,
+    formikProps = {} as FormikProps<unknown>,
     fieldProps = {} as FileInputField,
   } = props;
   const {
@@ -58,7 +58,6 @@ const FileInput: React.FC<FileInputProps> = (props) => {
     classNames,
   } = fieldProps;
 
-  const fieldError = getFieldError(name, formikProps);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files || new FileList();
@@ -99,7 +98,8 @@ const FileInput: React.FC<FileInputProps> = (props) => {
         {...nativeProps}
       ></input>
 
-      {/* <TextHelperError fieldError={fieldError} helperText={helperText} /> */}
+      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
+    
     </div>
   );
 };

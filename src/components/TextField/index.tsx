@@ -3,7 +3,6 @@ import React from "react";
 import "./styles.scss";
 import clsx from "clsx";
 import { FieldItemProps, FieldProps } from "../../Types";
-
 import TextHelperError from "../TextHelperError";
 import { FormikProps } from "formik";
 
@@ -19,7 +18,7 @@ interface TextFieldsProps extends FieldProps {
 const TextField: React.FC<TextFieldsProps> = (props) => {
   const {
     fieldProps = {} as TextFieldProps,
-    formikProps = {} as FormikProps<any>,
+    formikProps = {} as FormikProps<unknown>,
   } = props;
 
   const {
@@ -30,8 +29,8 @@ const TextField: React.FC<TextFieldsProps> = (props) => {
     placeholder,
     nativeProps,
   } = fieldProps;
+
   const fieldValue = get(formikProps, `values.${name}`) as string;
-  // const fieldError = getFieldError(name || "", formikProps);
 
   return (
     <div className={clsx("text-field", classNames)}>

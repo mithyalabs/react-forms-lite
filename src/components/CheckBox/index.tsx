@@ -3,8 +3,7 @@ import "./index.scss";
 import { get } from "lodash";
 import clsx from "clsx";
 import { FieldItemProps, FieldProps } from "../../Types";
-import { getFieldError } from "../../Utils";
-import { FormikValues } from "formik";
+import { FormikProps } from "formik";
 import TextHelperError from "../TextHelperError";
 import { Option } from "../../Types";
 
@@ -19,7 +18,7 @@ interface CheckBoxProps extends FieldProps {
 // TODO handle boolean checkbox values
 const CheckBox: React.FC<CheckBoxProps> = (props) => {
   const {
-    formikProps = {} as FormikValues,
+    formikProps = {} as FormikProps<unknown>,
     fieldProps = {} as CheckboxFieldProps,
   } = props;
   const {
@@ -34,7 +33,6 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
 
   const fieldValue: string[] = get(formikProps, `values.${name}`) || [] || "";
 
-  const fieldError = getFieldError(name, formikProps) as string;
 
   return (
     <div className={clsx("checkbox-field ", classNames)}>
@@ -57,7 +55,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
           </span>
         ))}
       </div>
-      {/* <TextHelperError fieldError={fieldError} helperText={helperText} /> */}
+      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
     </div>
   );
 };

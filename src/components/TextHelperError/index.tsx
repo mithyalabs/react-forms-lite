@@ -11,7 +11,7 @@ interface TextHelperErrorProps extends FieldProps {
 const TextHelperError: React.FC<TextHelperErrorProps> = (props) => {
   const {
     fieldProps = {} as FieldItemProps,
-    formikProps = {} as FormikProps<any>,
+    formikProps = {} as FormikProps<unknown>,
   } = props;
 
   const { name, helperText, classNames } = fieldProps;
