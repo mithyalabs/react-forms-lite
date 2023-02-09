@@ -8,6 +8,11 @@ import TestForm from "./components/TestForm1";
 import RegistrationForm from "./components/TestForm2";
 import { SelectFProps } from "./components/SelectField";
 import { SwitchFieldProps } from "./components/Switch";
+import {FormActionProps} from "./components/FormBuilder"
+
+const myActionConfig:FormActionProps = {
+  submitButtonLayout:"fullWidth"
+}
 
 const genderoptions: Option[] = [
   { value: "male", name: "Male" },
@@ -357,6 +362,7 @@ function App() {
         initialValues={initialValues}
         isInProgress={loading}
         validationSchema={validationSchema}
+        // actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
           console.log(values);
@@ -368,6 +374,7 @@ function App() {
         initialValues={initialValues}
         isInProgress={loading}
         validationSchema={validationSchema}
+        actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
           console.log(values);

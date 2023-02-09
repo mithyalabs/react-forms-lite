@@ -1,12 +1,14 @@
 import { Formik, FormikValues } from "formik";
 import React from "react";
 import "./index.scss";
-import MLFormBuilder from "../FormBuilder";
+import MLFormBuilder, { FormActionProps } from "../FormBuilder";
 export * from "../FormBuilder";
+
 export interface TestFormProps extends FormikValues {
   formId?: string;
   isInProgress?: boolean;
   isReadOnly?: boolean;
+  actionConfig?:FormActionProps;
 }
 const TestForm: React.FC<TestFormProps> = (props) => {
   const {
@@ -20,6 +22,7 @@ const TestForm: React.FC<TestFormProps> = (props) => {
     isReadOnly = false,
     ...formikProps
   } = props;
+
   return (
     <div className="test-form-field">
       <div className="test-form-container">

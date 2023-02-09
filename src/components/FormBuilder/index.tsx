@@ -260,6 +260,7 @@ export const MLFormAction: React.FC<
           formId,
         })
       ) : (
+        
         <div>
           {formikProps.isSubmitting ? (
             <div className="loader"></div>
@@ -269,7 +270,7 @@ export const MLFormAction: React.FC<
                 "submit-btn",
                 layoutClassName === "action-fullWidth"
                   ? "action-fullWidth"
-                  : "right" || "center"
+                  : undefined
               )}
               type="submit"
               disabled={formikProps.isSubmitting}
