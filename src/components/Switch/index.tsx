@@ -4,6 +4,7 @@ import "./index.scss";
 import { get } from "lodash";
 import { FormikProps } from "formik";
 import clsx from "clsx";
+import HelperText from "../HelperText";
 
 export interface SwitchFieldProps extends FieldItemProps {
   label?: string;
@@ -18,7 +19,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
     formikProps = {} as FormikProps<unknown>,
     fieldProps = {} as SwitchFieldProps,
   } = props;
-  const { label, name = "", helperText, classNames, nativeProps} = fieldProps;
+  const { label, name = "", helperText, classNames, nativeProps, disabled} = fieldProps;
 
   const fieldValue = get(formikProps, `values.${name}`);
   const handleOnChange = () => {
@@ -34,15 +35,13 @@ const Switch: React.FC<SwitchProps> = (props) => {
           checked={!!fieldValue}
           value={fieldValue}
           onChange={handleOnChange}
+          disabled={disabled}
           {...nativeProps}
         />
         <span className="slider round"></span>
       </label>
 
-    {
-      // TODO Can use same FieldHelperText component
-    }
-      <span className="helper-text helpertext">{helperText}</span> 
+      <HelperText fieldProps={fieldProps} formikProps={formikProps} />
     </div>
   );
 };

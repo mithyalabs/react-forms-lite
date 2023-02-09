@@ -3,7 +3,7 @@ import React from "react";
 import "./styles.scss";
 import clsx from "clsx";
 import { FieldItemProps, FieldProps } from "../../Types";
-import TextHelperError from "../TextHelperError";
+import HelperText from "../HelperText";
 import { FormikProps } from "formik";
 
 export interface TextFieldProps extends FieldItemProps {
@@ -28,6 +28,7 @@ const TextField: React.FC<TextFieldsProps> = (props) => {
     classNames,
     placeholder,
     nativeProps,
+    disabled,
   } = fieldProps;
 
   const fieldValue = get(formikProps, `values.${name}`) as string;
@@ -44,11 +45,12 @@ const TextField: React.FC<TextFieldsProps> = (props) => {
           value={fieldValue || ""}
           onBlur={formikProps.handleBlur}
           onChange={formikProps.handleChange}
+          disabled={disabled}
           {...nativeProps}
         />
       </div>
 
-      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
+      <HelperText fieldProps={fieldProps} formikProps={formikProps} />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { get } from "lodash";
 import clsx from "clsx";
 import { FieldItemProps, FieldProps } from "../../Types";
 import { FormikProps } from "formik";
-import TextHelperError from "../TextHelperError";
+import HelperText from "../HelperText";
 import { Option } from "../../Types";
 
 export interface CheckboxFieldProps extends FieldItemProps {
@@ -25,10 +25,10 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
     options = [],
     name = "",
     label,
-    helperText,
     isColumner = false,
     classNames,
     nativeProps,
+    disabled,
   } = fieldProps;
 
   const fieldValue: string[] = get(formikProps, `values.${name}`) || [] || "";
@@ -49,13 +49,14 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
               value={it.value}
               checked={fieldValue?.includes(it.value)}
               onChange={formikProps.handleChange}
+              disabled={disabled}
             {...nativeProps}
             />
             {it.name}
           </span>
         ))}
       </div>
-      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
+      <HelperText fieldProps={fieldProps} formikProps={formikProps} />
     </div>
   );
 };

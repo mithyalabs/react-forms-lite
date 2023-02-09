@@ -40,6 +40,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
     defaultItemValue = "",
     classNames,
     nativeProps,
+    disabled,
   } = fieldProps;
 
   const values = get(formikProps, `values.${name}`);

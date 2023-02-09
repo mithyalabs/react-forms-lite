@@ -345,7 +345,6 @@ function App() {
     gender: Yup.string().required("Required"),
     phoneNo: Yup.string().required("Phone No. Required"),
     language: Yup.array().min(1, "Required").required("Required"),
-    relation: Yup.string().required("Required"),
     allergies: Yup.string().required("Required"),
     submitquestions: Yup.string().required("Required"),
     agreement: Yup.array().min(1, "Required").required("Required"),
