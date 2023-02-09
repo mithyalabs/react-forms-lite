@@ -110,7 +110,7 @@ export const setDefaultProps = (
     };
 };
 
-attachField("select", <SelectField />, { type: "select" }); // TODO remove type prop
+attachField("select", <SelectField />); 
 attachField("checkbox", <CheckBox />);
 attachField("switch", <Switch />);
 attachField("radio", <Radio />);
@@ -132,7 +132,6 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
       isReadOnly: false,
     },
   } = props;
-  //need modification in type of columnItems
   const columnItems = get(schema, "columns") as unknown as Array<FormConfig>;
   const rowSettings = {
     ...settings,
@@ -169,7 +168,7 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
         return (
           <div
             key={`${rowId}_field_${index}`}
-            className={clsx(item.classNames, "column")}
+            className={clsx(item.classNames, "isColumner")}
             style={{
               flex: item.flex || 1,
               marginRight: horizontalSpacing,
