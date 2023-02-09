@@ -99,7 +99,7 @@ const FileInput: React.FC<FileInputProps> = (props) => {
         {...nativeProps}
       ></input>
 
-      <TextHelperError fieldError={fieldError} helperText={helperText} />
+      {/* <TextHelperError fieldError={fieldError} helperText={helperText} /> */}
     </div>
   );
 };

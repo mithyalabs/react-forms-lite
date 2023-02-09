@@ -60,7 +60,7 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
           })}
         </select>
       </div>
-      <TextHelperError fieldError={fieldError} helperText={helperText} />
+      {/* <TextHelperError fieldError={fieldError} helperText={helperText} /> */}
     </div>
   );
 };

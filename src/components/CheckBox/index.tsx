@@ -57,7 +57,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
           </span>
         ))}
       </div>
-      <TextHelperError fieldError={fieldError} helperText={helperText} />
+      {/* <TextHelperError fieldError={fieldError} helperText={helperText} /> */}
     </div>
   );
 };
