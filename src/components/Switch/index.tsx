@@ -39,7 +39,10 @@ const Switch: React.FC<SwitchProps> = (props) => {
         <span className="slider round"></span>
       </label>
 
-      <span className="helper-text helpertext">{helperText}</span>
+    {
+      // TODO Can use same FieldHelperText component
+    }
+      <span className="helper-text helpertext">{helperText}</span> 
     </div>
   );
 };

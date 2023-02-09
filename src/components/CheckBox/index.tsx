@@ -10,12 +10,13 @@ import { Option } from "../../Types";
 
 export interface CheckboxFieldProps extends FieldItemProps {
   options?: Option[];
-  column?: boolean;
+  column?: boolean; // TODO rename it to isColumnar
 }
 interface CheckBoxProps extends FieldProps {
   fieldProps?: CheckboxFieldProps;
 }
 
+// TODO handle boolean checkbox values
 const CheckBox: React.FC<CheckBoxProps> = (props) => {
   const {
     formikProps = {} as FormikValues,

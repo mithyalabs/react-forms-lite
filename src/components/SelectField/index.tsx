@@ -15,7 +15,10 @@ interface SelectFieldProps extends FieldProps {
   fieldProps?: SelectFProps;
 }
 
+// TODO handle disabled props
+// 
 const SelectField: React.FC<SelectFieldProps> = (props) => {
+  // TODO change FormikValues type to FormikProps<unknown>
   const { formikProps = {} as FormikValues, fieldProps = {} as SelectFProps } =
     props;
   const {
@@ -57,7 +60,6 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
           })}
         </select>
       </div>
-
       <TextHelperError fieldError={fieldError} helperText={helperText} />
     </div>
   );
