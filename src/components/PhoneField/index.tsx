@@ -45,7 +45,7 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
     emptyItemText,
     countryCodeLabel,
     classNames,
-    width,
+    nativeProps,
     placeholder,
     renderOption = handleRenderOption,
   } = fieldProps;
@@ -68,7 +68,7 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
     formikProps.setFieldValue(`${name}`, `${code}-${number}`);
   };
 
-  const codeChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+  const handleCodeChange = (e: React.ChangeEvent<{ value: unknown }>) => {
     const number = value.split("-");
     formikProps.setFieldValue(
       `${name}`,
@@ -80,7 +80,7 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
   return (
     <div className={clsx("phone-field", classNames)}>
       <label className="phonefield-label phonefieldlabel" id={name}>
-        {countryCodeLabel || "Country code"}
+        {countryCodeLabel || "Country Code"} {label}
       </label>
 
       <div className="phonefield-container phonefieldcontainer">
@@ -89,7 +89,7 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
             className="phonefield-select phonefieldselect"
             id={name}
             value={code}
-            onChange={codeChange}
+            onChange={handleCodeChange}
           >
             {emptyItem && <option value="">{emptyItemText}</option>}
             {(COUNTRY_LIST as unknown as CountryCodeFormat[]).map(renderOption)}
@@ -97,13 +97,14 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
         </div>
         <input
           type="tel"
-          className={clsx("phonefield-input phonefieldinput", width)}
+          className={clsx("phonefield-input phonefieldinput")}
           placeholder={`${placeholder || ""}`}
           name={name}
           onBlur={formikProps.handleBlur}
           autoComplete="nope"
           value={value.split("-")[1] || ""}
           onChange={onChange}
+          {...nativeProps}
         />
       </div>
 

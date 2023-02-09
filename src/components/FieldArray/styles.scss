@@ -4,6 +4,7 @@
 
 .array-field{
     @include componentField;
+    width: 100%;
 }
 .fieldarray-label {
     @include componentLabel;

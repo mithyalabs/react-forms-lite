@@ -9,7 +9,6 @@ import TextHelperError from "../TextHelperError";
 
 export interface TextFieldProps extends FieldItemProps {
   type?: string;
-  width?: string;
   placeholder?: string;
 }
 
@@ -27,10 +26,10 @@ const TextField: React.FC<TextFieldsProps> = (props) => {
     label,
     helperText,
     name = "",
-    width,
     type = "",
     classNames,
     placeholder,
+    nativeProps,
   } = fieldProps;
   const fieldValue = get(formikProps, `values.${name}`) as string;
   const fieldError = getFieldError(name || "", formikProps);
@@ -40,13 +39,14 @@ const TextField: React.FC<TextFieldsProps> = (props) => {
       {label && <label className="text-label textlabel">{label}</label>}
       <div className={clsx("text-field-box textfieldbox")}>
         <input
-          className={clsx("input-box inputbox", width)}
+          className={clsx("input-box inputbox", )}
           type={type}
           placeholder={`${placeholder || ""}`}
           name={name}
           value={fieldValue || ""}
           onBlur={formikProps.handleBlur}
           onChange={formikProps.handleChange}
+          {...nativeProps}
         />
       </div>
 

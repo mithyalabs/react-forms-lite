@@ -28,6 +28,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
     helperText,
     column = false,
     classNames,
+    nativeProps,
   } = fieldProps;
 
   const fieldValue: string[] = get(formikProps, `values.${name}`) || [] || "";
@@ -49,6 +50,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
               value={it.value}
               checked={fieldValue?.includes(it.value)}
               onChange={formikProps.handleChange}
+            {...nativeProps}
             />
             {it.name}
           </span>

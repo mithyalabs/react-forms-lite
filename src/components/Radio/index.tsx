@@ -27,6 +27,7 @@ const Radio: React.FC<RadioProps> = (props) => {
     label,
     column,
     classNames,
+    nativeProps,
   } = fieldProps;
   const fieldValue: string = get(formikProps, `values.${name}`) || "";
 
@@ -45,6 +46,7 @@ const Radio: React.FC<RadioProps> = (props) => {
               value={it.value}
               checked={fieldValue === it.value}
               onChange={formikProps.handleChange}
+              {...nativeProps}
             />
             {it.name}
           </span>

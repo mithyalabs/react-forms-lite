@@ -7,12 +7,11 @@ export interface FieldProps {
 export interface FieldItemProps {
   name: string;
   id?: string;
-  label?: string;
+  label?: React.ReactNode;
   disabled?: boolean;
   classNames?: string | Array<string>;
   helperText?: string;
-  width?: string;
-  nativeInputProps?: React.InputHTMLAttributes<object>;
+  nativeProps?: React.InputHTMLAttributes<object>;
 }
 
 export interface Option {

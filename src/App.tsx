@@ -56,7 +56,7 @@ const tilte: SelectFProps = {
   label: "Title",
   emptyItem: "Select Title",
   helperText: "Select any one option",
-  width: "selecttitlewidth",
+
 };
 const relationRadio: RadioFieldProps = {
   name: "relation",
@@ -89,7 +89,6 @@ const rgistrationconfig = [
         label: "First Name",
         placeholder: "Enter First Name",
         helperText: "Please fill your first name",
-        width: "fnamewidth",
       },
     },
 
@@ -100,7 +99,6 @@ const rgistrationconfig = [
         label: "Last Name",
         placeholder: "Enter last Name",
         helperText: "Please fill  your last name",
-        width: "lnamewidth",
       },
     },
   ],
@@ -112,7 +110,6 @@ const rgistrationconfig = [
         label: "Job Title",
         placeholder: "Enter job title",
         helperText: "Enter job title",
-        width: "jobtitlewidth",
       },
     },
 
@@ -123,7 +120,6 @@ const rgistrationconfig = [
         label: "Street",
         placeholder: "Enter street",
         helperText: "Enter street details",
-        width: "streedwidth",
       },
     },
   ],
@@ -134,7 +130,6 @@ const rgistrationconfig = [
       label: "Postal Code",
       placeholder: "Enter postal code",
       helperText: "Enter postal code",
-      width: "postelwidth",
     },
   },
 
@@ -162,9 +157,7 @@ const rgistrationconfig = [
       type: "phone",
       valueKey: "phoneNo",
       fieldProps: {
-        label: "phone No. ",
         helperText: "Enter your phone no.",
-        widht: "phonewidth",
         placeholder: "Enter your phone no.",
       },
     },
@@ -177,7 +170,6 @@ const rgistrationconfig = [
       fullwidth: true,
       helperText:
         "I hereby consent to the following information regarding allergies and intolerances being shared and processed as part of the event.",
-      width: "allergieswidth",
     },
   },
   {
@@ -185,7 +177,6 @@ const rgistrationconfig = [
     valueKey: "submitquestions",
     fieldProps: {
       label: "Pre-submit your question/s here",
-      width: "submitquestionswidht",
     },
   },
   {
@@ -234,7 +225,6 @@ const testformconfig = [
     valueKey: "place",
     fieldProps: {
       label: "Name of the Place",
-      width: "placewidth",
     },
   },
   [
@@ -243,7 +233,6 @@ const testformconfig = [
       valueKey: "contact",
       fieldProps: {
         label: "Contact Number",
-        width: "contactwidth",
         className: "labeltextred",
       },
     },
@@ -252,7 +241,6 @@ const testformconfig = [
       valueKey: "rlink",
       fieldProps: {
         label: "Reservation Link",
-        width: "rlinkwidth",
       },
     },
   ],
@@ -263,7 +251,6 @@ const testformconfig = [
       valueKey: "tandd",
       fieldProps: {
         label: "Takeout & Delivery",
-        width: "tanddwidth",
       },
     },
     {
@@ -271,7 +258,6 @@ const testformconfig = [
       valueKey: "website",
       fieldProps: {
         label: "Website",
-        width: "websitewidth",
       },
     },
   ],
@@ -281,7 +267,6 @@ const testformconfig = [
       valueKey: "email",
       fieldProps: {
         label: "Email",
-        width: "emailwidth",
         placeholder: "Enter email",
       },
     },
@@ -290,7 +275,6 @@ const testformconfig = [
       valueKey: "iglink",
       fieldProps: {
         label: "Instagram Link",
-        width: "iglinkwidth",
       },
     },
   ],
@@ -299,7 +283,6 @@ const testformconfig = [
     valueKey: "sdis",
     fieldProps: {
       label: "Short Discription",
-      width: "sdiswidth",
     },
   },
   {
@@ -307,7 +290,6 @@ const testformconfig = [
     valueKey: "dis",
     fieldProps: {
       label: "Discription",
-      width: "diswidth",
     },
   },
   [

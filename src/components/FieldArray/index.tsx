@@ -39,7 +39,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
     arrayItemFieldProps = {},
     defaultItemValue = "",
     classNames,
-    width,
+    nativeProps,
   } = fieldProps;
 
   const values = get(formikProps, `values.${name}`);
@@ -92,6 +92,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
                     name: `${name}[${index}]`,
                   },
                   ...itemComponentConfig.props,
+                  ...nativeProps,
                 })}
                 {removeButton ? (
                   removeButton

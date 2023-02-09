@@ -24,7 +24,7 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
     options = [],
     emptyItem,
     helperText,
-    width,
+    nativeProps,
     classNames,
   } = fieldProps;
   const fieldError = getFieldError(name, formikProps) || "";
@@ -45,11 +45,12 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
         <select
           id={name}
           onChange={formikProps.handleChange}
-          className={clsx("select-option selectoption", width)}
+          className={clsx("select-option selectoption")}
+          {...nativeProps}
         >
           {optionList.map((it) => {
             return (
-              <option key={it.value} value={it.value}>
+              <option key={it.value} value={it.value} {...nativeProps}>
                 {it.name}
               </option>
             );

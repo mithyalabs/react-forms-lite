@@ -51,12 +51,11 @@ const FileInput: React.FC<FileInputProps> = (props) => {
     readAs,
     disabled,
     onFilesChange,
-    nativeInputProps,
+    nativeProps,
     encoding = "utf-8",
     label,
     helperText,
     classNames,
-    width,
   } = fieldProps;
 
   const fieldError = getFieldError(name, formikProps);
@@ -89,7 +88,7 @@ const FileInput: React.FC<FileInputProps> = (props) => {
       )}
 
       <input
-        className={clsx("file-input-box", width)}
+        className={clsx("file-input-box", )}
         type="file"
         onChange={handleChange}
         id={name}
@@ -97,7 +96,7 @@ const FileInput: React.FC<FileInputProps> = (props) => {
         multiple={multiple}
         title={disableDefaultTooltip ? " " : undefined}
         accept={accept}
-        {...nativeInputProps}
+        {...nativeProps}
       ></input>
 
       <TextHelperError fieldError={fieldError} helperText={helperText} />

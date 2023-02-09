@@ -7,7 +7,6 @@ import clsx from "clsx";
 
 export interface SwitchFieldProps extends FieldItemProps {
   label?: string;
-  nativeInputProps?: React.InputHTMLAttributes<object>;
 }
 
 interface SwitchProps extends FieldProps {
@@ -19,7 +18,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
     formikProps = {} as FormikValues,
     fieldProps = {} as SwitchFieldProps,
   } = props;
-  const { label, name = "", helperText, classNames } = fieldProps;
+  const { label, name = "", helperText, classNames, nativeProps} = fieldProps;
 
   const fieldValue = get(formikProps, `values.${name}`);
   const handleOnChange = () => {
@@ -35,6 +34,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
           checked={!!fieldValue}
           value={fieldValue}
           onChange={handleOnChange}
+          {...nativeProps}
         />
         <span className="slider round"></span>
       </label>
