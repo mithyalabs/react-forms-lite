@@ -1,9 +1,8 @@
 import React from "react";
-import { getFieldError } from "../../Utils";
 import { FieldItemProps, FieldProps } from "../../Types";
 import { isString } from "lodash";
 import "./index.scss";
-import { FormikValues } from "formik";
+import { FormikProps } from "formik";
 import clsx from "clsx";
 import TextHelperError from "../TextHelperError";
 import { Option } from "../../Types";
@@ -19,7 +18,7 @@ interface SelectFieldProps extends FieldProps {
 // 
 const SelectField: React.FC<SelectFieldProps> = (props) => {
   // TODO change FormikValues type to FormikProps<unknown>
-  const { formikProps = {} as FormikValues, fieldProps = {} as SelectFProps } =
+  const { formikProps = {} as FormikProps<unknown>, fieldProps = {} as SelectFProps } =
     props;
   const {
     name = "",
@@ -30,7 +29,7 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
     nativeProps,
     classNames,
   } = fieldProps;
-  const fieldError = getFieldError(name, formikProps) || "";
+ 
   const emptyItemText = isString(emptyItem) ? emptyItem : "No option selected";
 
   const optionList = emptyItem
@@ -60,7 +59,7 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
           })}
         </select>
       </div>
-      <TextHelperError fieldError={fieldError} helperText={helperText} />
+      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
     </div>
   );
 };

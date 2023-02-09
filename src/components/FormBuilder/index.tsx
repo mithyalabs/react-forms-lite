@@ -110,7 +110,7 @@ export const setDefaultProps = (
     };
 };
 
-attachField("select", <SelectField />); 
+attachField("select", <SelectField />);
 attachField("checkbox", <CheckBox />);
 attachField("switch", <Switch />);
 attachField("radio", <Radio />);
