@@ -89,7 +89,7 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
             className="phonefield-select phonefieldselect"
             id={name}
             value={code}
-            onChange={codeChange}
+            onChange={codeChange} // TODO rename codeChange to handleCodeChange
           >
             {emptyItem && <option value="">{emptyItemText}</option>}
             {(COUNTRY_LIST as unknown as CountryCodeFormat[]).map(renderOption)}

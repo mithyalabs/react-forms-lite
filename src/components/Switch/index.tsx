@@ -34,12 +34,15 @@ const Switch: React.FC<SwitchProps> = (props) => {
           type="checkbox"
           checked={!!fieldValue}
           value={fieldValue}
-          onChange={handleOnChange}
+          onChange={handleOnChange} // TODO try with normal formik.handleHandleChange
         />
         <span className="slider round"></span>
       </label>
 
-      <span className="helper-text helpertext">{helperText}</span>
+    {
+      // TODO Can use same FieldHelperText component
+    }
+      <span className="helper-text helpertext">{helperText}</span> 
     </div>
   );
 };
