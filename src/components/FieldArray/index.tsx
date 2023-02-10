@@ -1,7 +1,7 @@
 import React from "react";
 import { get } from "lodash";
 import "./styles.scss";
-import { FieldArray, FieldArrayRenderProps, FormikValues } from "formik";
+import { FieldArray, FieldArrayRenderProps, FormikProps } from "formik";
 import { FieldProps, getComponentConfig } from "../FormBuilder/index";
 import clsx from "clsx";
 import { FieldItemProps } from "../../Types";
@@ -24,7 +24,7 @@ interface FieldsArrayprops extends FieldProps {
 const ArrayField: React.FC<FieldsArrayprops> = (props) => {
   const {
     fieldProps = {} as FieldArrayProps,
-    formikProps = {} as FormikValues,
+    formikProps = {} as FormikProps<unknown>,
   } = props;
 
   const {
