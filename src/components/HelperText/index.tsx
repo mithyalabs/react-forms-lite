@@ -5,10 +5,10 @@ import { FieldItemProps, FieldProps } from "../../Types";
 import { getFieldError } from "../../Utils";
 import "./index.scss";
 
-interface HelperTextProps extends FieldProps {
+interface HelperText extends FieldProps {
   fieldProps?: FieldItemProps;
 }
-const HelperText: React.FC<HelperTextProps> = (props) => {
+const HelperText: React.FC<HelperText> = (props) => {
   const {
     fieldProps = {} as FieldItemProps,
     formikProps = {} as FormikProps<unknown>,

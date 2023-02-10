@@ -18,9 +18,8 @@
     @extend %btn;
     background-color:rgb(222, 218, 218);
     height: 30px;
-    margin: 24px 0px 0px 10px;
-    padding: 0px 15px 0px 15px;
-
+    margin: $labelTextSize 0px 0px 10px;
+    padding: 0px 14px 0px 14px;
 }
 
 .array-add-icon{
@@ -29,5 +28,7 @@
     display: flex;
 
 }
-
+.field-array-removeicon-wrapper{
+    display: flex;
+}
 

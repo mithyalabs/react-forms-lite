@@ -1,14 +1,13 @@
 import React from "react";
 import {
-  getFieldError,
   processFilesWithCallback,
   ReadAsType,
   setValue,
 } from "../../Utils";
+import clsx from "clsx";
 import { FieldItemProps, FieldProps } from "../../Types";
 import "./index.scss";
 import { FormikProps } from "formik";
-import clsx from "clsx";
 import HelperText from "../HelperText";
 
 export interface TFile {

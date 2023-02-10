@@ -80,7 +80,8 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
         render={(arrayHelpers) => (
           <div>
             {(values || []).map((value: any, index: number) => (
-              <div
+              <div className="">
+                <div
                 key={`${fieldProps.name}-${index}`}
                 className="fieldarray-box fieldarraybox"
               >
@@ -106,6 +107,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
                     {<p style={{ fontSize: "8px" }}>❌</p>}
                   </button>
                 )}
+              </div>
               </div>
             ))}
             {addButton ? (
