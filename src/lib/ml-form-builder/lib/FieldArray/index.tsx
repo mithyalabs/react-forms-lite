@@ -80,12 +80,14 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
         render={(arrayHelpers) => (
           <div>
             {(values || []).map((value: any, index: number) => (
-              <div className="">
                 <div
                 key={`${fieldProps.name}-${index}`}
                 className="fieldarray-box fieldarraybox"
               >
+        
                 {React.cloneElement(itemComponentConfig.component, {
+                  name: fieldProps.name,
+                  key: `${fieldProps.name}-${index}`,
                   itemIndex: index,
                   arrayHelpers,
                   formikProps,
@@ -95,6 +97,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
                   },
                   ...itemComponentConfig.props,
                   ...nativeProps,
+                  
                 })}
                 {removeButton ? (                   
                   removeButton
@@ -108,7 +111,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
                   </button>
                 )}
               </div>
-              </div>
+              
             ))}
             {addButton ? (
               addButton

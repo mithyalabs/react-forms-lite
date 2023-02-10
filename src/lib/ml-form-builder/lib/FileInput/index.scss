@@ -26,8 +26,8 @@
   .btn {
     @extend %btn;
     padding: 0px 8px 0px 8px;
-    height: 30px;
     font-size: $helperErrorTextSize;
+    cursor: auto;
   }
   
   
