@@ -12,7 +12,7 @@ export type ReadAsType = keyof Pick<
   FileReader,
   "readAsBinaryString" | "readAsDataURL" | "readAsArrayBuffer" | "readAsText"
 >;
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-constraint
+
 export const getMenuOptions = <T extends any>(options: MenuOptions<T>) => {
   return map(options, (item) => {
     if (isString(item)) return { name: item, value: item };
@@ -29,7 +29,6 @@ export const getFieldError = (fieldName: string, formikProps: FormikValues) => {
 
 export const processFilesWithCallback = (
   files: FileList | File[],
-  // eslint-disable-next-line @typescript-eslint/ban-types
   callback: Function,
   readAs?: ReadAsType,
   encoding?: string

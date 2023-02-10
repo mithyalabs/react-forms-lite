@@ -5,7 +5,7 @@ export interface FieldProps {
 }
 
 export interface FieldItemProps {
-  name: string;
+  name?: string;
   id?: string;
   label?: React.ReactNode;
   disabled?: boolean;

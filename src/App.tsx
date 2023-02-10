@@ -1,89 +1,27 @@
 import React, { useState } from "react";
 import "./App.scss";
-import { Option } from "./Types/index";
 import * as Yup from "yup";
-import { RadioFieldProps } from "./lib/ml-form-builder/lib/Radio";
-import { CheckboxFieldProps } from "./lib/ml-form-builder/lib/CheckBox";
-import { SelectFProps } from "./lib/ml-form-builder/lib/SelectField";
-import { SwitchFieldProps } from "./lib/ml-form-builder/lib/Switch";
 import {FormActionProps} from "./lib/ml-form-builder"
 import ReactForm from "./lib/ReactForm"
 
-const myActionConfig:FormActionProps = {
+const myActionConfig = {
   submitButtonLayout:"fullWidth"
 }
 
-const genderoptions: Option[] = [
-  { value: "male", name: "Male" },
-  { value: "female", name: "Female" },
-  { value: "other", name: "Other" },
-];
-const languageoptions: Option[] = [
-  { value: "english", name: "English" },
-  { value: "hindi", name: "Hindi" },
-  { value: "french", name: "French" },
-];
-const titleOptions: Option[] = [
-  { value: "Mr", name: "Mr" },
-  { value: "Mrs", name: "Mrs" },
-  { value: "Miss", name: "Miss" },
-];
-const relationOptions: Option[] = [
-  { value: "Customer", name: "Customer" },
-  { value: "Partner", name: "Partner" },
-  { value: "Employee", name: "Employee" },
-  { value: "Other", name: "Other" },
-];
-const agreementoptions: Option[] = [
-  { value: "english", name: "English" },
-  { value: "hindi", name: "Hindi" },
-  { value: "french", name: "French" },
-];
-const RadioFP: RadioFieldProps = {
-  name: "gender",
-  options: genderoptions,
-  label: "Select gender",
-  helperText: "Select any one option",
-  isColumner: true,
-};
-const SelectFP: SelectFProps = {
-  name: "language",
-  options: languageoptions,
-  label: "Language",
-  emptyItem: "Select something",
-  helperText: "Select your language",
-};
-const tilte: SelectFProps = {
-  name: "title",
-  options: titleOptions,
-  label: "Title",
-  emptyItem: "Select Title",
-  helperText: "Select any one option",
 
-};
-const relationRadio: RadioFieldProps = {
-  name: "relation",
-  options: relationOptions,
-  label: "Relation with Micro Focus",
-  helperText: "Select any one option",
-  isColumner: true,
-};
-const SwitchFP: SwitchFieldProps = {
-  name: "switch",
-  label: "Toggle",
-  helperText: "Click for toggle",
-};
-const agreement: CheckboxFieldProps = {
-  name: "agreement",
-  // options: agreementoptions,
-  booleanLabel:"I agree to the Terms & Conditions and Privacy Policy Terms & Conditions and Privacy Policy",
-};
 const rgistrationconfig = [
   [
     {
       type: "select",
-      fieldProps: tilte,
       valueKey: "title",
+      fieldProps: {
+        options:[
+          { value: "Mr", name: "Mr" },
+          { value: "Mrs", name: "Mrs" },
+          { value: "Miss", name: "Miss" },
+        ]
+      },
+      
     },
     {
       type: "text",
@@ -148,21 +86,46 @@ const rgistrationconfig = [
   [
     {
       type: "radio",
-      fieldProps: RadioFP,
       valueKey: "gender",
+      fieldProps:{    
+        options :[
+          { value: "male", name: "Male" },
+          { value: "female", name: "Female" },
+          { value: "other", name: "Other" },
+        ],
+        // name: "gender",
+        label: "Select gender",
+        helperText: "Select any one option",
+        isColumner: true,
+      },   
     },
     {
       type: "switch",
-      fieldProps: SwitchFP,
       valueKey: "toggle",
+      fieldProps: {
+        // name: "switch",
+        label: "Toggle",
+        helperText: "Click for toggle",
+      },
+      
     },
   ],
 
   [
     {
       type: "checkbox",
-      fieldProps: SelectFP,
       valueKey: "language",
+      fieldProps: {
+        options:[
+          { value: "english", name: "English" },
+          { value: "hindi", name: "Hindi" },
+          { value: "french", name: "French" },
+        ],
+        // name: "language",
+        label: "Language",
+        emptyItem: "Select something",
+        helperText: "Select your language",
+      }, 
     },
 
     {
@@ -193,43 +156,22 @@ const rgistrationconfig = [
   },
   {
     type: "checkbox",
-    fieldProps: agreement,
     valueKey: "agreement",
+    fieldProps: {
+      options:[
+        { value: "Mr", name: "Mr" },
+        { value: "Mrs", name: "Mrs" },
+        { value: "Miss", name: "Miss" },
+      ],
+      // name: "agreement",
+      booleanLabel:"I agree to the Terms & Conditions and Privacy Policy Terms & Conditions and Privacy Policy",
+    },
+    
   },
 ];
 
-const rangeoptions: Option[] = [
-  { value: "$", name: "$" },
-  { value: "$$", name: "$$" },
-  { value: "$$$", name: "$$$" },
-  { value: "$$$$", name: "$$$$" },
-];
-const placetypeoptions: Option[] = [
-  { value: "Distillery", name: "Distillery" },
-  { value: "Brewery", name: "Brewery" },
-  { value: "Restaurant", name: "Restaurant" },
-  { value: "Bar", name: "Bar" },
-  { value: "Cafe", name: "Cafe" },
-  { value: "Cooking School", name: "Cooking School" },
-  { value: "Food Hall", name: "Food Hall" },
-  { value: "Bakery", name: "Bakery" },
-  { value: "Food Truck", name: "Food Truck" },
-];
 
-const TestCheckBoxFP: CheckboxFieldProps = {
-  options: placetypeoptions,
-  label: "Place Type",
-  isColumner: true,
-  name: "place",
-  id: "",
-};
-const TestRadioFP: RadioFieldProps = {
-  name: "range",
-  options: rangeoptions,
-  label: "$ Range",
-  isColumner: true,
-  id: "",
-};
+
 
 const testformconfig = [
   {
@@ -239,96 +181,123 @@ const testformconfig = [
       label: "Name of the Place",
     },
   },
-  [
-    {
-      type: "text",
-      valueKey: "contact",
-      fieldProps: {
-        label: "Contact Number",
-        className: "labeltextred",
-      },
-    },
-    {
-      type: "text",
-      valueKey: "rlink",
-      fieldProps: {
-        label: "Reservation Link",
-      },
-    },
-  ],
+  // [
+  //   {
+  //     type: "text",
+  //     valueKey: "contact",
+  //     fieldProps: {
+  //       label: "Contact Number",
+  //       className: "labeltextred",
+  //     },
+  //   },
+  //   {
+  //     type: "text",
+  //     valueKey: "rlink",
+  //     fieldProps: {
+  //       label: "Reservation Link",
+  //     },
+  //   },
+  // ],
 
-  [
-    {
-      type: "text",
-      valueKey: "tandd",
-      fieldProps: {
-        label: "Takeout & Delivery",
-      },
-    },
-    {
-      type: "text",
-      valueKey: "website",
-      fieldProps: {
-        label: "Website",
-      },
-    },
-  ],
-  [
-    {
-      type: "text",
-      valueKey: "email",
-      fieldProps: {
-        label: "Email",
-        placeholder: "Enter email",
-      },
-    },
-    {
-      type: "text",
-      valueKey: "iglink",
-      fieldProps: {
-        label: "Instagram Link",
-      },
-    },
-  ],
-  {
-    type: "text",
-    valueKey: "sdis",
-    fieldProps: {
-      label: "Short Discription",
-    },
-  },
-  {
-    type: "text",
-    valueKey: "dis",
-    fieldProps: {
-      label: "Discription",
-    },
-  },
-  [
-    {
-      type: "checkbox",
-      fieldProps: TestCheckBoxFP,
-      valueKey: "placetype",
-    },
-    {
-      type: "radio",
-      fieldProps: TestRadioFP,
-      valueKey: "range",
-    },
-  ],
-  [
-    {
-      type: "array",
-      valueKey: "arrayText",
-      fieldProps: {
-        itemType: "text",
-        defaultItemValue: "",
-        arrayItemFieldProps: {
-          label: "Label",
-        },
-      },
-    },
-  ],
+  // [
+  //   {
+  //     type: "text",
+  //     valueKey: "tandd",
+  //     fieldProps: {
+  //       label: "Takeout & Delivery",
+  //     },
+  //   },
+  //   {
+  //     type: "text",
+  //     valueKey: "website",
+  //     fieldProps: {
+  //       label: "Website",
+  //     },
+  //   },
+  // ],
+  // [
+  //   {
+  //     type: "text",
+  //     valueKey: "email",
+  //     fieldProps: {
+  //       label: "Email",
+  //       placeholder: "Enter email",
+  //     },
+  //   },
+  //   {
+  //     type: "text",
+  //     valueKey: "iglink",
+  //     fieldProps: {
+  //       label: "Instagram Link",
+  //     },
+  //   },
+  // ],
+  // {
+  //   type: "text",
+  //   valueKey: "sdis",
+  //   fieldProps: {
+  //     label: "Short Discription",
+  //   },
+  // },
+  // {
+  //   type: "text",
+  //   valueKey: "dis",
+  //   fieldProps: {
+  //     label: "Discription",
+  //   },
+  // },
+  // [
+  //   {
+  //     type: "checkbox",
+  //     fieldProps: {
+  //       options:[
+  //         { value: "Distillery", name: "Distillery" },
+  //         { value: "Brewery", name: "Brewery" },
+  //         { value: "Restaurant", name: "Restaurant" },
+  //         { value: "Bar", name: "Bar" },
+  //         { value: "Cafe", name: "Cafe" },
+  //         { value: "Cooking School", name: "Cooking School" },
+  //         { value: "Food Hall", name: "Food Hall" },
+  //         { value: "Bakery", name: "Bakery" },
+  //         { value: "Food Truck", name: "Food Truck" },
+  //       ],
+  //       label: "Place Type",
+  //       isColumner: true,
+  //       name: "place",
+  //       id: "",
+  //     },
+  //     valueKey: "placetype",
+  //   },
+  //   {
+  //     type: "radio",
+  //     fieldProps: {
+  //       options:[
+  //         { value: "$", name: "$" },
+  //         { value: "$$", name: "$$" },
+  //         { value: "$$$", name: "$$$" },
+  //         { value: "$$$$", name: "$$$$" },
+  //       ],
+  //       name: "range",
+  //       label: "$ Range",
+  //       isColumner: true,
+  //       id: "",
+  //     },
+  //     valueKey: "range",
+  //   },
+  // ],
+  // [
+  //   {
+  //     type: "array",
+  //     valueKey: "arrayText",
+  //     fieldProps: {
+  //       itemType: "text",
+  //       defaultItemValue: "",
+  //       arrayItemFieldProps: {
+  //         label: "Label",
+  //       },
+  //     },
+  //   },
+  // ],
 ];
 
 function App() {
@@ -368,6 +337,7 @@ function App() {
       return value && (value.type === 'image/jpeg' || value.type === 'image/png');
     }),
   });
+  
   const initialValues = {};
   return (
     <div className="App">
@@ -375,30 +345,29 @@ function App() {
         config={testformconfig}
         initialValues={initialValues}
         isInProgress={loading}
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
         // actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
           console.log(values);
           setTimeout(() => setLoading(false), 200);
-        }}
-      />
+        } }       />
       
 
-    <ReactForm
+    {/* <ReactForm
         config={rgistrationconfig}
         initialValues={initialValues}
         isInProgress={loading}
-        validationSchema={validationSchema}
-        actionConfig={myActionConfig}
+        // validationSchema={validationSchema}
+        // actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
           console.log(values);
           setTimeout(() => setLoading(false), 1000);
-        }}
+        }} */}
 
         
-      />
+      {/* /> */}
     </div>
   );
 }
