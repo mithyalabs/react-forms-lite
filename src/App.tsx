@@ -36,10 +36,9 @@ const relationOptions: Option[] = [
   { value: "Other", name: "Other" },
 ];
 const agreementoptions: Option[] = [
-  {
-    value: "check",
-    name: "I agree to the Terms & Conditions and Privacy Policy Terms & Conditions and Privacy Policy",
-  },
+  { value: "english", name: "English" },
+  { value: "hindi", name: "Hindi" },
+  { value: "french", name: "French" },
 ];
 const RadioFP: RadioFieldProps = {
   name: "gender",
@@ -75,10 +74,10 @@ const SwitchFP: SwitchFieldProps = {
   label: "Toggle",
   helperText: "Click for toggle",
 };
-const agreement: SelectFProps = {
+const agreement: CheckboxFieldProps = {
   name: "agreement",
-  options: agreementoptions,
-  emptyItem: "Select something",
+  // options: agreementoptions,
+  booleanLabel:"I agree to the Terms & Conditions and Privacy Policy Terms & Conditions and Privacy Policy",
 };
 const rgistrationconfig = [
   [
@@ -377,7 +376,7 @@ function App() {
         config={testformconfig}
         initialValues={initialValues}
         isInProgress={loading}
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
         // actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
@@ -389,7 +388,7 @@ function App() {
         config={rgistrationconfig}
         initialValues={initialValues}
         isInProgress={loading}
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
         actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
