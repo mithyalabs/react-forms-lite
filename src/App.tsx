@@ -221,7 +221,7 @@ const TestCheckBoxFP: CheckboxFieldProps = {
   options: placetypeoptions,
   label: "Place Type",
   isColumner: true,
-  name: "placetype",
+  name: "place",
   id: "",
 };
 const TestRadioFP: RadioFieldProps = {
@@ -335,7 +335,7 @@ const testformconfig = [
 function App() {
   const [loading, setLoading] = useState(false);
   const validationSchema = Yup.object({
-    place: Yup.string().required("Required"),
+    place: Yup.array().min(1, "Required").required("Required"),
     range: Yup.string().required("Required"),
     dis: Yup.string().required("Required"),
     sdis: Yup.string().required("Required"),
@@ -376,7 +376,7 @@ function App() {
         config={testformconfig}
         initialValues={initialValues}
         isInProgress={loading}
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
         // actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
@@ -388,7 +388,7 @@ function App() {
         config={rgistrationconfig}
         initialValues={initialValues}
         isInProgress={loading}
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
         actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);

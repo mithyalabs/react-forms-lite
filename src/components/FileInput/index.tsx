@@ -96,7 +96,7 @@ const FileInput: React.FC<FileInputProps> = (props) => {
         accept={accept}
         {...nativeProps}
       ></input>
-      <button className="btn">Upload</button>
+      <button className="btn" type="button">Upload</button>
      </div>
 
       <HelperText fieldProps={fieldProps} formikProps={formikProps} />
