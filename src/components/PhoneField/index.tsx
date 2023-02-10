@@ -5,7 +5,7 @@ import { CountryCodeFormat, COUNTRY_LIST } from "../Constants/CountryList";
 import { get } from "lodash";
 import { FormikProps } from "formik";
 import clsx from "clsx";
-import TextHelperError from "../TextHelperError";
+import HelperText from "../HelperText";
 
 export interface PhoneFieldProps extends FieldItemProps {
   countryCodeLabel?: string;
@@ -45,6 +45,7 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
     classNames,
     nativeProps,
     placeholder,
+    disabled,
     renderOption = handleRenderOption,
   } = fieldProps;
 
@@ -86,6 +87,7 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
             id={name}
             value={code}
             onChange={handleCodeChange}
+            disabled={disabled}
           >
             {emptyItem && <option value="">{emptyItemText}</option>}
             {(COUNTRY_LIST as unknown as CountryCodeFormat[]).map(renderOption)}
@@ -100,11 +102,12 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
           autoComplete="nope"
           value={value.split("-")[1] || ""}
           onChange={onChange}
+          disabled={disabled}
           {...nativeProps}
         />
       </div>
 
-      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
+      <HelperText fieldProps={fieldProps} formikProps={formikProps} />
     </div>
   );
 };

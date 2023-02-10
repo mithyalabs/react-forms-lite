@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { FieldItemProps, FieldProps } from "../../Types";
 import { getFieldError } from "../../Utils";
 import { FormikProps } from "formik";
-import TextHelperError from "../TextHelperError";
+import HelperText from "../HelperText";
 import { Option } from "../../Types";
 export interface RadioFieldProps extends FieldItemProps {
   options?: Option[];
@@ -27,6 +27,7 @@ const Radio: React.FC<RadioProps> = (props) => {
     isColumner,
     classNames,
     nativeProps,
+    disabled,
   } = fieldProps;
   
   const fieldValue: string = get(formikProps, `values.${name}`) || "";
@@ -44,13 +45,14 @@ const Radio: React.FC<RadioProps> = (props) => {
               value={it.value}
               checked={fieldValue === it.value}
               onChange={formikProps.handleChange}
+              disabled={disabled}
               {...nativeProps}
             />
             {it.name}
           </span>
         ))}
       </div>
-      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
+      <HelperText fieldProps={fieldProps} formikProps={formikProps} />
     </div>
   );
 };

@@ -132,7 +132,6 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
       isReadOnly: false,
     },
   } = props;
-  //need modification in type of columnItems
   const columnItems = get(schema, "columns") as unknown as Array<FormConfig>;
   const rowSettings = {
     ...settings,
@@ -169,7 +168,7 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
         return (
           <div
             key={`${rowId}_field_${index}`}
-            className={clsx(item.classNames, "column")}
+            className={clsx(item.classNames, "isColumner")}
             style={{
               flex: item.flex || 1,
               marginRight: horizontalSpacing,
@@ -261,6 +260,7 @@ export const MLFormAction: React.FC<
           formId,
         })
       ) : (
+        
         <div>
           {formikProps.isSubmitting ? (
             <div className="loader"></div>
@@ -270,7 +270,7 @@ export const MLFormAction: React.FC<
                 "submit-btn",
                 layoutClassName === "action-fullWidth"
                   ? "action-fullWidth"
-                  : "right" || "center"
+                  : undefined
               )}
               type="submit"
               disabled={formikProps.isSubmitting}

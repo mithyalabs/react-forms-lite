@@ -4,7 +4,7 @@ import { isString } from "lodash";
 import "./index.scss";
 import { FormikProps } from "formik";
 import clsx from "clsx";
-import TextHelperError from "../TextHelperError";
+import HelperText from "../HelperText";
 import { Option } from "../../Types";
 export interface SelectFProps extends FieldItemProps {
   options?: Option[];
@@ -14,10 +14,7 @@ interface SelectFieldProps extends FieldProps {
   fieldProps?: SelectFProps;
 }
 
-// TODO handle disabled props
-// 
 const SelectField: React.FC<SelectFieldProps> = (props) => {
-  // TODO change FormikValues type to FormikProps<unknown>
   const { formikProps = {} as FormikProps<unknown>, fieldProps = {} as SelectFProps } =
     props;
   const {
@@ -25,9 +22,9 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
     label,
     options = [],
     emptyItem,
-    helperText,
     nativeProps,
     classNames,
+    disabled,
   } = fieldProps;
  
   const emptyItemText = isString(emptyItem) ? emptyItem : "No option selected";
@@ -48,6 +45,7 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
           id={name}
           onChange={formikProps.handleChange}
           className={clsx("select-option selectoption")}
+          disabled={disabled}
           {...nativeProps}
         >
           {optionList.map((it) => {
@@ -59,7 +57,7 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
           })}
         </select>
       </div>
-      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
+      <HelperText fieldProps={fieldProps} formikProps={formikProps} />
     </div>
   );
 };

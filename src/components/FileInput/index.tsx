@@ -9,7 +9,7 @@ import { FieldItemProps, FieldProps } from "../../Types";
 import "./index.scss";
 import { FormikProps } from "formik";
 import clsx from "clsx";
-import TextHelperError from "../TextHelperError";
+import HelperText from "../HelperText";
 
 export interface TFile {
   name: string;
@@ -54,7 +54,6 @@ const FileInput: React.FC<FileInputProps> = (props) => {
     nativeProps,
     encoding = "utf-8",
     label,
-    helperText,
     classNames,
   } = fieldProps;
 
@@ -98,7 +97,7 @@ const FileInput: React.FC<FileInputProps> = (props) => {
         {...nativeProps}
       ></input>
 
-      <TextHelperError fieldProps={fieldProps} formikProps={formikProps} />
+      <HelperText fieldProps={fieldProps} formikProps={formikProps} />
     
     </div>
   );

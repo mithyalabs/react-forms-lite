@@ -5,18 +5,18 @@ import { FieldItemProps, FieldProps } from "../../Types";
 import { getFieldError } from "../../Utils";
 import "./index.scss";
 
-interface TextHelperErrorProps extends FieldProps {
+interface HelperTextProps extends FieldProps {
   fieldProps?: FieldItemProps;
 }
-const TextHelperError: React.FC<TextHelperErrorProps> = (props) => {
+const HelperText: React.FC<HelperTextProps> = (props) => {
   const {
     fieldProps = {} as FieldItemProps,
     formikProps = {} as FormikProps<unknown>,
   } = props;
 
-  const { name, helperText, classNames } = fieldProps;
+  const { name, helperText, classNames, } = fieldProps;
   const fieldError = getFieldError(name || "", formikProps);
-
+console.log(formikProps);
   return (
     <div className={clsx("text-error-helper-field", classNames)}>
       {(fieldError || helperText) && (
@@ -31,4 +31,4 @@ const TextHelperError: React.FC<TextHelperErrorProps> = (props) => {
     </div>
   );
 };
-export default TextHelperError;
+export default HelperText;

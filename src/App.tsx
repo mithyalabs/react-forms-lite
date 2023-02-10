@@ -8,6 +8,11 @@ import TestForm from "./components/TestForm1";
 import RegistrationForm from "./components/TestForm2";
 import { SelectFProps } from "./components/SelectField";
 import { SwitchFieldProps } from "./components/Switch";
+import {FormActionProps} from "./components/FormBuilder"
+
+const myActionConfig:FormActionProps = {
+  submitButtonLayout:"fullWidth"
+}
 
 const genderoptions: Option[] = [
   { value: "male", name: "Male" },
@@ -345,7 +350,6 @@ function App() {
     gender: Yup.string().required("Required"),
     phoneNo: Yup.string().required("Phone No. Required"),
     language: Yup.array().min(1, "Required").required("Required"),
-    relation: Yup.string().required("Required"),
     allergies: Yup.string().required("Required"),
     submitquestions: Yup.string().required("Required"),
     agreement: Yup.array().min(1, "Required").required("Required"),
@@ -358,6 +362,7 @@ function App() {
         initialValues={initialValues}
         isInProgress={loading}
         validationSchema={validationSchema}
+        // actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
           console.log(values);
@@ -369,6 +374,7 @@ function App() {
         initialValues={initialValues}
         isInProgress={loading}
         validationSchema={validationSchema}
+        actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
           console.log(values);
