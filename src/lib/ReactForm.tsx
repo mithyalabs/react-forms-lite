@@ -22,8 +22,7 @@ const ReactForm: React.FC<ReactFormProps> = (props) => {
   } = props;
  
   return (
-    <div className="registration-field">
-      <div className="registration-container">
+    
         <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
@@ -42,8 +41,7 @@ const ReactForm: React.FC<ReactFormProps> = (props) => {
             );
           }}
         </Formik>
-      </div>
-    </div>
+     
   );
 };
 export default ReactForm;
