@@ -96,6 +96,7 @@ const rgistrationconfig = [
         helperText: "Please fill your first name",
       },
     },
+    
 
     {
       type: "text",
@@ -107,6 +108,14 @@ const rgistrationconfig = [
       },
     },
   ],
+  {
+    type: "file",
+    valueKey: "file",
+    fieldProps: {
+      label: "Upload a file",
+      helperText: "Please Upload a file",
+    },
+  },
   [
     {
       type: "text",
@@ -353,6 +362,13 @@ function App() {
     allergies: Yup.string().required("Required"),
     submitquestions: Yup.string().required("Required"),
     agreement: Yup.array().min(1, "Required").required("Required"),
+    file: Yup.mixed().required("Required")
+    .test('fileSize', 'File size must be less than 5 MB', (value) => {
+      return value && value.size <= 5 * 1024 * 1024;
+    })
+    .test('fileType', 'File must be of type jpg or png', (value) => {
+      return value && (value.type === 'image/jpeg' || value.type === 'image/png');
+    }),
   });
   const initialValues = {};
   return (

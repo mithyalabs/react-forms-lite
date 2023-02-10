@@ -85,7 +85,8 @@ const FileInput: React.FC<FileInputProps> = (props) => {
         </label>
       )}
 
-      <input
+     <div className="upload-btn-wrapper">
+     <input
         className={clsx("file-input-box", )}
         type="file"
         onChange={handleChange}
@@ -96,6 +97,8 @@ const FileInput: React.FC<FileInputProps> = (props) => {
         accept={accept}
         {...nativeProps}
       ></input>
+      <button className="btn">Upload</button>
+     </div>
 
       <HelperText fieldProps={fieldProps} formikProps={formikProps} />
     

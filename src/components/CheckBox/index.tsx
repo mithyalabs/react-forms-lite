@@ -9,11 +9,7 @@ import { Option } from "../../Types";
 
 export interface CheckboxFieldProps extends FieldItemProps {
   options?: Option[];
-<<<<<<< HEAD
   isColumner?: boolean; 
-=======
-  isColumner?: boolean;
->>>>>>> 363bfa4aa1e82ba0962a75f5f5897fecaaea87c1
 }
 interface CheckBoxProps extends FieldProps {
   fieldProps?: CheckboxFieldProps;
