@@ -9,3 +9,25 @@
 .file-input-label {
     @include componentLabel;
 }
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+  }
+  .upload-btn-wrapper input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  .btn {
+    @extend %btn;
+    padding: 0px 8px 0px 8px;
+    height: 30px;
+    font-size: $helperErrorTextSize;
+  }
+  
+  
