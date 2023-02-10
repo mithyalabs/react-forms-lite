@@ -21,7 +21,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
     formikProps = {} as FormikProps<unknown>,
     fieldProps = {} as CheckboxFieldProps,
   } = props;
-  
+
   const {
     options = [],
     name = "",
