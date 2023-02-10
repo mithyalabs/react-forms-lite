@@ -19,7 +19,8 @@ const rgistrationconfig = [
           { value: "Mr", name: "Mr" },
           { value: "Mrs", name: "Mrs" },
           { value: "Miss", name: "Miss" },
-        ]
+        ],
+        label: "Title"
       },
       
     },
@@ -93,7 +94,6 @@ const rgistrationconfig = [
           { value: "female", name: "Female" },
           { value: "other", name: "Other" },
         ],
-        // name: "gender",
         label: "Select gender",
         helperText: "Select any one option",
         isColumner: true,
@@ -103,7 +103,6 @@ const rgistrationconfig = [
       type: "switch",
       valueKey: "toggle",
       fieldProps: {
-        // name: "switch",
         label: "Toggle",
         helperText: "Click for toggle",
       },
@@ -121,7 +120,6 @@ const rgistrationconfig = [
           { value: "hindi", name: "Hindi" },
           { value: "french", name: "French" },
         ],
-        // name: "language",
         label: "Language",
         emptyItem: "Select something",
         helperText: "Select your language",
@@ -158,12 +156,11 @@ const rgistrationconfig = [
     type: "checkbox",
     valueKey: "agreement",
     fieldProps: {
-      options:[
-        { value: "Mr", name: "Mr" },
-        { value: "Mrs", name: "Mrs" },
-        { value: "Miss", name: "Miss" },
-      ],
-      // name: "agreement",
+      // options:[
+      //   { value: "Mr", name: "Mr" },
+      //   { value: "Mrs", name: "Mrs" },
+      //   { value: "Miss", name: "Miss" },
+      // ],
       booleanLabel:"I agree to the Terms & Conditions and Privacy Policy Terms & Conditions and Privacy Policy",
     },
     
@@ -181,123 +178,123 @@ const testformconfig = [
       label: "Name of the Place",
     },
   },
-  // [
-  //   {
-  //     type: "text",
-  //     valueKey: "contact",
-  //     fieldProps: {
-  //       label: "Contact Number",
-  //       className: "labeltextred",
-  //     },
-  //   },
-  //   {
-  //     type: "text",
-  //     valueKey: "rlink",
-  //     fieldProps: {
-  //       label: "Reservation Link",
-  //     },
-  //   },
-  // ],
+  [
+    {
+      type: "text",
+      valueKey: "contact",
+      fieldProps: {
+        label: "Contact Number",
+        className: "labeltextred",
+      },
+    },
+    {
+      type: "text",
+      valueKey: "rlink",
+      fieldProps: {
+        label: "Reservation Link",
+      },
+    },
+  ],
 
-  // [
-  //   {
-  //     type: "text",
-  //     valueKey: "tandd",
-  //     fieldProps: {
-  //       label: "Takeout & Delivery",
-  //     },
-  //   },
-  //   {
-  //     type: "text",
-  //     valueKey: "website",
-  //     fieldProps: {
-  //       label: "Website",
-  //     },
-  //   },
-  // ],
-  // [
-  //   {
-  //     type: "text",
-  //     valueKey: "email",
-  //     fieldProps: {
-  //       label: "Email",
-  //       placeholder: "Enter email",
-  //     },
-  //   },
-  //   {
-  //     type: "text",
-  //     valueKey: "iglink",
-  //     fieldProps: {
-  //       label: "Instagram Link",
-  //     },
-  //   },
-  // ],
-  // {
-  //   type: "text",
-  //   valueKey: "sdis",
-  //   fieldProps: {
-  //     label: "Short Discription",
-  //   },
-  // },
-  // {
-  //   type: "text",
-  //   valueKey: "dis",
-  //   fieldProps: {
-  //     label: "Discription",
-  //   },
-  // },
-  // [
-  //   {
-  //     type: "checkbox",
-  //     fieldProps: {
-  //       options:[
-  //         { value: "Distillery", name: "Distillery" },
-  //         { value: "Brewery", name: "Brewery" },
-  //         { value: "Restaurant", name: "Restaurant" },
-  //         { value: "Bar", name: "Bar" },
-  //         { value: "Cafe", name: "Cafe" },
-  //         { value: "Cooking School", name: "Cooking School" },
-  //         { value: "Food Hall", name: "Food Hall" },
-  //         { value: "Bakery", name: "Bakery" },
-  //         { value: "Food Truck", name: "Food Truck" },
-  //       ],
-  //       label: "Place Type",
-  //       isColumner: true,
-  //       name: "place",
-  //       id: "",
-  //     },
-  //     valueKey: "placetype",
-  //   },
-  //   {
-  //     type: "radio",
-  //     fieldProps: {
-  //       options:[
-  //         { value: "$", name: "$" },
-  //         { value: "$$", name: "$$" },
-  //         { value: "$$$", name: "$$$" },
-  //         { value: "$$$$", name: "$$$$" },
-  //       ],
-  //       name: "range",
-  //       label: "$ Range",
-  //       isColumner: true,
-  //       id: "",
-  //     },
-  //     valueKey: "range",
-  //   },
-  // ],
-  // [
-  //   {
-  //     type: "array",
-  //     valueKey: "arrayText",
-  //     fieldProps: {
-  //       itemType: "text",
-  //       defaultItemValue: "",
-  //       arrayItemFieldProps: {
-  //         label: "Label",
-  //       },
-  //     },
-  //   },
-  // ],
+  [
+    {
+      type: "text",
+      valueKey: "tandd",
+      fieldProps: {
+        label: "Takeout & Delivery",
+      },
+    },
+    {
+      type: "text",
+      valueKey: "website",
+      fieldProps: {
+        label: "Website",
+      },
+    },
+  ],
+  [
+    {
+      type: "text",
+      valueKey: "email",
+      fieldProps: {
+        label: "Email",
+        placeholder: "Enter email",
+      },
+    },
+    {
+      type: "text",
+      valueKey: "iglink",
+      fieldProps: {
+        label: "Instagram Link",
+      },
+    },
+  ],
+  {
+    type: "text",
+    valueKey: "sdis",
+    fieldProps: {
+      label: "Short Discription",
+    },
+  },
+  {
+    type: "text",
+    valueKey: "dis",
+    fieldProps: {
+      label: "Discription",
+    },
+  },
+  [
+    {
+      type: "checkbox",
+      fieldProps: {
+        options:[
+          { value: "Distillery", name: "Distillery" },
+          { value: "Brewery", name: "Brewery" },
+          { value: "Restaurant", name: "Restaurant" },
+          { value: "Bar", name: "Bar" },
+          { value: "Cafe", name: "Cafe" },
+          { value: "Cooking School", name: "Cooking School" },
+          { value: "Food Hall", name: "Food Hall" },
+          { value: "Bakery", name: "Bakery" },
+          { value: "Food Truck", name: "Food Truck" },
+        ],
+        label: "Place Type",
+        isColumner: true,
+        name: "place",
+        id: "",
+      },
+      valueKey: "placetype",
+    },
+    {
+      type: "radio",
+      fieldProps: {
+        options:[
+          { value: "$", name: "$" },
+          { value: "$$", name: "$$" },
+          { value: "$$$", name: "$$$" },
+          { value: "$$$$", name: "$$$$" },
+        ],
+        name: "range",
+        label: "$ Range",
+        isColumner: true,
+        id: "",
+      },
+      valueKey: "range",
+    },
+  ],
+  [
+    {
+      type: "array",
+      valueKey: "arrayText",
+      fieldProps: {
+        itemType: "text",
+        defaultItemValue: "",
+        arrayItemFieldProps: {
+          label: "Label",
+        },
+      },
+    },
+  ],
 ];
 
 function App() {
@@ -345,7 +342,7 @@ function App() {
         config={testformconfig}
         initialValues={initialValues}
         isInProgress={loading}
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
         // actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
@@ -354,20 +351,21 @@ function App() {
         } }       />
       
 
-    {/* <ReactForm
+    <ReactForm
         config={rgistrationconfig}
         initialValues={initialValues}
         isInProgress={loading}
-        // validationSchema={validationSchema}
-        // actionConfig={myActionConfig}
+        validationSchema={validationSchema}
+        actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
           console.log(values);
           setTimeout(() => setLoading(false), 1000);
-        }} */}
+        }}
+        />
 
         
-      {/* /> */}
+     
     </div>
   );
 }
