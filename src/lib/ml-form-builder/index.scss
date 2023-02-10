@@ -1,0 +1,54 @@
+// @import "../Styles/variables";
+// @import "../Styles/mixins";
+// @import "../Styles/extends";
+
+
+.submit-btn{
+  margin-top: 30px;
+  font-size: 16px;
+  background-color: blueviolet;
+  border-radius: 4px;
+  color:white ;
+  padding: 14px 30px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 5px;
+  border: none;
+  }
+  
+  .loader {
+  height: 0;
+  width: 0;
+  border: 6px solid blueviolet;
+  border-bottom-color: #ccc;
+  padding: 10px;
+  border-radius:50%;
+  animation: rotate 1s infinite linear;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  }
+
+
+@keyframes rotate {
+  0%{transform:  rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
+
+.row{
+  display: flex;
+  margin-top: 25px;
+}
+.action-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.action-right{
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.action-fullWidth{
+  width: 100%;
+}

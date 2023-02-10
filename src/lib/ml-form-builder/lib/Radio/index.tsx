@@ -1,0 +1,58 @@
+import { get } from "lodash";
+import React from "react";
+import "./index.scss";
+import clsx from "clsx";
+import { FieldItemProps, FieldProps , Option} from "../Types";
+import { FormikProps } from "formik";
+import HelperText from "../HelperText";
+
+export interface RadioFieldProps extends FieldItemProps {
+  options?: Option[];
+  isColumner?: boolean;
+}
+interface RadioProps extends FieldProps {
+  fieldProps?: RadioFieldProps;
+}
+
+const Radio: React.FC<RadioProps> = (props) => {
+  const {
+    formikProps = {} as FormikProps<unknown>,
+    fieldProps = {} as RadioFieldProps,
+  } = props;
+  const {
+    options = [],
+    name = "",
+    label,
+    isColumner,
+    classNames,
+    nativeProps,
+    disabled,
+  } = fieldProps;
+  
+  const fieldValue: string = get(formikProps, `values.${name}`) || "";
+
+  return (
+    <div className={clsx("radio-field", classNames)}>
+      {label && <span className="radio-label radiolabel">{label}</span>}
+      <div className={clsx("radio-container", isColumner ? "isColumner" : undefined)}>
+        {options.map((it) => (
+          <span key={it.value} className="radio-name radioname">
+            <input
+              className="radio-input"
+              type="radio"
+              name={name}
+              value={it.value}
+              checked={fieldValue === it.value}
+              onChange={formikProps.handleChange}
+              disabled={disabled}
+              {...nativeProps}
+            />
+            {it.name}
+          </span>
+        ))}
+      </div>
+      <HelperText fieldProps={fieldProps} formikProps={formikProps} />
+    </div>
+  );
+};
+export default Radio;

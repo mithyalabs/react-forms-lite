@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import "./App.scss";
 import { Option } from "./Types/index";
 import * as Yup from "yup";
-import { RadioFieldProps } from "./components/Radio/index";
-import { CheckboxFieldProps } from "./components/CheckBox/index";
-import TestForm from "./components/TestForm1";
-import RegistrationForm from "./components/TestForm2";
-import { SelectFProps } from "./components/SelectField";
-import { SwitchFieldProps } from "./components/Switch";
-import {FormActionProps} from "./components/FormBuilder"
+import { RadioFieldProps } from "./lib/ml-form-builder/lib/Radio";
+import { CheckboxFieldProps } from "./lib/ml-form-builder/lib/CheckBox";
+import { SelectFProps } from "./lib/ml-form-builder/lib/SelectField";
+import { SwitchFieldProps } from "./lib/ml-form-builder/lib/Switch";
+import {FormActionProps} from "./lib/ml-form-builder"
+import ReactForm from "./lib/ReactForm"
 
 const myActionConfig:FormActionProps = {
   submitButtonLayout:"fullWidth"
@@ -372,7 +371,7 @@ function App() {
   const initialValues = {};
   return (
     <div className="App">
-      <TestForm
+      <ReactForm
         config={testformconfig}
         initialValues={initialValues}
         isInProgress={loading}
@@ -384,7 +383,9 @@ function App() {
           setTimeout(() => setLoading(false), 200);
         }}
       />
-      <RegistrationForm
+      
+
+    <ReactForm
         config={rgistrationconfig}
         initialValues={initialValues}
         isInProgress={loading}
@@ -395,6 +396,8 @@ function App() {
           console.log(values);
           setTimeout(() => setLoading(false), 1000);
         }}
+
+        
       />
     </div>
   );
