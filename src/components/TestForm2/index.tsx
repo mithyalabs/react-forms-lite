@@ -21,7 +21,7 @@ const RegistrationForm: React.FC<ReactFormProps> = (props) => {
     isReadOnly = false,
     ...formikProps
   } = props;
-  console.log(actionConfig, "from registration")
+ 
   return (
     <div className="registration-field">
       <div className="registration-container">
