@@ -110,7 +110,7 @@ export const setDefaultProps = (
     };
 };
 
-attachField("select", <SelectField />,); // TODO remove type prop
+attachField("select", <SelectField />,);
 attachField("checkbox", <CheckBox />);
 attachField("switch", <Switch />);
 attachField("radio", <Radio />);

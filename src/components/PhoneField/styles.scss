@@ -10,10 +10,10 @@
 }
 
 .phonefield-container{
-    display: flex;
-    
+    display: flex; 
 }
 .phone-field-box{
+    width: auto
 }
 .phonefield-select{
     @extend %input-select-box;

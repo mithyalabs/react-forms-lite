@@ -33,7 +33,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
     name = "",
     itemType,
     addButton,
-    removeButton,
+    removeButton ,
     onAddButtonClick,
     onRemoveButtonClick,
     arrayItemFieldProps = {},
@@ -94,7 +94,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
                   ...itemComponentConfig.props,
                   ...nativeProps,
                 })}
-                {removeButton ? (
+                {removeButton ? (                   
                   removeButton
                 ) : (
                   <button
