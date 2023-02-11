@@ -168,7 +168,7 @@ export const BuildFormRow: React.FC<FormRowProps> = (props) => {
         return (
           <div
             key={`${rowId}_field_${index}`}
-            className={clsx(item.classNames, "isColumner")}
+            className={clsx(item.classNames, "isColumn")}
             style={{
               flex: item.flex || 1,
               marginRight: horizontalSpacing,
