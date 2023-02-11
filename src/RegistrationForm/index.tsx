@@ -1,8 +1,11 @@
 import {useState} from "react";
 import "./index.scss";
 import * as Yup from "yup";
-import ReactForm from "../lib/ReactForm"
+import ReactForm, { FormActionProps } from "../lib/ReactForm"
 
+const myActionConfig:FormActionProps = {
+  submitButtonLayout:"fullWidth"
+}
 const registrationConfig = [
     [
       {
@@ -161,7 +164,6 @@ const registrationConfig = [
     },
   ];
 
-import React from 'react';
 const RegistrationForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const validationSchema = Yup.object({

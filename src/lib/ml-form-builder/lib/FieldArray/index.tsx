@@ -15,6 +15,7 @@ export interface FieldArrayProps extends FieldItemProps {
   onRemoveButtonClick?: (index: number) => Promise<boolean>;
   arrayItemFieldProps?: object;
   defaultItemValue?: any;
+  fieldArrayLabel?:string;
 }
 
 interface FieldsArrayProps extends FieldProps {
@@ -41,6 +42,7 @@ const ArrayField: React.FC<FieldsArrayProps> = (props) => {
     classNames,
     nativeProps,
     disabled,
+    fieldArrayLabel,
   } = fieldProps;
 
   const values = get(formikProps, `values.${name}`);
@@ -71,7 +73,11 @@ const ArrayField: React.FC<FieldsArrayProps> = (props) => {
   };
 
   return (
+    
+
     <div className={clsx("array-field", classNames)}>
+      {fieldArrayLabel && <label className="field-array-container-label">{fieldArrayLabel}</label>}
+
       {label && (
         <label className="field-array-label">{label}</label>
       )}
@@ -79,12 +85,13 @@ const ArrayField: React.FC<FieldsArrayProps> = (props) => {
         name={name}
         render={(arrayHelpers) => (
           <div>
+
             {(values || []).map((value: any, index: number) => (
                 <div
                 key={`${fieldProps.name}-${index}`}
                 className="field-array-box"
               >
-        
+
                 {React.cloneElement(itemComponentConfig.component, {
                   name: fieldProps.name,
                   key: `${fieldProps.name}-${index}`,

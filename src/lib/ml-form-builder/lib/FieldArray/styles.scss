@@ -6,6 +6,9 @@
     @include componentField;
     width: 100%;
 }
+.field-array-container-label{
+    @include componentLabel;
+}
 .field-array-label {
     @include componentLabel;
 }

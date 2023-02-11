@@ -124,6 +124,7 @@ const testFormConfig = [
         type: "array",
         valueKey: "arrayText",
         fieldProps: {
+          fieldArrayLabel :"Add some details",
           itemType: "text",
           defaultItemValue: "",
           arrayItemFieldProps: {
@@ -134,7 +135,6 @@ const testFormConfig = [
     ],
   ];
 
-import React from 'react';
 const PlaceDetailsForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const validationSchema = Yup.object({
