@@ -5,7 +5,7 @@ export * from "../lib/ml-form-builder/index";
 export interface ReactFormProps extends FormikConfig<any> {
     config: Array<RowSchema>,
     formId: string,
-    actionConfig: FormActionProps
+    actionConfig?: FormActionProps
     formSettings?: BuilderSettingsProps
     isInProgress?: boolean
     isReadOnly?: boolean
