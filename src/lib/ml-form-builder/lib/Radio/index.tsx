@@ -8,7 +8,7 @@ import HelperText from "../HelperText";
 
 export interface RadioFieldProps extends FieldItemProps {
   options?: Option[];
-  isColumner?: boolean;
+  isColumn?: boolean;
 }
 interface RadioProps extends FieldProps {
   fieldProps?: RadioFieldProps;
@@ -23,7 +23,7 @@ const Radio: React.FC<RadioProps> = (props) => {
     options = [],
     name = "",
     label,
-    isColumner,
+    isColumn,
     classNames,
     nativeProps,
     disabled,
@@ -34,7 +34,7 @@ const Radio: React.FC<RadioProps> = (props) => {
   return (
     <div className={clsx("radio-field", classNames)}>
       {label && <span className="radio-label radiolabel">{label}</span>}
-      <div className={clsx("radio-container", isColumner ? "isColumner" : undefined)}>
+      <div className={clsx("radio-container", isColumn ? "isColumn" : undefined)}>
         {options.map((it) => (
           <span key={it.value} className="radio-name radioname">
             <input

@@ -8,7 +8,7 @@ import HelperText from "../HelperText";
 
 export interface CheckboxFieldProps extends FieldItemProps {
   options?: Option[];
-  isColumner?: boolean;
+  isColumn?: boolean;
   booleanLabel?: string
 }
 interface CheckBoxProps extends FieldProps {
@@ -25,7 +25,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
     options = [],
     name = "",
     label,
-    isColumner = false,
+    isColumn = false,
     classNames,
     nativeProps,
     disabled,
@@ -39,7 +39,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
     <div className={clsx("checkbox-field ", classNames)}>
       {label && <span className="checkbox-label checkboxlabel">{label}</span>}
       <div
-        className={clsx("checkbox-container", isColumner ? "isColumner" : undefined)}
+        className={clsx("checkbox-container", isColumn ? "isColumn" : undefined)}
       >
 
         {

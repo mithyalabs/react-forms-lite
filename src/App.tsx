@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.scss";
 import * as Yup from "yup";
-import {FormActionProps} from "./lib/ml-form-builder"
 import ReactForm from "./lib/ReactForm"
 
 const myActionConfig = {
@@ -96,7 +95,7 @@ const rgistrationconfig = [
         ],
         label: "Select gender",
         helperText: "Select any one option",
-        isColumner: true,
+        isColumn: true,
       },   
     },
     {
@@ -259,7 +258,7 @@ const testformconfig = [
           { value: "Food Truck", name: "Food Truck" },
         ],
         label: "Place Type",
-        isColumner: true,
+        isColumn: true,
         name: "place",
         id: "",
       },
@@ -276,7 +275,7 @@ const testformconfig = [
         ],
         name: "range",
         label: "$ Range",
-        isColumner: true,
+        isColumn: true,
         id: "",
       },
       valueKey: "range",
@@ -340,10 +339,11 @@ function App() {
     <div className="App">
       <ReactForm
         config={testformconfig}
+        formId="1"
         initialValues={initialValues}
         isInProgress={loading}
         validationSchema={validationSchema}
-        // actionConfig={myActionConfig}
+        actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
           console.log(values);
@@ -353,6 +353,7 @@ function App() {
 
     <ReactForm
         config={rgistrationconfig}
+        formId="2"
         initialValues={initialValues}
         isInProgress={loading}
         validationSchema={validationSchema}

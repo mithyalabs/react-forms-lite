@@ -1,12 +1,14 @@
-import { Formik, FormikValues } from "formik";
+import { Formik, FormikConfig, FormikValues } from "formik";
 import React from "react";
-import MLFormBuilder, {FormActionProps} from "../lib/ml-form-builder";
+import MLFormBuilder, {BuilderSettingsProps, FormActionProps, RowSchema} from "../lib/ml-form-builder";
 export * from "../lib/ml-form-builder/index";
-export interface ReactFormProps extends FormikValues {
-  formId?: string;
-  isInProgress?: boolean;
-  isReadOnly?: boolean;
-  actionCongig?:FormActionProps;
+export interface ReactFormProps extends FormikConfig<any> {
+    config: Array<RowSchema>,
+    formId: string,
+    actionConfig: FormActionProps
+    formSettings?: BuilderSettingsProps
+    isInProgress?: boolean
+    isReadOnly?: boolean
 }
 const ReactForm: React.FC<ReactFormProps> = (props) => {
   const {
