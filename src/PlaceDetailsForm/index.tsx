@@ -153,7 +153,7 @@ const PlaceDetailsForm: React.FC = () => {
           Yup.string().required("At least one string is required")
         ),})
 return (
-    <div>
+    <div className="place-details-form">
         <ReactForm
         config={testFormConfig}
         formId="1"

@@ -123,7 +123,7 @@ const registrationConfig = [
           { value: "employee", name: "Employee" },
           { value: "other", name: "Other" },
         ],
-        label: "Relation with Micro Focusr",
+        label: "Relation with Micro Focus",
         helperText: "Select any one option",
         isColumn: true,
       },   
@@ -181,7 +181,6 @@ const RegistrationForm: React.FC = () => {
   })
 return (
     <div className="reg-form">
-
         <ReactForm
         config={registrationConfig}
         formId="1"
@@ -193,8 +192,8 @@ return (
           setLoading(true);
           console.log(values);
           setTimeout(() => setLoading(false), 200);
-        } }       />
-      
+        } }       
+        />
     </div>
     );
 };

@@ -1,28 +1,12 @@
 .reg-form{
-    width: 80% !important;
     margin-top: 100px;
-    // border: 1px solid black;
     padding: 24px 32px;
-    margin-left: 90px;
     border-radius: 10px;
     box-shadow: 0 0 5px 2px #9c4141;
-
-    .text-label{
+    .text-label, .radio-label, .checkbox-label, .switch-label, .phone-field-label{
         color: blue
     }
 
-    .radio-label{
-        color: blue
-    }
-    .checkbox-label{
-        color: blue
-    }
-    .switch-label{
-        color: blue
-    }
-    .phone-field-label{
-        color: blue
-    }
 
     .helper-text{
         color: rgb(154, 25, 115);
@@ -39,16 +23,11 @@
         border-bottom: 1px solid rgb(198, 33, 33);
     }
 
-    .fName{
+    .fName, .jobTitle{
         width: 90%;
     }
-  
-    .jobTitle{
-        width: 90%;
-    }
- 
     .submit-btn{
-        background-color: green !important;
+        background-color: rgb(60, 130, 243) !important;
     }
 
 }
