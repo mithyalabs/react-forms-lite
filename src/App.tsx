@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import {FormActionProps} from "./lib/ml-form-builder"
 import ReactForm from "./lib/ReactForm"
 
+
 const myActionConfig = {
   submitButtonLayout:"fullWidth"
 }
@@ -121,7 +122,7 @@ const rgistrationconfig = [
           { value: "french", name: "French" },
         ],
         label: "Language",
-        emptyItem: "Select something",
+
         helperText: "Select your language",
       }, 
     },
@@ -161,6 +162,7 @@ const rgistrationconfig = [
       //   { value: "Mrs", name: "Mrs" },
       //   { value: "Miss", name: "Miss" },
       // ],
+      label: "Title",
       booleanLabel:"I agree to the Terms & Conditions and Privacy Policy Terms & Conditions and Privacy Policy",
     },
     
@@ -325,7 +327,7 @@ function App() {
     language: Yup.array().min(1, "Required").required("Required"),
     allergies: Yup.string().required("Required"),
     submitquestions: Yup.string().required("Required"),
-    agreement: Yup.array().min(1, "Required").required("Required"),
+    agreement: Yup.boolean().required("Required"),
     file: Yup.mixed().required("Required")
     .test('fileSize', 'File size must be less than 5 MB', (value) => {
       return value && value.size <= 5 * 1024 * 1024;
@@ -348,7 +350,8 @@ function App() {
           setLoading(true);
           console.log(values);
           setTimeout(() => setLoading(false), 200);
-        } }       />
+        } }    
+        />   
       
 
     <ReactForm
@@ -362,7 +365,9 @@ function App() {
           console.log(values);
           setTimeout(() => setLoading(false), 1000);
         }}
-        />
+       
+
+/>
 
         
      
