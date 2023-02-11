@@ -1,4 +1,4 @@
-import { Formik, FormikConfig, FormikValues } from "formik";
+import { Formik, FormikConfig } from "formik";
 import React from "react";
 import MLFormBuilder, {BuilderSettingsProps, FormActionProps, RowSchema} from "../lib/ml-form-builder";
 export * from "../lib/ml-form-builder/index";

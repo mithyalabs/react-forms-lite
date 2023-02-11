@@ -5,8 +5,8 @@ import { FormConfig } from "../../index";
 export type TFieldConditions = {
   hidden?: boolean;
   logicOpn?: string;
-  defaultProps?: object; //Props to be returned if neccessary conditions are not satisfied
-  postEffectProps?: object; //Props to be returned if and only if neccessary conditions are true
+  defaultProps?: object; //Props to be returned if necessary conditions are not satisfied
+  postEffectProps?: object; //Props to be returned if and only if necessary conditions are true
   values?: ConditionCompareItem[];
 };
 type compareValueType = string | number | boolean;

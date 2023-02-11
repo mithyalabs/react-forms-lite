@@ -33,10 +33,10 @@ const Radio: React.FC<RadioProps> = (props) => {
 
   return (
     <div className={clsx("radio-field", classNames)}>
-      {label && <span className="radio-label radiolabel">{label}</span>}
+      {label && <span className="radio-label">{label}</span>}
       <div className={clsx("radio-container", isColumn ? "isColumn" : undefined)}>
         {options.map((it) => (
-          <span key={it.value} className="radio-name radioname">
+          <span key={it.value} className="radio-name">
             <input
               className="radio-input"
               type="radio"

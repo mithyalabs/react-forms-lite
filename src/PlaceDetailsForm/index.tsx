@@ -8,7 +8,7 @@ const myActionConfig:FormActionProps = {
     submitButtonLayout:"fullWidth"
   }
   
-const testformconfig = [
+const testFormConfig = [
     {
       type: "text",
       valueKey: "place",
@@ -22,12 +22,11 @@ const testformconfig = [
         valueKey: "contact",
         fieldProps: {
           label: "Contact Number",
-          className: "labeltextred",
         },
       },
       {
         type: "text",
-        valueKey: "rlink",
+        valueKey: "rLink",
         fieldProps: {
           label: "Reservation Link",
         },
@@ -37,7 +36,7 @@ const testformconfig = [
     [
       {
         type: "text",
-        valueKey: "tandd",
+        valueKey: "tAndD",
         fieldProps: {
           label: "Takeout & Delivery",
         },
@@ -61,7 +60,7 @@ const testformconfig = [
       },
       {
         type: "text",
-        valueKey: "iglink",
+        valueKey: "igLink",
         fieldProps: {
           label: "Instagram Link",
         },
@@ -69,16 +68,16 @@ const testformconfig = [
     ],
     {
       type: "text",
-      valueKey: "sdis",
+      valueKey: "sDis",
       fieldProps: {
-        label: "Short Discription",
+        label: "Short Description",
       },
     },
     {
       type: "text",
       valueKey: "dis",
       fieldProps: {
-        label: "Discription",
+        label: "Description",
       },
     },
     [
@@ -101,7 +100,7 @@ const testformconfig = [
           name: "place",
           id: "",
         },
-        valueKey: "placetype",
+        valueKey: "placeType",
       },
       {
         type: "radio",
@@ -142,13 +141,13 @@ const PlaceDetailsForm: React.FC = () => {
         place: Yup.array().min(1, "Required").required("Required"),
         range: Yup.string().required("Required"),
         dis: Yup.string().required("Required"),
-        sdis: Yup.string().required("Required"),
-        iglink: Yup.string().required("Required"),
+        sDis: Yup.string().required("Required"),
+        igLink: Yup.string().required("Required"),
         website: Yup.string().required("Required"),
-        tandd: Yup.string().required("Required"),
+        tAndD: Yup.string().required("Required"),
         email: Yup.string().required("Required"),
-        placetype: Yup.array().min(1, "Required").required("Required"),
-        rlink: Yup.string().required("Required"),
+        placeType: Yup.array().min(1, "Required").required("Required"),
+        rLink: Yup.string().required("Required"),
         contact: Yup.string().required("Phone number is required"),
         arrayText: Yup.array().of(
           Yup.string().required("At least one string is required")
@@ -156,7 +155,7 @@ const PlaceDetailsForm: React.FC = () => {
 return (
     <div>
         <ReactForm
-        config={testformconfig}
+        config={testFormConfig}
         formId="1"
         initialValues={{}}
         isInProgress={loading}
@@ -166,7 +165,8 @@ return (
           setLoading(true);
           console.log(values);
           setTimeout(() => setLoading(false), 200);
-        } }       />
+        } }       
+        />
       
     </div>
     );
