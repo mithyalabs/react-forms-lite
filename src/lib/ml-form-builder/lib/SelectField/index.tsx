@@ -35,15 +35,15 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
   return (
     <div className={clsx("select-field", classNames)}>
       {label && (
-        <label htmlFor={name} className="select-field-label selectfieldlabel">
+        <label htmlFor={name} className="select-field-label">
           {label}
         </label>
       )}
-      <div className={clsx("select-container selectcontainer")}>
+      <div className="select-container">
         <select
           id={name}
           onChange={formikProps.handleChange}
-          className={clsx("select-option selectoption")}
+          className="select-option"
           disabled={disabled}
           {...nativeProps}
         >

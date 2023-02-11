@@ -17,11 +17,11 @@ export interface FieldArrayProps extends FieldItemProps {
   defaultItemValue?: any;
 }
 
-interface FieldsArrayprops extends FieldProps {
+interface FieldsArrayProps extends FieldProps {
   fieldProps?: FieldArrayProps;
 }
 
-const ArrayField: React.FC<FieldsArrayprops> = (props) => {
+const ArrayField: React.FC<FieldsArrayProps> = (props) => {
   const {
     fieldProps = {} as FieldArrayProps,
     formikProps = {} as FormikProps<unknown>,
@@ -73,7 +73,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
   return (
     <div className={clsx("array-field", classNames)}>
       {label && (
-        <label className="fieldarray-label fieldarraylabel">{label}</label>
+        <label className="field-array-label">{label}</label>
       )}
       <FieldArray
         name={name}
@@ -82,7 +82,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
             {(values || []).map((value: any, index: number) => (
                 <div
                 key={`${fieldProps.name}-${index}`}
-                className="fieldarray-box fieldarraybox"
+                className="field-array-box"
               >
         
                 {React.cloneElement(itemComponentConfig.component, {
@@ -103,7 +103,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
                   removeButton
                 ) : (
                   <button
-                    className="array-remove-icon arrayremoveicon"
+                    className="array-remove-icon"
                     onClick={() => handleElementRemove(arrayHelpers, index)}
                   >
                     {/* - */}
@@ -118,7 +118,7 @@ const ArrayField: React.FC<FieldsArrayprops> = (props) => {
             ) : (
               <button
                 type="button"
-                className="array-add-icon arrayaddicon"
+                className="array-add-icon"
                 onClick={() => handleElementAdd(arrayHelpers)}
               >
                 {addButtonText}

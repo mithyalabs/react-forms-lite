@@ -19,7 +19,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
     formikProps = {} as FormikProps<unknown>,
     fieldProps = {} as SwitchFieldProps,
   } = props;
-  const { label, name = "", helperText, classNames, nativeProps, disabled} = fieldProps;
+  const { label, name = "", classNames, nativeProps, disabled} = fieldProps;
 
   const fieldValue = get(formikProps, `values.${name}`);
   const handleOnChange = () => {
@@ -27,7 +27,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
   };
   return (
     <div className={clsx("switch-field", classNames)}>
-      {label && <span className="switch-label switchlabel">{label}</span>}
+      {label && <span className="switch-label">{label}</span>}
       <label className="switch-container">
         <input
           className="slider"

@@ -3,7 +3,7 @@ import "./index.scss";
 import * as Yup from "yup";
 import ReactForm from "../lib/ReactForm"
 
-const rgistrationconfig = [
+const registrationConfig = [
     [
       {
         type: "select",
@@ -20,7 +20,7 @@ const rgistrationconfig = [
       },
       {
         type: "text",
-        valueKey: "fname",
+        valueKey: "fName",
         fieldProps: {
           label: "First Name",
           placeholder: "Enter First Name",
@@ -31,7 +31,7 @@ const rgistrationconfig = [
   
       {
         type: "text",
-        valueKey: "lname",
+        valueKey: "lName",
         fieldProps: {
           label: "Last Name",
           placeholder: "Enter last Name",
@@ -70,7 +70,7 @@ const rgistrationconfig = [
     ],
     {
       type: "text",
-      valueKey: "postalcode",
+      valueKey: "postalCode",
       fieldProps: {
         label: "Postal Code",
         placeholder: "Enter postal code",
@@ -133,15 +133,15 @@ const rgistrationconfig = [
       type: "text",
       valueKey: "allergies",
       fieldProps: {
-        label: "Do you have any allegeries and/or food intolerances ?",
-        fullwidth: true,
+        label: "Do you have any allergies and/or food intolerance ?",
+        fullWidth: true,
         helperText:
           "I hereby consent to the following information regarding allergies and intolerances being shared and processed as part of the event.",
       },
     },
     {
       type: "text",
-      valueKey: "submitquestions",
+      valueKey: "submitQuestions",
       fieldProps: {
         label: "Pre-submit your question/s here",
       },
@@ -166,16 +166,16 @@ const RegistrationForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const validationSchema = Yup.object({
     title: Yup.string().required("Required"),
-    fname: Yup.string().required("Required"),
-    lname: Yup.string().required("Required"),
+    fName: Yup.string().required("Required"),
+    lName: Yup.string().required("Required"),
     jobTitle: Yup.string().required("Required"),
     street: Yup.string().required("Required"),
-    postalcode: Yup.string().required("Required"),
+    postalCode: Yup.string().required("Required"),
     gender: Yup.string().required("Required"),
     phoneNo: Yup.string().required("Phone No. Required"),
     language: Yup.array().min(1, "Required").required("Required"),
     allergies: Yup.string().required("Required"),
-    submitquestions: Yup.string().required("Required"),
+    submitQuestions: Yup.string().required("Required"),
     agreement: Yup.array().min(1, "Required").required("Required"),
     file: Yup.mixed().required("Required")
     .test('fileSize', 'File size must be less than 5 MB', (value) => {
@@ -187,7 +187,7 @@ const RegistrationForm: React.FC = () => {
 return (
     <div>
         <ReactForm
-        config={rgistrationconfig}
+        config={registrationConfig}
         formId="1"
         initialValues={{}}
         isInProgress={loading}

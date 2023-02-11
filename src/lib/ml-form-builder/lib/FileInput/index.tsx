@@ -79,14 +79,14 @@ const FileInput: React.FC<FileInputProps> = (props) => {
   return (
     <div className={clsx("file-input-field", classNames)}>
       {label && (
-        <label htmlFor={name} className="file-input-label fileinputlabel">
+        <label htmlFor={name} className="file-input-label">
           {label}
         </label>
       )}
 
      <div className="upload-btn-wrapper">
      <input
-        className={clsx("file-input-box", )}
+        className="file-input-box"
         type="file"
         onChange={handleChange}
         id={name}

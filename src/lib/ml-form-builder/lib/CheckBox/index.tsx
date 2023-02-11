@@ -37,7 +37,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
 
   return (
     <div className={clsx("checkbox-field ", classNames)}>
-      {label && <span className="checkbox-label checkboxlabel">{label}</span>}
+      {label && <span className="checkbox-label">{label}</span>}
       <div
         className={clsx("checkbox-container", isColumn ? "isColumn" : undefined)}
       >
@@ -47,7 +47,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
             (
               map(options, (item: any, index) => {
                 return (
-                  <div key={`${item.value}-${index}`} className="checkbox-name checkboxname">
+                  <div key={`${item.value}-${index}`} className="checkbox-name">
                     <input
                       className="checkbox-input"
                       type="checkbox"
@@ -63,7 +63,7 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
                 )
               })
             ) : (
-              <div className="checkbox-name checkboxname">
+              <div className="checkbox-name">
                 <input
                   className="checkbox-input"
                   type="checkbox"

@@ -23,7 +23,7 @@ const HelperText: React.FC<HelperText> = (props) => {
           {fieldError ? (
             <span className="error-text error">{fieldError}</span>
           ) : (
-            <span className="helper-text helpertext">{helperText} </span>
+            <span className="helper-text">{helperText} </span>
           )}
         </div>
       )}

@@ -6,11 +6,11 @@
     @include componentField;
     width: 100%;
 }
-.fieldarray-label {
+.field-array-label {
     @include componentLabel;
 }
 
-.fieldarray-box{
+.field-array-box{
     display: flex;
 }
 
@@ -28,7 +28,3 @@
     display: flex;
 
 }
-.field-array-removeicon-wrapper{
-    display: flex;
-}
-
