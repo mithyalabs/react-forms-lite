@@ -34,7 +34,7 @@ const TextField: React.FC<TextFieldsProps> = (props) => {
   const fieldValue = get(formikProps, `values.${name}`) as string;
 
   return (
-    <div className={clsx("text-field", classNames)}>
+    <div className={clsx("text-field", classNames, name)}>
       {label && <label className="text-label">{label}</label>}
       <div className={clsx("text-field-box")}>
         <input

@@ -75,7 +75,7 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
   };
 
   return (
-    <div className={clsx("phone-field", classNames)}>
+    <div className={clsx("phone-field", classNames, name)}>
       <label className="phone-field-label" id={name}>
         {countryCodeLabel || "Country Code"} {label}
       </label>

@@ -17,7 +17,7 @@ const HelperText: React.FC<HelperText> = (props) => {
   const { name, helperText, classNames, } = fieldProps;
   const fieldError = getFieldError(name || "", formikProps);
   return (
-    <div className={clsx("text-error-helper-field", classNames)}>
+    <div className={clsx("text-error-helper-field", classNames, name)}>
       {(fieldError || helperText) && (
         <div className="label-error">
           {fieldError ? (

@@ -3,10 +3,11 @@ import RegistrationForm from "./RegistrationForm";
 import PlaceDetailsForm from "./PlaceDetailsForm";
 
 function App() {
+
   return (
     <div className="App">
-     <RegistrationForm/>
-     <PlaceDetailsForm/>
+        <PlaceDetailsForm />
+        <RegistrationForm />   
     </div>
   );
 }

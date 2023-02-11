@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import "./index.scss";
 import * as Yup from "yup";
 import ReactForm, { FormActionProps } from "../lib/ReactForm"
@@ -8,19 +8,7 @@ const myActionConfig:FormActionProps = {
 }
 const registrationConfig = [
     [
-      {
-        type: "select",
-        valueKey: "title",
-        fieldProps: {
-          options:[
-            { value: "Mr", name: "Mr" },
-            { value: "Mrs", name: "Mrs" },
-            { value: "Miss", name: "Miss" },
-          ],
-          label: "Title"
-        },
-        
-      },
+      
       {
         type: "text",
         valueKey: "fName",
@@ -42,14 +30,6 @@ const registrationConfig = [
         },
       },
     ],
-    {
-      type: "file",
-      valueKey: "file",
-      fieldProps: {
-        label: "Upload a file",
-        helperText: "Please Upload a file",
-      },
-    },
     [
       {
         type: "text",
@@ -132,6 +112,22 @@ const registrationConfig = [
         },
       },
     ],
+
+    {
+      type: "radio",
+      valueKey: "relation",
+      fieldProps:{    
+        options :[
+          { value: "customer", name: "Customer" },
+          { value: "partner", name: "Partner" },
+          { value: "employee", name: "Employee" },
+          { value: "other", name: "Other" },
+        ],
+        label: "Relation with Micro Focusr",
+        helperText: "Select any one option",
+        isColumn: true,
+      },   
+    },
     {
       type: "text",
       valueKey: "allergies",
@@ -164,8 +160,10 @@ const registrationConfig = [
     },
   ];
 
+
 const RegistrationForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
+
     const validationSchema = Yup.object({
     title: Yup.string().required("Required"),
     fName: Yup.string().required("Required"),
@@ -176,18 +174,14 @@ const RegistrationForm: React.FC = () => {
     gender: Yup.string().required("Required"),
     phoneNo: Yup.string().required("Phone No. Required"),
     language: Yup.array().min(1, "Required").required("Required"),
+    relation: Yup.string().required("Required"),
     allergies: Yup.string().required("Required"),
     submitQuestions: Yup.string().required("Required"),
-    agreement: Yup.array().min(1, "Required").required("Required"),
-    file: Yup.mixed().required("Required")
-    .test('fileSize', 'File size must be less than 5 MB', (value) => {
-      return value && value.size <= 5 * 1024 * 1024;
-    })
-    .test('fileType', 'File must be of type jpg or png', (value) => {
-      return value && (value.type === 'image/jpeg' || value.type === 'image/png');
-    }),})
+    agreement: Yup.boolean().required("Required"),
+  })
 return (
-    <div>
+    <div className="reg-form">
+
         <ReactForm
         config={registrationConfig}
         formId="1"
