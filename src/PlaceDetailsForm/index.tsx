@@ -1,10 +1,10 @@
 import {useState} from "react";
 import "./index.scss";
 import * as Yup from "yup";
-import ReactForm from "../lib/ReactForm"
+import ReactForm, { FormActionProps } from "../lib/ReactForm"
 
 
-const myActionConfig = {
+const myActionConfig:FormActionProps = {
     submitButtonLayout:"fullWidth"
   }
   
@@ -161,7 +161,7 @@ return (
         initialValues={{}}
         isInProgress={loading}
         validationSchema={validationSchema}
-        // actionConfig={myActionConfig}
+        actionConfig={myActionConfig}
         onSubmit={(values: object) => {
           setLoading(true);
           console.log(values);
