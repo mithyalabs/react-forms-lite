@@ -165,17 +165,17 @@ export const RegistrationForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
 
     const validation = Yup.object({
-    // fName: Yup.string().required("Required"),
-    // lName: Yup.string().required("Required"),
-    // jobTitle: Yup.string().required("Required"),
-    // street: Yup.string().required("Required"),
-    // postalCode: Yup.string().required("Required"),
-    // gender: Yup.string().required("Required"),
-    // phoneNo: Yup.string().required("Phone No. Required"),
-    // language: Yup.array().min(1, "Required").required("Required"),
-    // relation: Yup.string().required("Required"),
-    // allergies: Yup.string().required("Required"),
-    // submitQuestions: Yup.string().required("Required"),
+    fName: Yup.string().required("Required"),
+    lName: Yup.string().required("Required"),
+    jobTitle: Yup.string().required("Required"),
+    street: Yup.string().required("Required"),
+    postalCode: Yup.string().required("Required"),
+    gender: Yup.string().required("Required"),
+    phoneNo: Yup.string().required("Phone No. Required"),
+    language: Yup.array().min(1, "Required").required("Required"),
+    relation: Yup.string().required("Required"),
+    allergies: Yup.string().required("Required"),
+    submitQuestions: Yup.string().required("Required"),
     agreement: Yup.boolean().oneOf([true], 'Field must be checked').required("Required"),
   })
 return (
