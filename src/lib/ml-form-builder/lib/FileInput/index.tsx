@@ -8,7 +8,7 @@ import clsx from "clsx";
 import { FieldItemProps, FieldProps } from "../Types";
 import "./index.scss";
 import { FormikProps } from "formik";
-import HelperText from "../HelperText";
+import {HelperText} from "../HelperText";
 
 export interface TFile {
   name: string;
@@ -36,7 +36,7 @@ interface FileInputProps extends FieldProps {
   fieldProps?: FileInputField;
 }
 
-const FileInput: React.FC<FileInputProps> = (props) => {
+export const FileInput: React.FC<FileInputProps> = (props) => {
   const {
     formikProps = {} as FormikProps<unknown>,
     fieldProps = {} as FileInputField,
@@ -104,4 +104,4 @@ const FileInput: React.FC<FileInputProps> = (props) => {
     </div>
   );
 };
-export default FileInput;
+

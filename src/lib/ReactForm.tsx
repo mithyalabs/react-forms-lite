@@ -10,7 +10,7 @@ export interface ReactFormProps extends FormikConfig<any> {
     isInProgress?: boolean
     isReadOnly?: boolean
 }
-const ReactForm: React.FC<ReactFormProps> = (props) => {
+export const ReactForm: React.FC<ReactFormProps> = (props) => {
   const {
     config,
     formId = "1",

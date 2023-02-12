@@ -4,7 +4,7 @@ import "./index.scss";
 import { get } from "lodash";
 import { FormikProps } from "formik";
 import clsx from "clsx";
-import HelperText from "../HelperText";
+import {HelperText} from "../HelperText";
 
 export interface SwitchFieldProps extends FieldItemProps {
   label?: string;
@@ -14,7 +14,7 @@ interface SwitchProps extends FieldProps {
   fieldProps?: SwitchFieldProps & FieldItemProps;
 }
 
-const Switch: React.FC<SwitchProps> = (props) => {
+export const Switch: React.FC<SwitchProps> = (props) => {
   const {
     formikProps = {} as FormikProps<unknown>,
     fieldProps = {} as SwitchFieldProps,
@@ -46,4 +46,4 @@ const Switch: React.FC<SwitchProps> = (props) => {
   );
 };
 
-export default Switch;
+

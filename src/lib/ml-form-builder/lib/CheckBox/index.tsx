@@ -4,7 +4,7 @@ import { get, isEmpty, map, values } from "lodash";
 import clsx from "clsx";
 import { FieldItemProps, FieldProps,Option } from "../Types";
 import { FormikProps } from "formik";
-import HelperText from "../HelperText";
+import {HelperText} from "../HelperText";
 
 export interface CheckboxFieldProps extends FieldItemProps {
   options?: Option[];
@@ -15,7 +15,7 @@ interface CheckBoxProps extends FieldProps {
   fieldProps?: CheckboxFieldProps;
 }
 
-const CheckBox: React.FC<CheckBoxProps> = (props) => {
+export const CheckBox: React.FC<CheckBoxProps> = (props) => {
   const {
     formikProps = {} as FormikProps<unknown>,
     fieldProps = {} as CheckboxFieldProps,
@@ -86,4 +86,3 @@ const CheckBox: React.FC<CheckBoxProps> = (props) => {
   );
 };
 
-export default CheckBox;

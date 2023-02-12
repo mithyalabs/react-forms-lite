@@ -135,7 +135,7 @@ const testFormConfig = [
     ],
   ];
 
-const PlaceDetailsForm: React.FC = () => {
+export const PlaceDetailsForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const validationSchema = Yup.object({
         place: Yup.array().min(1, "Required").required("Required"),

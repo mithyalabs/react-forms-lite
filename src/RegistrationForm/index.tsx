@@ -161,7 +161,7 @@ const registrationConfig = [
   ];
 
 
-const RegistrationForm: React.FC = () => {
+export const RegistrationForm: React.FC = () => {
     const [loading, setLoading] = useState(false);
 
     const validationSchema = Yup.object({

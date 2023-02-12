@@ -4,7 +4,7 @@ import "./index.scss";
 import clsx from "clsx";
 import { FieldItemProps, FieldProps , Option} from "../Types";
 import { FormikProps } from "formik";
-import HelperText from "../HelperText";
+import {HelperText} from "../HelperText";
 
 export interface RadioFieldProps extends FieldItemProps {
   options?: Option[];
@@ -14,7 +14,7 @@ interface RadioProps extends FieldProps {
   fieldProps?: RadioFieldProps;
 }
 
-const Radio: React.FC<RadioProps> = (props) => {
+export const Radio: React.FC<RadioProps> = (props) => {
   const {
     formikProps = {} as FormikProps<unknown>,
     fieldProps = {} as RadioFieldProps,
@@ -55,4 +55,4 @@ const Radio: React.FC<RadioProps> = (props) => {
     </div>
   );
 };
-export default Radio;
+

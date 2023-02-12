@@ -8,7 +8,7 @@ import "./index.scss";
 interface HelperText extends FieldProps {
   fieldProps?: FieldItemProps;
 }
-const HelperText: React.FC<HelperText> = (props) => {
+export const HelperText: React.FC<HelperText> = (props) => {
   const {
     fieldProps = {} as FieldItemProps,
     formikProps = {} as FormikProps<unknown>,
@@ -30,4 +30,4 @@ const HelperText: React.FC<HelperText> = (props) => {
     </div>
   );
 };
-export default HelperText;
+

@@ -4,7 +4,7 @@ import { isString } from "lodash";
 import "./index.scss";
 import { FormikProps } from "formik";
 import clsx from "clsx";
-import HelperText from "../HelperText";
+import {HelperText} from "../HelperText";
 export interface SelectFProps extends FieldItemProps {
   options?: Option[];
   emptyItem?: string | boolean;
@@ -13,7 +13,7 @@ interface SelectFieldProps extends FieldProps {
   fieldProps?: SelectFProps;
 }
 
-const SelectField: React.FC<SelectFieldProps> = (props) => {
+export const SelectField: React.FC<SelectFieldProps> = (props) => {
   const { formikProps = {} as FormikProps<unknown>, fieldProps = {} as SelectFProps } =
     props;
   const {
@@ -60,4 +60,4 @@ const SelectField: React.FC<SelectFieldProps> = (props) => {
     </div>
   );
 };
-export default SelectField;
+

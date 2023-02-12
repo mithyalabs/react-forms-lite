@@ -5,7 +5,7 @@ import { CountryCodeFormat, COUNTRY_LIST } from "../Constants/CountryList";
 import { get } from "lodash";
 import { FormikProps } from "formik";
 import clsx from "clsx";
-import HelperText from "../HelperText";
+import {HelperText} from "../HelperText";
 
 export interface PhoneFieldProps extends FieldItemProps {
   countryCodeLabel?: string;
@@ -20,7 +20,7 @@ export interface PhoneFieldsProps extends FieldProps {
   fieldProps?: PhoneFieldProps;
 }
 
-const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
+export const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
   const {
     fieldProps = {} as PhoneFieldProps,
     formikProps = {} as FormikProps<unknown>,
@@ -112,4 +112,3 @@ const PhoneField: React.FC<PhoneFieldsProps> = (props) => {
   );
 };
 
-export default PhoneField;

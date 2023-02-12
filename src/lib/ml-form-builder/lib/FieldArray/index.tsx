@@ -22,7 +22,7 @@ interface FieldsArrayProps extends FieldProps {
   fieldProps?: FieldArrayProps;
 }
 
-const ArrayField: React.FC<FieldsArrayProps> = (props) => {
+export const ArrayField: React.FC<FieldsArrayProps> = (props) => {
   const {
     fieldProps = {} as FieldArrayProps,
     formikProps = {} as FormikProps<unknown>,
@@ -138,4 +138,3 @@ const ArrayField: React.FC<FieldsArrayProps> = (props) => {
   );
 };
 
-export default ArrayField;

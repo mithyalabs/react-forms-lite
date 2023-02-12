@@ -3,7 +3,7 @@ import React from "react";
 import "./index.scss";
 import clsx from "clsx";
 import { FieldItemProps, FieldProps } from "../Types";
-import HelperText from "../HelperText";
+import {HelperText} from "../HelperText";
 import { FormikProps } from "formik";
 
 export interface TextFieldProps extends FieldItemProps {
@@ -15,7 +15,7 @@ interface TextFieldsProps extends FieldProps {
   fieldProps?: TextFieldProps;
 }
 
-const TextField: React.FC<TextFieldsProps> = (props) => {
+export const TextField: React.FC<TextFieldsProps> = (props) => {
   const {
     fieldProps = {} as TextFieldProps,
     formikProps = {} as FormikProps<unknown>,
@@ -55,4 +55,4 @@ const TextField: React.FC<TextFieldsProps> = (props) => {
   );
 };
 
-export default TextField;
+
