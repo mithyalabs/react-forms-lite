@@ -55,7 +55,6 @@ const testFormConfig = [
         valueKey: "email",
         fieldProps: {
           label: "Email",
-          placeholder: "Enter email",
         },
       },
       {
