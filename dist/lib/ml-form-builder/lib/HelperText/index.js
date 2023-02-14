@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import React from "react";
 import { getFieldError } from "../../Utils";
-// import "./index.scss";
+import "./index.scss";
 export const HelperText = (props) => {
     const { fieldProps = {}, formikProps = {}, } = props;
     const { name, helperText, classNames, } = fieldProps;
