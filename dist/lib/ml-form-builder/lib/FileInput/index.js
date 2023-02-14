@@ -1,7 +1,7 @@
 import React from "react";
 import { processFilesWithCallback, setValue, } from "../../Utils";
 import clsx from "clsx";
-//import "./index.scss";
+import "./index.scss";
 import { HelperText } from "../HelperText";
 export const FileInput = (props) => {
     const { formikProps = {}, fieldProps = {}, } = props;

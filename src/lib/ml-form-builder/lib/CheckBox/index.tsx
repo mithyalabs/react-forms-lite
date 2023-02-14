@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.scss";
+import "./index.module.scss";
 import { get, isEmpty, map } from "lodash";
 import clsx from "clsx";
 import { FieldItemProps, FieldProps,Option } from "../Types";

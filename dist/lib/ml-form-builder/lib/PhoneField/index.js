@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./styles.scss";
+import "./index.scss";
 import { COUNTRY_LIST } from "../Constants/CountryList";
 import { get } from "lodash";
 import clsx from "clsx";

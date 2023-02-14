@@ -11,7 +11,7 @@ import {PhoneField} from "./lib/PhoneField";
 import {ArrayField} from "./lib/FieldArray";
 import {TextField} from "./lib/TextField";
 import { FieldItemProps } from "./lib/Types";
-import "./index.scss";
+import "./index.module.scss";
 
 import {
   getConditionalProps,

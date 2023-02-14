@@ -6,7 +6,7 @@ import {
 } from "../../Utils";
 import clsx from "clsx";
 import { FieldItemProps, FieldProps } from "../Types";
-import "./index.scss";
+import "./index.module.scss";
 import { FormikProps } from "formik";
 import {HelperText} from "../HelperText";
 

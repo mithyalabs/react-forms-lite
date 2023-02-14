@@ -1,6 +1,6 @@
 import React from "react";
 import { FieldItemProps, FieldProps } from "../Types";
-import "./index.scss";
+import "./index.module.scss";
 import { get } from "lodash";
 import { FormikProps } from "formik";
 import clsx from "clsx";

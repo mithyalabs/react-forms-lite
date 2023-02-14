@@ -1,6 +1,6 @@
 import React from "react";
 import { get } from "lodash";
-import "./index.scss";
+import "./index.module.scss";
 import { FieldArray, FieldArrayRenderProps, FormikProps } from "formik";
 import { FieldProps, getComponentConfig } from "../../index";
 import clsx from "clsx";
@@ -83,14 +83,14 @@ export const ArrayField: React.FC<FieldsArrayProps> = (props) => {
       <FieldArray
         name={name}
         render={(arrayHelpers) => (
-          <div>
+          <div className="field-array-child-box-container">
 
             {(values || []).map(( index: number) => (
                 <div
                 key={`${fieldProps.name}-${index}`}
                 className="field-array-box"
               >
-
+                <div className="field-array-child">
                 {React.cloneElement(itemComponentConfig.component, {
                   name: fieldProps.name,
                   key: `${fieldProps.name}-${index}`,
@@ -116,6 +116,7 @@ export const ArrayField: React.FC<FieldsArrayProps> = (props) => {
                     {<p style={{ fontSize: "8px" }}>❌</p>}
                   </button>
                 )}
+                </div>
               </div>
               
             ))}

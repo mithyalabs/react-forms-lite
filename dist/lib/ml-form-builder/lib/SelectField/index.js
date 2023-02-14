@@ -1,6 +1,6 @@
 import React from "react";
 import { isString } from "lodash";
-//import "./index.scss";
+import "./index.scss";
 import clsx from "clsx";
 import { HelperText } from "../HelperText";
 export const SelectField = (props) => {

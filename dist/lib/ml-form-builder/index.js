@@ -9,9 +9,7 @@ import { FileInput } from "./lib/FileInput";
 import { PhoneField } from "./lib/PhoneField";
 import { ArrayField } from "./lib/FieldArray";
 import { TextField } from "./lib/TextField";
-// import "./index.scss";
-import "../../assets/index-1cc597f8.css";
-
+import "./index.scss";
 import { getConditionalProps, } from "./lib/ConditionalOperations";
 const ComponentMapConfig = {};
 export const getComponentConfig = (type) => {
