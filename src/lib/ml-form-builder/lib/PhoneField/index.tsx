@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FieldItemProps, FieldProps } from "../Types";
-import "./styles.scss";
+import "./index.scss";
 import { CountryCodeFormat, COUNTRY_LIST } from "../Constants/CountryList";
 import { get } from "lodash";
 import { FormikProps } from "formik";
