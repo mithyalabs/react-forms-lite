@@ -1,7 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 function getDefaultExportFromCjs (x) {
@@ -25493,13 +25489,5 @@ const ReactForm = (props) => {
 
 var index = './lib/ReactForm';
 
-exports.BuildFormRow = BuildFormRow;
-exports.MLFormAction = MLFormAction;
-exports.MLFormBuilder = MLFormBuilder;
-exports.MLFormContent = MLFormContent;
-export  default ReactForm;
-exports.attachField = attachField;
-exports.default = index;
-exports.getComponentConfig = getComponentConfig;
-exports.setDefaultProps = setDefaultProps;
-//# sourceMappingURL=index.js.map
+export { BuildFormRow, MLFormAction, MLFormBuilder, MLFormContent, ReactForm, attachField, index as default, getComponentConfig, setDefaultProps };
+//# sourceMappingURL=index.es.js.map
