@@ -11,4 +11,3 @@ export interface ReactFormProps extends FormikConfig<any> {
     isReadOnly?: boolean;
 }
 export declare const ReactForm: React.FC<ReactFormProps>;
-export default ReactForm;

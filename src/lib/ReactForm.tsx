@@ -13,7 +13,7 @@ export interface ReactFormProps extends FormikConfig<any> {
 export const ReactForm: React.FC<ReactFormProps> = (props) => {
   const {
     config,
-    formId = "1",
+    formId,
     initialValues = {},
     onSubmit,
     actionConfig,
@@ -22,7 +22,7 @@ export const ReactForm: React.FC<ReactFormProps> = (props) => {
     isReadOnly = false,
     ...formikProps
   } = props;
- 
+
   return (
     
         <Formik
@@ -46,4 +46,3 @@ export const ReactForm: React.FC<ReactFormProps> = (props) => {
      
   );
 };
-export default ReactForm;

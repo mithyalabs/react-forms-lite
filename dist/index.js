@@ -25485,7 +25485,7 @@ const MLFormBuilder = (props) => {
 };
 
 const ReactForm = (props) => {
-    const { config, formId = "1", initialValues = {}, onSubmit, actionConfig, formSettings, isInProgress = true, isReadOnly = false, ...formikProps } = props;
+    const { config, formId, initialValues = {}, onSubmit, actionConfig, formSettings, isInProgress = true, isReadOnly = false, ...formikProps } = props;
     return (React.createElement(Formik, { initialValues: initialValues, onSubmit: onSubmit, ...formikProps }, (formikProp) => {
         return (React.createElement(MLFormBuilder, { schema: config, formId: formId, actionConfig: actionConfig, settings: { ...formSettings, isReadOnly }, formikProps: formikProp, isInProgress: isInProgress }));
     }));
@@ -25497,7 +25497,7 @@ exports.BuildFormRow = BuildFormRow;
 exports.MLFormAction = MLFormAction;
 exports.MLFormBuilder = MLFormBuilder;
 exports.MLFormContent = MLFormContent;
-export  default ReactForm;
+exports.ReactForm = ReactForm;
 exports.attachField = attachField;
 exports.default = index;
 exports.getComponentConfig = getComponentConfig;

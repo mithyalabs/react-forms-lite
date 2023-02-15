@@ -25481,7 +25481,7 @@ const MLFormBuilder = (props) => {
 };
 
 const ReactForm = (props) => {
-    const { config, formId = "1", initialValues = {}, onSubmit, actionConfig, formSettings, isInProgress = true, isReadOnly = false, ...formikProps } = props;
+    const { config, formId, initialValues = {}, onSubmit, actionConfig, formSettings, isInProgress = true, isReadOnly = false, ...formikProps } = props;
     return (React.createElement(Formik, { initialValues: initialValues, onSubmit: onSubmit, ...formikProps }, (formikProp) => {
         return (React.createElement(MLFormBuilder, { schema: config, formId: formId, actionConfig: actionConfig, settings: { ...formSettings, isReadOnly }, formikProps: formikProp, isInProgress: isInProgress }));
     }));
