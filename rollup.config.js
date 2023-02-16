@@ -30,7 +30,7 @@ export default {
         external(),
         sass({
             input: 'src/**/*.module.scss',
-            output:"./index.css"
+            output:"dist/index.css"
         }),
         alias({
             entries: {
