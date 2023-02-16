@@ -8,7 +8,7 @@ import pkg from "./package.json" assert {type:"json"};
 
 import path from 'path';
 const relativePath = path.resolve(path.dirname(new URL(import.meta.url).pathname),'node_modules','react-forms-lite', 'dist');
-
+console.log(relativePath);
 
 export default {
     input: "src/index.ts",
@@ -30,11 +30,11 @@ export default {
         external(),
         sass({
             input: 'src/**/*.module.scss',
-            output:"dist/index.css"
+            output:"./index.css"
         }),
         alias({
             entries: {
-              "~react-forms-lite": relativePath,
+              "@react-forms-lite": relativePath,
             },
         }), 
         resolve({
