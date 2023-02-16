@@ -7,7 +7,7 @@ import alias from "@rollup/plugin-alias";
 import pkg from "./package.json" assert {type:"json"};
 
 import path from 'path';
-const relativePath = path.resolve(path.dirname(new URL(import.meta.url).pathname),"node_modules/react-forms-lite/dist");
+const relativePath = path.resolve(path.dirname(new URL(import.meta.url).pathname),'node_modules','react-forms-lite', 'dist');
 
 
 export default {
