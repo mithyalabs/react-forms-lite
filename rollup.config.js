@@ -10,7 +10,7 @@ const aliasConfig = {
     entries: [
       {
         find: '~react-forms-lite',
-        replacement: '/react-forms-lite/dist',
+        replacement: 'react-forms-lite/dist',
       },
     ],
   };
