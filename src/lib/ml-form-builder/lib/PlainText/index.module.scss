@@ -1,0 +1,7 @@
+@import "../Styles/variables";
+@import "../Styles/mixins";
+@import "../Styles/extends";
+
+.plain-text-field{
+    @include componentField;
+}

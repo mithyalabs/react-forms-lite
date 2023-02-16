@@ -3,7 +3,12 @@ import commonjs from "@rollup/plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
 import sass from 'rollup-plugin-sass';
+import alias from "@rollup/plugin-alias";
 import pkg from "./package.json" assert {type:"json"};
+
+import path from 'path';
+const relativePath = path.resolve(path.dirname(new URL(import.meta.url).pathname),"node_modules/react-forms-lite/dist");
+
 
 export default {
     input: "src/index.ts",
@@ -25,7 +30,12 @@ export default {
         external(),
         sass({
             input: 'src/**/*.module.scss',
-            output:"dist/bundle.css"
+            output:"dist/index.css"
+        }),
+        alias({
+            entries: {
+              "~react-forms-lite": relativePath,
+            },
         }), 
         resolve({
             browser: true

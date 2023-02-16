@@ -11,12 +11,14 @@ import {PhoneField} from "./lib/PhoneField";
 import {ArrayField} from "./lib/FieldArray";
 import {TextField} from "./lib/TextField";
 import { FieldItemProps } from "./lib/Types";
+import {PlainText} from "./lib/PlainText";
 import "./index.module.scss";
 
 import {
   getConditionalProps,
   TFieldConditions,
 } from "./lib/ConditionalOperations";
+
 export interface ReadOnlyProps {
   renderer: (props: FieldProps) => React.ReactNode;
 }
@@ -119,6 +121,7 @@ attachField("phone", <PhoneField />);
 attachField("array", <ArrayField />);
 attachField("password", <TextField />, { type: "password" });
 attachField("text", <TextField />, { type: "text" });
+attachField("plaintext",<PlainText/>);
 
 export const BuildFormRow: React.FC<FormRowProps> = (props) => {
   const {

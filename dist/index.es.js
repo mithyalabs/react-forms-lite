@@ -22470,6 +22470,12 @@ const TextField = (props) => {
         React.createElement(HelperText, { fieldProps: fieldProps, formikProps: formikProps })));
 };
 
+const PlainText = (props) => {
+    const { fieldProps = {} } = props;
+    const { isTextHtmlString = false, text = "", classNames = "", nativeProps, } = fieldProps;
+    return (React.createElement("div", { className: clsx("plain-text-field", classNames) }, isTextHtmlString && typeof text === "string" ? (React.createElement("div", { className: "plaintext-string", dangerouslySetInnerHTML: { __html: text }, ...nativeProps })) : (React.createElement("div", { className: "plaintext" }, text))));
+};
+
 const compare = (value1, operator, value2) => {
     switch (operator) {
         case ">":
@@ -22569,6 +22575,7 @@ attachField("phone", React.createElement(PhoneField, null));
 attachField("array", React.createElement(ArrayField, null));
 attachField("password", React.createElement(TextField, null), { type: "password" });
 attachField("text", React.createElement(TextField, null), { type: "text" });
+attachField("plaintext", React.createElement(PlainText, null));
 const BuildFormRow = (props) => {
     const { schema, rowId, formikProps = {}, settings = {
         horizontalSpacing: 10,
