@@ -22028,7 +22028,7 @@ const HelperText = (props) => {
 const CheckBox = (props) => {
     const { formikProps = {}, fieldProps = {}, } = props;
     const { options = [], name = "", label, isColumn = false, classNames, nativeProps, disabled, booleanLabel } = fieldProps;
-    const fieldValue = lodashExports.get(formikProps, `values.${name} ||  []`);
+    const fieldValue = lodashExports.get(formikProps, `values.${name}`) || [];
     const booleanValue = lodashExports.get(formikProps, `values.${name}`);
     return (React.createElement("div", { className: clsx("checkbox-field ", classNames) },
         label && React.createElement("span", { className: "checkbox-label" }, label),

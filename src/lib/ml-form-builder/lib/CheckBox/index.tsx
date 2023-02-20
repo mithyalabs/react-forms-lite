@@ -32,7 +32,7 @@ export const CheckBox: React.FC<CheckBoxProps> = (props) => {
     booleanLabel
   } = fieldProps;
 
-  const fieldValue:string[] = get(formikProps, `values.${name} ||  []`);
+  const fieldValue:string[] = get(formikProps, `values.${name}`)  ||  [];
   const booleanValue = get(formikProps, `values.${name}`);
 
   return (
