@@ -33,7 +33,7 @@ export const CheckBox: React.FC<CheckBoxProps> = (props) => {
   } = fieldProps;
 
   const fieldValue:string[] = get(formikProps, `values.${name} ||  []`);
-  const booleanValue = get(formikProps, `values.${name} || "false"`);
+  const booleanValue = get(formikProps, `values.${name}`);
 
   return (
     <div className={clsx("checkbox-field ", classNames)}>
@@ -68,8 +68,7 @@ export const CheckBox: React.FC<CheckBoxProps> = (props) => {
                   className="checkbox-input"
                   type="checkbox"
                   name={name}
-                  // value="false"
-                  checked={booleanValue }
+                  checked={(booleanValue || false)}
                   onBlur={formikProps.handleBlur}
                   onChange={formikProps.handleChange}
                   disabled={disabled}
