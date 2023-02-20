@@ -22664,9 +22664,7 @@ const MLFormAction = (props) => {
     return (React.createElement("div", { className: clsx("actionContainer", layoutClassName, containerClassNames) }, props.actionContent ? (React.cloneElement(props.actionContent || React.createElement("div", null), {
         formikProps,
         formId,
-    })) : (React.createElement("div", null, formikProps.isSubmitting ? (React.createElement("div", { className: "loader" })) : (React.createElement("button", { className: clsx("submit-btn", layoutClassName === "action-fullWidth"
-            ? "action-fullWidth"
-            : undefined), type: "submit", disabled: formikProps.isSubmitting }, submitButtonText))))));
+    })) : (React.createElement("div", null, formikProps.isSubmitting ? (React.createElement("div", { className: "loader" })) : (React.createElement("button", { className: clsx("submit-btn", layoutClassName), type: "submit", disabled: formikProps.isSubmitting }, submitButtonText))))));
 };
 const MLFormBuilder = (props) => {
     const { formikProps = {}, isInProgress = false, actionConfig = {}, } = props;

@@ -269,12 +269,7 @@ export const MLFormAction: React.FC<
             <div className="loader"></div>
           ) : (
             <button
-              className={clsx(
-                "submit-btn",
-                layoutClassName === "action-fullWidth"
-                  ? "action-fullWidth"
-                  : undefined
-              )}
+              className={clsx( "submit-btn", layoutClassName )}
               type="submit"
               disabled={formikProps.isSubmitting}
             >
