@@ -67,7 +67,7 @@ export const setValue = (
   formikProps.setFieldValue(get(fieldProps, "name"), value);
 };
 
-const ComponentMapConfig: {
+export const ComponentMapConfig: {
   [key: string]: { component: JSX.Element; props?: object };
 } = {};
 

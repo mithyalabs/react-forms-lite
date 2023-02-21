@@ -54,10 +54,6 @@ export interface FieldProps<T = any> {
     fieldConfig?: FormConfig;
     isReadOnly?: boolean;
 }
-export declare const getComponentConfig: (type: string) => {
-    component: JSX.Element;
-    props?: object | undefined;
-};
 export declare const attachField: (type: Array<string> | string, component: JSX.Element, props?: object) => void;
 export declare const setDefaultProps: (type: Array<string> | string, props: object) => void;
 export declare const BuildFormRow: React.FC<FormRowProps>;

@@ -1,7 +1,9 @@
 import { Formik, FormikConfig } from "formik";
 import React from "react";
 import MLFormBuilder, {BuilderSettingsProps, FormActionProps, RowSchema} from "../lib/ml-form-builder";
-export * from "../lib/ml-form-builder/index";
+export * from "./ml-form-builder";
+export * from "./ml-form-builder/lib";
+export * from './ml-form-builder/Utils';
 export interface ReactFormProps extends FormikConfig<any> {
     config: Array<RowSchema>,
     formId: string,

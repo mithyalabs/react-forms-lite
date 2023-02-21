@@ -27,6 +27,12 @@ export declare const getMenuOptions: <T extends unknown>(options: MenuOptions<T>
 export declare const getFieldError: (fieldName: string, formikProps: FormikValues) => any;
 export declare const processFilesWithCallback: (files: FileList | File[], callback: Function, readAs?: ReadAsType, encoding?: string) => void;
 export declare const setValue: (value: any, formikProps: FormikValues, fieldProps: any) => void;
+export declare const ComponentMapConfig: {
+    [key: string]: {
+        component: JSX.Element;
+        props?: object;
+    };
+};
 export declare const getComponentConfig: (type: string) => {
     component: JSX.Element;
     props?: object | undefined;
