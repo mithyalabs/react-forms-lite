@@ -24,6 +24,16 @@
   },
   "author": "Mithyalabs Team",
   "license": "MIT",
+  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mithyalabs/react-forms-lite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mithyalabs/react-forms-lite/issues"
+  },
+  "homepage": "https://github.com/mithyalabs/react-forms-lite#readme",
+ 
   "scripts": {
     "build": "rollup -c",
     "test": "jest"
