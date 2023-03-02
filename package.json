@@ -22,7 +22,7 @@
     "preset": "ts-jest",
     "testEnvironment": "node"
   },
-  "author": "sac6inarya",
+  "author": "Mithyalabs Team",
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
